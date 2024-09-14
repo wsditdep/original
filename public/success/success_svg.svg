@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="392.063" height="313.651" viewBox="0 0 392.063 313.651">
+  <g id="Group_1" data-name="Group 1" transform="translate(-1289.313 -153.52)">
+    <g id="tile_background" transform="translate(1288.501 152.588)">
+      <rect id="Rectangle_1" data-name="Rectangle 1" width="392.063" height="313.651" transform="translate(0.813 0.931)" fill="#fff"/>
+      <path id="Path_11" data-name="Path 11" d="M85.83,159.189H228.54a11.022,11.022,0,0,0,2.354-.253,11,11,0,0,0,2.352.253h81.549a10.978,10.978,0,0,0,0-21.955h-9.41a10.978,10.978,0,1,1,0-21.956h29.8a10.978,10.978,0,1,0,0-21.956h-34.5a10.978,10.978,0,1,0,0-21.956H200.311a10.978,10.978,0,1,0,0-21.956h-89.39a10.978,10.978,0,0,0,0,21.956H48.191a10.978,10.978,0,1,0,0,21.956H87.4a10.978,10.978,0,0,1,0,21.956H24.668a10.978,10.978,0,0,0,0,21.956H85.83a10.978,10.978,0,1,0,0,21.955Zm255.627,0a10.978,10.978,0,1,0-10.979-10.977A10.977,10.977,0,0,0,341.456,159.189Z" transform="translate(13.783 51.888)" fill="#f3f7ff" fill-rule="evenodd"/>
+    </g>
+    <g id="Path" transform="translate(1404 223)">
+      <path id="Path_1" data-name="Path 1" d="M156.878,144.064a86.472,86.472,0,0,0,17.14-34.628A87.7,87.7,0,0,0,67.957,3.844,86.9,86.9,0,0,0,3.244,71.806,87.678,87.678,0,0,0,97.52,175.738a86.854,86.854,0,0,0,34-10.466" transform="translate(-1.655 -1.351)" fill="#fff" fill-rule="evenodd"/>
+      <path id="Path_2" data-name="Path 2" d="M156.878,144.064a86.472,86.472,0,0,0,17.14-34.628A87.7,87.7,0,0,0,67.957,3.844,86.9,86.9,0,0,0,3.244,71.806,87.678,87.678,0,0,0,97.52,175.738a86.854,86.854,0,0,0,34-10.466" transform="translate(-1.655 -1.351)" fill="none" stroke="#1f64e7" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.89"/>
+    </g>
+    <path id="Subtract" d="M162.078,86.106q-.824.014-1.652.014C111.9,86.12,72.176,48.292,68.846.381A81.088,81.088,0,0,0,.685,80.585c0,44.839,36.17,81.189,80.788,81.189C124.245,161.774,159.254,128.37,162.078,86.106Z" transform="translate(1410.315 229.619)" fill="#e8f0fe"/>
+    <path id="Path-7" d="M11.135,25.1a5.656,5.656,0,0,0-8.051.368A5.8,5.8,0,0,0,3.448,33.6L30.269,58.37a7.918,7.918,0,0,0,11.272-.515c.124-.14.124-.14.244-.283L80.061,11.035a5.8,5.8,0,0,0-.739-8.113,5.657,5.657,0,0,0-8.026.747L35.311,47.42Z" transform="translate(1448.047 281.557)" fill="#fff" stroke="#1f64e7" stroke-linecap="round" stroke-width="1.894" fill-rule="evenodd"/>
+    <g id="bling" transform="translate(1527.519 197.169)">
+      <path id="Path_7" data-name="Path 7" d="M9.481,1.019V8.451" transform="translate(4.812)" fill="none" stroke="#75a4fe" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.894"/>
+      <path id="Path_8" data-name="Path 8" d="M9.481,11.624v7.432" transform="translate(4.812 6.737)" fill="none" stroke="#75a4fe" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.894"/>
+      <path id="Path_9" data-name="Path 9" d="M1.906,8.594H9.338" transform="translate(0 4.812)" fill="none" stroke="#75a4fe" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.894"/>
+      <path id="Path_10" data-name="Path 10" d="M12.511,8.594h7.432" transform="translate(6.737 4.812)" fill="none" stroke="#75a4fe" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.894"/>
+    </g>
+    <g id="bling-1" transform="translate(1420.951 387.459)">
+      <path id="Path_3" data-name="Path 3" d="M7.609,1.041V5.149" transform="translate(2.156)" fill="none" stroke="#75a4fe" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.894"/>
+      <path id="Path_4" data-name="Path 4" d="M7.609,10.131v4.108" transform="translate(2.156 3.234)" fill="none" stroke="#75a4fe" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.894"/>
+      <path id="Path_5" data-name="Path 5" d="M1.549,7.1H5.657" transform="translate(0 2.156)" fill="none" stroke="#75a4fe" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.894"/>
+      <path id="Path_6" data-name="Path 6" d="M10.639,7.1h4.108" transform="translate(3.234 2.156)" fill="none" stroke="#75a4fe" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.894"/>
+    </g>
+  </g>
+</svg>
