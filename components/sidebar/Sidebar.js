@@ -22,6 +22,8 @@ import bank_card from "@/public/icon/bank_card.svg";
 import { logout } from '@/app/actions/user/action';
 import { useRouter } from 'next/navigation';
 
+import sidebtn from "@/public/sidebar/sidebtn.png"
+
 const Sidebar = ({ session }) => {
     const [isNav, setIsNav] = useState(false);
     const { push, refresh } = useRouter();
@@ -40,20 +42,21 @@ const Sidebar = ({ session }) => {
 
     return (
         <div className="dashboard-navigation-childs">
-            <button onClick={() => setIsNav(true)}><i className="fa fa-bars"></i></button>
+            <div onClick={() => setIsNav(true)} className='side-btn'>
+                <Image
+                    src={sidebtn}
+                    alt='img'
+                    height={100}
+                    width={100}
+                    unoptimized
+                />
+            </div>
             {
                 isNav ? <div className="sidebar-overlay" onClick={() => setIsNav(false)}></div> : <></>
             }
             <div className={isNav ? "side-navbar-wrapper rightVal" : "side-navbar-wrapper"}>
                 <div className="nav-profile-outer-wrapper">
-                    <div className="navbar-profile-wrapper"
-                    //  style={{
-                    //     backgroundImage: `url(${coupe.src})`,
-                    //     backgroundRepeat: 'no-repeat',
-                    //     backgroundSize: '70% auto',
-                    //     backgroundPosition: 'top 1rem right -2rem',
-                    // }} 
-                    >
+                    <div className="navbar-profile-wrapper">
                         <div className="navbar-childs">
                             <Link href="/dashboard/profile">
                                 {
@@ -79,11 +82,11 @@ const Sidebar = ({ session }) => {
                         </div>
                         <div className="navbar-childs">
                             <div className='back-ground'>
-                            <h3>{session?.username ?? ""}</h3>
-                            <p>Invitation Code</p>
-                            <h4 onClick={() => copyToClipboard(session?.invitation_code ?? "")}>{session?.invitation_code ?? ""} <i className="fa fa-clipboard"></i></h4>
+                                <h3>{session?.username ?? ""}</h3>
+                                <p>Invitation Code</p>
+                                <h4 onClick={() => copyToClipboard(session?.invitation_code ?? "")}>{session?.invitation_code ?? ""} <i className="fa fa-clipboard"></i></h4>
                             </div>
-                           
+
                         </div>
                     </div>
                     <div className="sidebar-progress-bar">
