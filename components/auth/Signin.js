@@ -6,7 +6,7 @@ import { authenticate } from '@/app/actions/user/action';
 import { useFormStatus } from "react-dom";
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from "@/public/welcome/logo.png"
+import logo from "@/public/originaltravel_image/OriginalTravel-Logo-01.png";
 
 
 function Submit() {

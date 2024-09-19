@@ -6,11 +6,14 @@ import { useState } from "react";
 import data_not_found from "@/public/not_found.png";
 import Link from "next/link";
 
+import icon6 from "@/public/home-page/icon6.png";
+
+
 const History = ({ data, membership }) => {
 
     const [allProducts, setAllProducts] = useState(data || []);
     const [statusType, setStatusType] = useState("all");
-    
+
 
     const handleFilter = (filterType) => {
         if (filterType === "all") {
@@ -41,8 +44,8 @@ const History = ({ data, membership }) => {
                     {/* <li><button onClick={() => handleFilter("freezed")} className={statusType === "freezed" ? "history-active" : ""}>Freezed</button></li> */}
                 </ul>
             </div >
-            <div className="journey-history-card-wrapper">
 
+            <div className="journey-history-card-wrapper">
                 {
                     allProducts?.length === 0
                         ?
@@ -57,91 +60,107 @@ const History = ({ data, membership }) => {
                         </div>
                         :
                         allProducts?.map((data, index) => (
-                            <div className="journey-history-card" key={index}>
-                                <div className="journey-history-overlay"></div>
-                                <div className="journey-history-status"><p>{data?.status}</p></div>
-                                <div className="journey-history-content">
-                                    <div className="history-info-parent">
-                                        <div className="history-info-childs">
-                                            <p>{moment(data?.createdAt).format("Do MMM YYYY, h:mm a")}</p>
-                                        </div>
-                                        <div className="history-info-childs">
-                                            <div className="dolar-container">
-                                                <i className="fa fa-dollar"></i>
+                            <div className="journey-history-card-container" key={index}>
+                                <div className="journey-history-card-parent">
+
+                                    <div className="journey-history-card-child">
+                                        <div className="card-sub-child">
+                                            <div className="card-date">
+                                                <p>{moment(data?.createdAt).format("Do MMM YYYY, h:mm a")}</p>
                                             </div>
-                                            <h6> {data?.productPrice?.toFixed(2)}</h6>
-                                        </div>
-                                    </div>
-                                    <div className="history-info-parent">
-                                        <div className="history-info-childs">
-                                            <h3>{data?.productName}</h3>
-                                        </div>
-                                        <div className="history-info-childs">
-
-                                        </div>
-                                    </div>
-                                    <div className="history-line-break"></div>
-                                    <div className="history-info-parent">
-                                        <div className="history-info-childs">
-                                            <h1>Total Amount</h1>
-                                        </div>
-                                        <div className="history-info-childs">
-                                            {
-                                                data?.isJourneyProduct
-                                                    ?
-                                                    <h1>$ {(data?.productPrice + (data?.productPrice * membership?.ticket_commission)).toFixed(2)}</h1>
-                                                    :
-                                                    <h1>$ {(data?.productPrice + (data?.productPrice * membership?.commission_rate)).toFixed(2)}</h1>
-
-                                            }
-                                        </div>
-                                    </div>
-                                    <div className="history-info-parent">
-                                        <div className="history-info-childs">
-                                            <h1>Commission</h1>
-                                        </div>
-                                        <div className="history-info-childs">
-                                            {
-                                                data?.isJourneyProduct
-                                                    ?
-                                                    <h1>$ {(data?.productPrice * membership?.ticket_commission)?.toFixed(2)}</h1>
-                                                    :
-                                                    <h1>$ {(data?.productPrice * membership?.commission_rate)?.toFixed(2)}</h1>
-
-                                            }
-                                        </div>
-                                    </div>
-                                    {
-                                        data?.status === "completed"
-                                            ?
-                                            <></>
-                                            :
-                                            <div className="history-info-parent">
-                                                <Link href="/dashboard/journey/submitJourney">
-                                                    <button>Submit</button>
-                                                </Link>
+                                            <div className="card-status">
+                                                <button>{data?.status}</button>
                                             </div>
-                                    }
+                                        </div>
+                                    </div>
+                                    <div className="journey-history-card-child">
+                                        <div className="card-sub-child">
+                                            <div className="product-detaile">
+                                                <div className="product-img">
+                                                    {
+                                                        data && data.url && (
+                                                            <Image
+                                                                src={data.url}
+                                                                alt="logo"
+                                                                height={100}
+                                                                width={100}
+                                                                unoptimized
+                                                            />
+                                                        )
+                                                    }
+                                                </div>
+                                                <div className="product-price">
+                                                    <p>{data?.productName}</p>
+                                                    <p>$ {data?.productPrice?.toFixed(2)}</p>
+                                                </div>
+                                            </div>
+
+                                            {
+                                                data?.status === "completed"
+                                                    ?
+                                                    <></>
+                                                    :
+                                                    <div className="submit-btn">
+                                                        <Link href="/dashboard/journey/submitJourney">
+                                                            <button>Continue</button>
+                                                        </Link>
+                                                    </div>
+                                            }
+
+
+                                        </div>
+                                    </div>
+                                    <div className="journey-history-card-child">
+                                        <div className="card-sub-child">
+                                            <div className="all-amounts">
+                                                <div className="amount">
+                                                    <p>Price</p>
+                                                    <p>$ {data?.productPrice?.toFixed(2)}</p>
+                                                </div>
+                                                <div className="amount">
+                                                    <p>Comm</p>
+                                                    {
+                                                        data?.isJourneyProduct
+                                                            ?
+                                                            <p>$ {(data?.productPrice * membership?.ticket_commission)?.toFixed(2)}</p>
+                                                            :
+                                                            <p>$ {(data?.productPrice * membership?.commission_rate)?.toFixed(2)}</p>
+
+                                                    }
+                                                </div>
+                                                <div className="amount">
+                                                    <p>Total Return</p>
+                                                    {
+                                                        data?.isJourneyProduct
+                                                            ?
+                                                            <p>$ {(data?.productPrice + (data?.productPrice * membership?.ticket_commission)).toFixed(2)}</p>
+                                                            :
+                                                            <p>$ {(data?.productPrice + (data?.productPrice * membership?.commission_rate)).toFixed(2)}</p>
+
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </div>
-                                <div className="card-bg-image">
-                                    {
-                                        data && data.url && (
-                                            <Image
-                                                src={data.url}
-                                                height={100}
-                                                width={100}
-                                                alt="logo"
-                                                unoptimized
-                                            />
-                                        )
-                                    }
-
-                                </div>
-
                             </div>
                         ))
                 }
+                <div className="welcome-footer-container">
+                    <div className="welcome-footer">
+                        <p>Copyright © 2024 Ausventure . All Rights Reserved.</p>
+                        <div className="help-center-icon">
+                            <Image
+                                src={icon6}
+                                alt="icon"
+                                height={100}
+                                width={100}
+                                unoptimized
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     )

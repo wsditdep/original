@@ -4,6 +4,8 @@ import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
 import SecurityCheck from '@/components/checkSecurityCode/CheckSecurityCode';
 import History from '@/components/history/History';
 import { auth } from "@/app/auth";
+import Navbar from "@/components/navBar/Navbar";
+
 
 export const dynamic = "force-dynamic"
 
@@ -17,6 +19,7 @@ const page = async () => {
 
     return (
         <>
+            <Navbar/>
             <Breadcrumb title="Dealing Records" link="/dashboard" />
             <section className="history-section">
                 <History

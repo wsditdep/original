@@ -9,7 +9,8 @@ import vip3 from "@/public/home-page/vip3.png"
 import vip4 from "@/public/home-page/vip4.png"
 
 export default function Dogglewindow() {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
+    const [isUpSideDouwnIcon, setIsUpSideDouwnIcon,] = useState(false)
 
     function toggle() {
         setIsOpen((isOpen) => !isOpen);
@@ -39,7 +40,13 @@ export default function Dogglewindow() {
                 <div className="home-vip-cards-child">
                     <div className="home-vip-cards-sub-child">
                         <div className="vip-card-btn" onClick={toggle}>
-                            <i className="fa-solid fa-chevron-down"></i>
+                            {
+                                isUpSideDouwnIcon
+                                    ?
+                                    <i className="fa-solid fa-chevron-up" onClick={() => setIsUpSideDouwnIcon(false)}></i>
+                                    :
+                                    <i className="fa-solid fa-chevron-down" onClick={() => setIsUpSideDouwnIcon(true)}></i>
+                            }
                         </div>
                     </div>
                 </div>

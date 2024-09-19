@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useFormStatus } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "@/public/logo.png"
+import logo from "@/public/originaltravel_image/OriginalTravel-Logo-01.png";
 
 function Submit() {
     const { pending } = useFormStatus();
@@ -27,7 +27,7 @@ const SignUp = ({setIsLogin}) => {
 
             if (response.status === 201) {
                 toast.success(response.message);
-                push('/signin');
+                window.location.reload();
                 return;
             } else {
                 toast.error(response.message);

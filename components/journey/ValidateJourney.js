@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import { validateStartJourney } from "@/app/actions/journey/action";
 import { toast } from 'react-hot-toast';
 import { useEffect } from "react";
+import Popup from "reactjs-popup";
+import SubmitJourney from "../submitJourney/SubmitJourney";
 
 
 function Submit() {
@@ -12,13 +14,19 @@ function Submit() {
     const { pending } = useFormStatus();
 
     return (
-        <button type="submit" className={pending ? "btn global-primary-btn managedDisabled" : "btn global-primary-btn"}> {
-            pending ?
-                <> Please wait... <i className="fa fa-spinner loading_animation"></i></>
-                :
-                `Access Destination`
-        }
-        </button>
+        <>
+            <button type="submit" className={pending ? "btn global-primary-btn managedDisabled" : "btn global-primary-btn"}> {
+                pending ?
+                    <> Please wait... <i className="fa fa-spinner loading_animation"></i></>
+                    :
+                    `Explore Hotel`
+
+            }
+            </button>
+            
+
+        </>
+
     )
 }
 

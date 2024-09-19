@@ -3,6 +3,8 @@ import { fetchAuthenticatedUser } from '@/app/actions/user/data';
 import { auth } from '@/app/auth';
 import SecurityCheck from '@/components/checkSecurityCode/CheckSecurityCode';
 import Support from '@/components/support/Support';
+import Navbar from "@/components/navBar/Navbar";
+
 
 export const dynamic = "force-dynamic"
 
@@ -15,6 +17,7 @@ const page = async () => {
 
     return (
         <>
+        <Navbar/>
             <Support setting={JSON.parse(JSON.stringify(setting))} />
             <SecurityCheck
                 user={JSON.parse(JSON.stringify(logedinUser))}

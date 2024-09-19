@@ -4,6 +4,11 @@ import Breadcrumb from "../breadcrumb/Breadcrumb";
 import toast from "react-hot-toast";
 import QRCode from 'qrcode.react';
 import { useState } from "react";
+import bgimg from "@/public/home-page/bgimg.png";
+import logo from "@/public/originaltravel_image/OriginalTravel-Logo-03.png";
+import Image from 'next/image';
+import Link from 'next/link';
+import headphone from "@/public/home-page/icon6.png";
 
 const Invite = ({ user }) => {
 
@@ -16,25 +21,58 @@ const Invite = ({ user }) => {
 
     return (
         <>
-            <Breadcrumb title="Invitation" link="/dashboard" />
             <section className="invitation-section">
-                <div className="inviattion-code-wrapper">
-                    <div className="invitation-qr-wrapper">
-                        <p>Profile Referral Code</p>
-                        <h3 onClick={() => copyToClipboard(user?.invitation_code ?? "")}>{user?.invitation_code ?? ""} <i className="fa fa-file-alt"></i></h3>
-                        <QRCode value={text} size={256} />
+                <div className="main-invite">
+                    <div className="bg-img">
+                        <Image
+                            src={bgimg}
+                            alt="bgimg"
+                            height={100}
+                            width={100}
+                            unoptimized
+                        />
                     </div>
+                    <div className="home-main-container">
+                    <Breadcrumb title="Invitation" link="/dashboard" />
+                        <div className="logo-center">
+                            <Image
+                                src={logo}
+                                alt="logo"
+                                height={100}
+                                width={100}
+                                unoptimized
+                            />
+                            <div className="qr-bg">
+                                <QRCode value={text} size={256} />
+                            </div>
+                            <h1>Profile Referral Code</h1>
+                            <p onClick={() => copyToClipboard(user?.invitation_code ?? "")}>{user?.invitation_code ?? ""} <i className="fa fa-file-alt"></i></p>
+                            <div className="support-button-parent">
+                            <div className='support-button'>
+                                <button onClick={() => copyToClipboard(user?.invitation_code ?? "")}>Copy Referral Code</button>
+                            </div>
+                            </div>
+                        </div>
+                        <div className="invite-footer-container">
+                            <div className="invite-footer">
+                                <p> Copyright © 2024 Ausventure . All Rights Reserved</p>
+                                <div className="help-center-icon">
+                                    <Link href="/dashboard/support">
+                                        <Image
+                                            src={headphone}
+                                            alt="icon"
+                                            height={100}
+                                            width={100}
+                                            unoptimized
+                                        />
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
                 </div>
-                {/* <div className="your-referral-code">
-                    <h2>Your Referral Code</h2>
-                    <div className="referral-code-show">
-                        <p>{user?.invitation_code ?? ""}</p>
-                        <h6 >Tap to copy</h6>
-                    </div>
-                    <div className="submit-btn mt1">
-                        <button onClick={() => copyToClipboard(user?.invitation_code ?? "")} className="btn global-primary-btn">Share Invitation Code</button>
-                    </div>
-                </div> */}
             </section>
         </>
     )

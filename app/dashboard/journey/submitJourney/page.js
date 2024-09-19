@@ -3,6 +3,9 @@ import { auth } from '@/app/auth';
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb';
 import SecurityCheck from '@/components/checkSecurityCode/CheckSecurityCode';
 import SubmitJourney from '@/components/submitJourney/SubmitJourney';
+import Navbar from "@/components/navBar/Navbar";
+
+
 export const dynamic = "force-dynamic"
 
 const page = async () => {
@@ -12,7 +15,8 @@ const page = async () => {
 
     return (
         <>
-            <Breadcrumb title="Destinations" link="/dashboard/journey" />
+            {/* <Navbar/> */}
+            {/* <Breadcrumb title="Explore Hotels" link="/dashboard/journey" /> */}
             <SubmitJourney />
             <SecurityCheck
                 user={JSON.parse(JSON.stringify(logedinUser))}

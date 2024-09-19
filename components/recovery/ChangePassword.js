@@ -9,6 +9,7 @@ import { logout, resetPassword } from "@/app/actions/user/action";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Breadcrumb from "../breadcrumb/Breadcrumb";
+import Navbar from "@/components/navBar/Navbar";
 
 function Submit() {
     const { pending } = useFormStatus();
@@ -41,10 +42,12 @@ const ChangePassword = () => {
             console.log(error)
         }
     }
+    
 
     return (
         <>
         <Breadcrumb title="Security" link="/dashboard"/>
+        
             <section className="auth-section bgColor">
                 <div className="auth-wrapper security-crenter-wrapper">
                     <div className="auth-login-logo">
