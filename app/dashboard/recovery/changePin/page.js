@@ -2,6 +2,8 @@ import { fetchAuthenticatedUser } from '@/app/actions/user/data';
 import { auth } from '@/app/auth';
 import SecurityCheck from '@/components/checkSecurityCode/CheckSecurityCode'
 import ChangePin from '@/components/recovery/ChangePin'
+import Navbar from "@/components/navBar/Navbar";
+
 
 export const dynamic = "force-dynamic"
 
@@ -12,6 +14,7 @@ const page = async () => {
   
   return (
     <>
+    <Navbar/>
       <ChangePin />
       <SecurityCheck
         user={JSON.parse(JSON.stringify(logedinUser))}

@@ -1,5 +1,5 @@
 
-
+import { fetchContent } from "@/app/actions/content/data";
 import Sidebar from "../sidebar/Sidebar";
 import { fetchAuthenticatedUser } from '@/app/actions/user/data';
 
@@ -9,7 +9,7 @@ import Image from "next/image";
 
 const navbar = async () => {
     const authenticatedUser = await fetchAuthenticatedUser() || {};
-
+    const content = await fetchContent() || [];
 
     return (
         <div className="top-nav">
@@ -19,7 +19,9 @@ const navbar = async () => {
                 <div className="dashboard-navigation">
 
                     <div className="dashboard-navigation-parent">
-                        <Sidebar session={JSON.parse(JSON.stringify(authenticatedUser))} />
+                        <Sidebar session={JSON.parse(JSON.stringify(authenticatedUser))}
+                        content={JSON.parse(JSON.stringify(content))}
+                        />
                         <div className="dashboard-navigation-childs">
                             <div className="logo">
                                 <Image
@@ -42,7 +44,7 @@ const navbar = async () => {
                                 />
                             </div>
                             <div className="notifi-count">
-                                <p>5</p>
+                                <p>0</p>
                             </div>
                         </div>
                     </div>

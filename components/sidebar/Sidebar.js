@@ -5,13 +5,14 @@ import React, { useState } from 'react'
 import user from "@/public/user.svg";
 import toast from "react-hot-toast";
 import Link from 'next/link';
-
 import { logout } from '@/app/actions/user/action';
 import { useRouter } from 'next/navigation';
-
 import sidebtn from "@/public/sidebar/sidebtn.png"
 import nouser from "@/public/sidebar/nouser.png"
-import userlevel from "@/public/sidebar/user-level.png"
+import bronzelevel from "@/public/home-page/vip1.png"
+import silverlevel from "@/public/home-page/vip2.png"
+import goldlevel from "@/public/home-page/vip3.png"
+import elitelevel from "@/public/home-page/vip4.png"
 import copy from "@/public/sidebar/copy.png";
 import icon1 from "@/public/sidebar/icon1.png";
 import icon2 from "@/public/sidebar/icon2.png";
@@ -27,9 +28,14 @@ import icon11 from "@/public/sidebar/icon11.png";
 import icon12 from "@/public/sidebar/icon12.png";
 import icon13 from "@/public/sidebar/icon13.png";
 import icon14 from "@/public/sidebar/icon14.png";
+import Popup from 'reactjs-popup';
 import Tc from '../content/Tc';
+import Agent from '../content/Agent';
+import Faq from '../content/Faq';
+import About from '../content/About';
 
-const Sidebar = ({ session }) => {
+
+const Sidebar = ({ session, content }) => {
     const [isNav, setIsNav] = useState(false);
     const { push, refresh } = useRouter();
 
@@ -44,6 +50,8 @@ const Sidebar = ({ session }) => {
         navigator.clipboard.writeText(val);
         return toast.success(`Copied - (${val})`);
     }
+
+
 
     return (
         <div className="dashboard-navigation-childs">
@@ -78,6 +86,7 @@ const Sidebar = ({ session }) => {
                                     </div>
                                 </div>
                             </div>
+                            <Link href="/dashboard/profile">
                             <div className='profile-parent'>
                                 <div className='profile-child'>
                                     <div className='user-img'>
@@ -103,6 +112,7 @@ const Sidebar = ({ session }) => {
                                     </div>
                                 </div>
                             </div>
+                            </Link>
                             <div className='profile-parent'>
                                 <div className='profile-child'>
                                     <div className='class-name'>
@@ -123,13 +133,45 @@ const Sidebar = ({ session }) => {
                             </div>
                             <div className='detaile-sub-child'>
                                 <div className='user-level'>
-                                    <Image
-                                        src={userlevel}
-                                        alt='icon'
-                                        height={100}
-                                        width={100}
-                                        unoptimized
-                                    />
+
+                                    {
+                                        session?.membership_level === "Bronze"
+                                            ?
+                                            <Image
+                                                src={bronzelevel}
+                                                alt='icon'
+                                                height={100}
+                                                width={100}
+                                                unoptimized
+                                            />
+                                            : session?.membership_level === "Silver"
+                                                ? <Image
+                                                    src={silverlevel}
+                                                    alt='icon'
+                                                    height={100}
+                                                    width={100}
+                                                    unoptimized
+                                                />
+                                                : session?.membership_level === "Gold"
+                                                    ? <Image
+                                                        src={goldlevel}
+                                                        alt='icon'
+                                                        height={100}
+                                                        width={100}
+                                                        unoptimized
+                                                    />
+                                                    : session?.membership_level === "Elite"
+                                                        ? <Image
+                                                            src={elitelevel}
+                                                            alt='icon'
+                                                            height={100}
+                                                            width={100}
+                                                            unoptimized
+                                                        />
+                                                        :
+                                                        <></>
+                                    }
+
                                 </div>
                             </div>
                         </div>
@@ -177,80 +219,129 @@ const Sidebar = ({ session }) => {
 
                     <div className='side-bar-har-list-parent'>
                         <div className='side-bar-har-list-child'>
-                            <div className='list-card-parent'>
-                                <div className='list-card-chid'>
-                                    <div className='card-img'>
-                                        <Image
-                                            src={icon1}
-                                            alt='icon'
-                                            height={100}
-                                            width={100}
-                                            unoptimized
-                                        />
-                                    </div>
-                                    <div className='card-name'>
-                                        <h3>T&C</h3>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            <div className='list-card-parent'>
-                                <div className='list-card-chid'>
-                                    <div className='card-img'>
-                                        <Image
-                                            src={icon2}
-                                            alt='icon'
-                                            height={100}
-                                            width={100}
-                                            unoptimized
-                                        />
-                                    </div>
-                                    <div className='card-name'>
-                                        <h3>Agent</h3>
+                            <Popup trigger={
+                                <div className='list-card-parent'>
+                                    <div className='list-card-chid'>
+                                        <div className='card-img'>
+                                            <Image
+                                                src={icon1}
+                                                alt='icon'
+                                                height={100}
+                                                width={100}
+                                                unoptimized
+                                            />
+                                        </div>
+                                        <div className='card-name'>
+                                            <h3>T&C</h3>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className='list-card-parent'>
-                                <div className='list-card-chid'>
-                                    <div className='card-img'>
-                                        <Image
-                                            src={icon3}
-                                            alt='icon'
-                                            height={100}
-                                            width={100}
-                                            unoptimized
-                                        />
+                            } position="right center" modal nested>
+                                {close => (
+                                    <div className="modal model-side">
+                                        <div className='nav-bar nav-bar-side'>
+                                            <h1>Terms & conditions</h1>
+                                            <button onClick={close}>&times;</button>
+                                        </div>
+                                        <div className="content content-side">
+                                            <Tc data={content} />
+                                        </div>
                                     </div>
-                                    <div className='card-name'>
-                                        <h3>FAQs</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='list-card-parent'>
-                                <div className='list-card-chid'>
-                                    <div className='card-img'>
-                                        <Image
-                                            src={icon4}
-                                            alt='icon'
-                                            height={100}
-                                            width={100}
-                                            unoptimized
-                                        />
-                                    </div>
-                                    <div className='card-name'>
-                                        <h3>Intro</h3>
+                                )}
+                            </Popup>
+                            <Popup trigger={
+                                <div className='list-card-parent'>
+                                    <div className='list-card-chid'>
+                                        <div className='card-img'>
+                                            <Image
+                                                src={icon2}
+                                                alt='icon'
+                                                height={100}
+                                                width={100}
+                                                unoptimized
+                                            />
+                                        </div>
+                                        <div className='card-name'>
+                                            <h3>Agent</h3>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            } position="right center" modal nested>
+                                {close => (
+                                    <div className="modal model-side">
+                                        <div className='nav-bar nav-bar-side'>
+                                            <h1>Agent</h1>
+                                            <button onClick={close}>&times;</button>
+                                        </div>
+                                        <div className="content content-side">
+                                            <Agent data={content} />
+                                        </div>
+                                    </div>
+                                )}
+                            </Popup>
+                            <Popup trigger={
+                                <div className='list-card-parent'>
+                                    <div className='list-card-chid'>
+                                        <div className='card-img'>
+                                            <Image
+                                                src={icon3}
+                                                alt='icon'
+                                                height={100}
+                                                width={100}
+                                                unoptimized
+                                            />
+                                        </div>
+                                        <div className='card-name'>
+                                            <h3>FAQs</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            } position="right center" modal nested>
+                                {close => (
+                                    <div className="modal model-side">
+                                        <div className='nav-bar nav-bar-side'>
+                                            <h1>FAQs</h1>
+                                            <button onClick={close}>&times;</button>
+                                        </div>
+                                        <div className="content content-side">
+                                            <Faq data={content} />
+                                        </div>
+                                    </div>
+                                )}
+                            </Popup>
+                            <Popup trigger={
+                                <div className='list-card-parent'>
+                                    <div className='list-card-chid'>
+                                        <div className='card-img'>
+                                            <Image
+                                                src={icon4}
+                                                alt='icon'
+                                                height={100}
+                                                width={100}
+                                                unoptimized
+                                            />
+                                        </div>
+                                        <div className='card-name'>
+                                            <h3>Intro</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            } position="right center" modal nested>
+                                {close => (
+                                    <div className="modal model-side">
+                                        <div className='nav-bar nav-bar-side'>
+                                            <h1>About Fora™</h1>
+                                            <button onClick={close}>&times;</button>
+                                        </div>
+                                        <div className="content content-side">
+                                            <About data={content} />
+                                        </div>
+                                    </div>
+                                )}
+                            </Popup>
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
 
                 <div className="side-bar-lists">
                     <ul>

@@ -5,6 +5,8 @@ import logo from "@/public/logo.png";
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import bgimg from "@/public/home-page/bgimg.png"
+
 
 const Recharge = ({ user }) => {
     const amounts = [
@@ -35,13 +37,15 @@ const Recharge = ({ user }) => {
             <section className="transaction-section">
                 <div className="transaction-box-wrapper">
                     <div className="transaction-box-logo">
-                        <Image
-                            src={logo}
-                            height={100}
-                            width={100}
-                            alt="logo"
-                            unoptimized
-                        />
+                        <div className='bg-img-recharge'>
+                            <Image
+                                src={bgimg}
+                                alt='img'
+                                height={100}
+                                width={100}
+                                unoptimized
+                            />
+                        </div>
                     </div>
                     <div className="transaction-current-balance">
                         <p>Current Balance</p>
@@ -49,7 +53,7 @@ const Recharge = ({ user }) => {
                     </div>
                 </div>
                 <div className="withdrawal-input">
-                    {/* <label>Enter Amount to deposit</label> */}
+                    <label>Enter Amount to deposit</label>
                     <input
                         type="number"
                         placeholder="Enter the deposit amount"

@@ -63,9 +63,10 @@ const Welcome = () => {
                                         <Popup trigger={<button>Get on the road</button>} position="right center" modal nested>
                                             {close => (
                                                 <div className="modal">
-                                                    <button className="close" onClick={close}>
-                                                        &times;
-                                                    </button>
+                                                    <div className="nav-bar">
+                                                        <h1></h1>
+                                                        <button onClick={close}> &times;</button>
+                                                    </div>
                                                     <div className="content">
                                                         {
                                                             isLogin

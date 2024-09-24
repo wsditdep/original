@@ -53,8 +53,8 @@ const Signin = ({ setIsLogin }) => {
 
 
             <div className="app-global-form">
-                <div class="auth-breadcrumb-parent">
-                    <div class="auth-breadcrumb-childs">
+                <div className="auth-breadcrumb-parent">
+                    <div className="auth-breadcrumb-childs">
                         <h3>Login Now</h3>
                     </div>
                 </div>

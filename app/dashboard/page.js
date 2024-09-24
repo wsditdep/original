@@ -1,7 +1,7 @@
 import Sidebar from "@/components/sidebar/Sidebar";
 import { auth } from "../auth";
 import { fetchNotice } from "../actions/notice/data";
-import { fetchAuthenticatedUser, fetchCommission } from "../actions/user/data";
+import { fetchAuthenticatedUser, fetchCommission, fetchMembership } from "../actions/user/data";
 import Image from "next/image";
 import SecurityCheck from "@/components/checkSecurityCode/CheckSecurityCode";
 
@@ -18,6 +18,8 @@ import icon6 from "@/public/home-page/icon6.png";
 import welcome1 from "@/public/home-page/welcome1.png";
 import welcome2 from "@/public/home-page/welcome2.png";
 import hcenter from "@/public/home-page/home-center.jpg";
+
+
 export const dynamic = "force-dynamic"
 
 import Dogglewindow from "@/components/doggleWindow/Dogglewindow";
@@ -35,13 +37,13 @@ const page = async () => {
     const { allCommission, userCommission } = await fetchCommission();
 
 
-
+    const memberShipLevel = await fetchMembership();
 
     return (
         <>
             <div className="main-home">
 
-                <Navbar/>
+                <Navbar />
                 <div className="main-home">
                     <div className="bg-img">
                         <Image
@@ -68,7 +70,7 @@ const page = async () => {
                             </div>
                             <div className="home-content-child">
                                 <div className="text-panel">
-                                    <p>Ausventure Travel provides a unique, people-focused service that enables you to easily
+                                    <p>Original Travel provides a unique, people-focused service that enables you to easily
                                         manage your corporate travel program, ensuring
                                         you receive a personalized experience that is
                                         also cost-effective.</p>
@@ -79,7 +81,9 @@ const page = async () => {
 
                         <div className="home-cards-parent">
                             <div className="home-cards-child">
+                            <Link href="/dashboard/journey">
                                 <div className="home-cards-sub-child">
+                                   
                                     <div className="card-icon">
                                         <Image
                                             src={icon1}
@@ -93,6 +97,8 @@ const page = async () => {
                                         <p>Explore</p>
                                     </div>
                                 </div>
+                                </Link>
+                                <Link href="/dashboard/recharge">
                                 <div className="home-cards-sub-child">
                                     <div className="card-icon">
                                         <Image
@@ -107,6 +113,8 @@ const page = async () => {
                                         <p>Reload</p>
                                     </div>
                                 </div>
+                                </Link>
+                                <Link href="/dashboard/withdrawal">
                                 <div className="home-cards-sub-child">
                                     <div className="card-icon">
                                         <Image
@@ -121,6 +129,8 @@ const page = async () => {
                                         <p>Withdraw</p>
                                     </div>
                                 </div>
+                                </Link>
+                                <Link href="/dashboard/invite">
                                 <div className="home-cards-sub-child">
                                     <div className="card-icon">
                                         <Image
@@ -135,12 +145,11 @@ const page = async () => {
                                         <p>Referral</p>
                                     </div>
                                 </div>
+                                </Link>
                             </div>
 
-                            <div className="home-card-parent1">
-                                <Dogglewindow />
+                            <Dogglewindow memberShipLevel={JSON.parse(JSON.stringify(memberShipLevel))} />
 
-                            </div>
                         </div>
                         <div className="home-center-content-parent">
                             <div className="home-center-content-child">
@@ -196,18 +205,20 @@ const page = async () => {
                                 </p>
 
                             </div>
-                            <div className="copyrights1">
-                                <p>Copyrights © 2024 OriginalTravel.All Rights Reserved</p>
+                            <div className="welcome-footer-container">
+                                <div className="welcome-footer">
+                                    <p>Copyright © 2024 Original Travel . All Rights Reserved.</p>
+                                    <div className="help-center-icon">
+                                        <Image
+                                            src={icon6}
+                                            alt="icon"
+                                            height={100}
+                                            width={100}
+                                            unoptimized
+                                        />
+                                    </div>
+                                </div>
                             </div>
-                            <Link href="/"><div className="helpline">
-                                <Image
-                                src={icon6}
-                                alt="Icon"
-                                height={100}
-                                width={100}
-                                unoptimized
-                                />
-                            </div></Link>
                         </div>
 
                     </div>

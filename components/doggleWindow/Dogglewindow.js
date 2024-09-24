@@ -8,9 +8,10 @@ import vip2 from "@/public/home-page/vip2.png"
 import vip3 from "@/public/home-page/vip3.png"
 import vip4 from "@/public/home-page/vip4.png"
 
-export default function Dogglewindow() {
+export default function Dogglewindow({ memberShipLevel }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isUpSideDouwnIcon, setIsUpSideDouwnIcon,] = useState(false)
+    const membership = memberShipLevel.membership_name;
 
     function toggle() {
         setIsOpen((isOpen) => !isOpen);
@@ -76,7 +77,10 @@ export default function Dogglewindow() {
                                     </div>
                                 </div>
                                 <div className="content-child">
-                                    <button>Current</button>
+                                    {
+                                        membership === "Basic" ? <button>Current</button> : <></>
+                                    }
+
                                 </div>
                             </div>
                             <div className="content-parent">
@@ -106,7 +110,9 @@ export default function Dogglewindow() {
                                     </div>
                                 </div>
                                 <div className="content-child">
-
+                                    {
+                                        membership === "Silver" ? <button>Current</button> : <></>
+                                    }
                                 </div>
                             </div>
                             <div className="content-parent">
@@ -136,7 +142,9 @@ export default function Dogglewindow() {
                                     </div>
                                 </div>
                                 <div className="content-child">
-
+                                    {
+                                        membership === "Gold" ? <button>Current</button> : <></>
+                                    }
                                 </div>
                             </div>
                             <div className="content-parent">
@@ -166,7 +174,9 @@ export default function Dogglewindow() {
                                     </div>
                                 </div>
                                 <div className="content-child">
-
+                                    {
+                                        membership === "Elite" ? <button>Current</button> : <></>
+                                    }
                                 </div>
                             </div>
                             <div className="content-parent">

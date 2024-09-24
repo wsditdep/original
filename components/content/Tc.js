@@ -12,7 +12,6 @@ const Tc = ({ data }) => {
     }, []);
     return (
         <>
-            <Breadcrumb title={"T & C"} link="/dashboard" />
             <section className="content-section">
                 <div dangerouslySetInnerHTML={{ __html: info?.description }}></div>
             </section>

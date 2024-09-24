@@ -2,16 +2,14 @@ import Link from "next/link";
 
 const Breadcrumb = ({ link, title, activeWithdrawalHistory, activeRechargeHistory }) => {
     return (
-        <div className="breadcrumb-wrapper" >
+        <div className="breadcrumb-wrapper">
             <div className="breadcrumb-wrapper-childs">
                 <Link href={link}>
                     <i className="fa fa-angle-left"></i>
                 </Link>
-            </div>
-            <div className="breadcrumb-wrapper-childs">
                 <h3>{title}</h3>
             </div>
-            {/* <div className="breadcrumb-wrapper-childs">
+            <div className="breadcrumb-wrapper-childs">
                 {
                     activeWithdrawalHistory && activeWithdrawalHistory
                         ?
@@ -27,7 +25,7 @@ const Breadcrumb = ({ link, title, activeWithdrawalHistory, activeRechargeHistor
                             :
                             <></>
                 }
-            </div> */}
+            </div>
         </div>
     )
 }

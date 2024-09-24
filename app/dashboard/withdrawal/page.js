@@ -2,6 +2,8 @@ import { fetchPendingWithdrawal, fetchAuthenticatedUser } from '@/app/actions/us
 import { auth } from '@/app/auth';
 import SecurityCheck from '@/components/checkSecurityCode/CheckSecurityCode';
 import Withdrawal from '@/components/withdrawal/Withdrawal';
+import Navbar from "@/components/navBar/Navbar";
+
 
 export const dynamic = "force-dynamic"
 
@@ -14,6 +16,7 @@ const page = async () => {
 
   return (
     <>
+    <Navbar/>
       <Withdrawal
         withdrawalInfo={JSON.parse(JSON.stringify(withdrawalInfo))}
         user={JSON.parse(JSON.stringify(user))}

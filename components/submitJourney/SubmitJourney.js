@@ -122,7 +122,7 @@ const SubmitJourney = () => {
                                 </div>
                                 <Link href="/dashboard/journey" >
                                 <div className="submit-head-child">
-                                <i class="fa-solid fa-xmark"></i>
+                                <i className="fa-solid fa-xmark"></i>
                                 </div></Link>
                             </div>
                             <div className="submit-journey-image-parent">

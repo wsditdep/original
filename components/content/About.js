@@ -12,7 +12,7 @@ const About = ({ data }) => {
     }, []);
     return (
         <>
-            <Breadcrumb title={"About Us"} link="/dashboard" />
+            
             <section className="content-section">
                 <div dangerouslySetInnerHTML={{ __html: info?.description }}></div>
             </section>

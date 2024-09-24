@@ -15,7 +15,10 @@ import welcome9 from "@/public/originaltravel_image/welcome9.png";
 import welcome10 from "@/public/originaltravel_image/welcome10.png";
 import welcome11 from "@/public/originaltravel_image/welcome11.png";
 import welcome12 from "@/public/originaltravel_image/welcome12.png";
-
+import bronzelevel from "@/public/home-page/vip1.png"
+import silverlevel from "@/public/home-page/vip2.png"
+import goldlevel from "@/public/home-page/vip3.png"
+import elitelevel from "@/public/home-page/vip4.png"
 
 
 
@@ -42,13 +45,44 @@ const page = async () => {
                 <div className='journey-level-tap-parent'>
                   <div className='journey-level-tap-child'>
                     <div className='level-img'>
-                      <Image
-                        src={userlevel}
-                        alt='icon'
-                        height={100}
-                        width={100}
-                        unoptimized
-                      />
+                      {
+                        user?.membership_level === "Bronze"
+                          ?
+                          <Image
+                            src={bronzelevel}
+                            alt='icon'
+                            height={100}
+                            width={100}
+                            unoptimized
+                          />
+                          : user?.membership_level === "Silver"
+                            ? <Image
+                              src={silverlevel}
+                              alt='icon'
+                              height={100}
+                              width={100}
+                              unoptimized
+                            />
+                            : user?.membership_level === "Gold"
+                              ? <Image
+                                src={goldlevel}
+                                alt='icon'
+                                height={100}
+                                width={100}
+                                unoptimized
+                              />
+                              : user?.membership_level === "Elite"
+                                ? <Image
+                                  src={elitelevel}
+                                  alt='icon'
+                                  height={100}
+                                  width={100}
+                                  unoptimized
+                                />
+                                :
+                                <></>
+                      }
+
                     </div>
                     <div className='level-text'>
                       <h3>Current Level</h3>
@@ -56,7 +90,7 @@ const page = async () => {
                   </div>
                   <div className='journey-level-tap-child'>
                     <div className='level'>
-                      <h2>Gold</h2>
+                      <h2>{user.membership_level}</h2>
                     </div>
                   </div>
                 </div>

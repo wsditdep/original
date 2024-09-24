@@ -1,7 +1,6 @@
 "use client";
 
 import Breadcrumb from '../breadcrumb/Breadcrumb';
-import logo from "@/public/logo.png";
 import successImg from "@/public/success/success_svg.svg";
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,6 +9,10 @@ import { useEffect, useState } from 'react';
 import { withdrawal } from '@/app/actions/user/action';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+
+import bgimg from "@/public/home-page/bgimg.png"
+import icon6 from "@/public/home-page/icon6.png";
+
 
 const Withdrawal = ({ user, withdrawalInfo }) => {
 
@@ -43,6 +46,7 @@ const Withdrawal = ({ user, withdrawalInfo }) => {
 
     return (
         <>
+
             <Breadcrumb title="Withdraw" link="/dashboard" activeWithdrawalHistory={true} />
             {
                 isSuccess
@@ -59,18 +63,19 @@ const Withdrawal = ({ user, withdrawalInfo }) => {
             }
             <section className="transaction-section">
                 <div className="transaction-box-wrapper">
-                    <div className="transaction-box-logo">
+                    <div className="transaction-current-balance">
+                        <p>Assets Balance</p>
+                        <h3>USDT {user?.balance?.toFixed(2) ?? 0}</h3>
+                        <h5>*You will receive your withdrawal within an hour</h5>
+                    </div>
+                    <div className='bg-img'>
                         <Image
-                            src={logo}
+                            src={bgimg}
+                            alt='img'
                             height={100}
                             width={100}
-                            alt="logo"
                             unoptimized
                         />
-                    </div>
-                    <div className="transaction-current-balance">
-                        <p>Current Balance</p>
-                        <h3>${user?.balance?.toFixed(2) ?? 0}</h3>
                     </div>
                 </div>
                 {
@@ -94,49 +99,77 @@ const Withdrawal = ({ user, withdrawalInfo }) => {
                         </>
                         :
                         <>
+                            <div className='wallet-info-parent'>
+                                <div className='wallet-info-child'>
+                                    <h1>Wallet Balance</h1>
+                                    <p>$ {user?.balance?.toFixed(2) ?? 0}</p>
+                                </div>
+                                <div className='wallet-info-child'>
+                                    <h1>Withdrawal Method</h1>
+                                    <h2>Transfer to Bank</h2>
+                                    <h2>{user?.wallet_name}</h2>
+                                    <h2>{user?.wallet_address}</h2>
+                                    <h2>{user?.network_type}</h2>   
+                                </div>
+                            </div>
+
+
                             <form action={handleForm}>
                                 <div className="withdrawal-input">
-                                    {/* <label>Enter Amount to withdraw</label> */}
-                                    <input
-                                        type="number"
-                                        placeholder="withdraw amount"
-                                        name="amount"
-                                        step="any"
-                                        required
-                                        onKeyDown={(e) => { if (e.key === 'Enter') e.preventDefault(); }}
-                                    />
+                                    <p>Withdrawal Amount</p>
+                                    <div className='input-parent'>
+                                        <div className='input-child'>
+                                            <input
+                                                type="number"
+                                                placeholder="Type Withdrawal Amount"
+                                                name="amount"
+                                                step="any"
+                                                required
+                                                onKeyDown={(e) => { if (e.key === 'Enter') e.preventDefault(); }}
+                                            />
+                                        </div>
+                                        <div className='input-child'>
+                                            <h1>All</h1>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="withdrawal-input">
-                                    {/* <label>Withdrawal Password</label> */}
-                                    <input
-                                        type="password"
-                                        placeholder="Withdrawal Password"
-                                        name="withdrawal_pin"
-                                        required
-                                        onKeyDown={(e) => { if (e.key === 'Enter') e.preventDefault(); }}
-                                    />
+                                    <p>Withdraw PIN</p>
+                                    <div className='input-parent'>
+                                        <div className='input-child'>
+                                            <input
+                                                type="password"
+                                                placeholder="Type Withdraw PIN"
+                                                name="withdrawal_pin"
+                                                required
+                                                onKeyDown={(e) => { if (e.key === 'Enter') e.preventDefault(); }}
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="wallet-info-slip">
-                                    <h4>WITHDRAW TO</h4>
-                                    <div className="wallet-info-parent">
-                                        <h3>Recipient Name</h3>
-                                        <p>{user?.wallet_name}</p>
-                                    </div>
-                                    <div className="wallet-info-parent">
-                                        <h3>Recipient Network</h3>
-                                        <p>{user?.network_type}</p>
-                                    </div>
-                                    <div className="wallet-info-parent">
-                                        <h3>Recipient Wallet Address</h3>
-                                        <p>{user?.wallet_address}</p>
-                                    </div>
-                                    <div className="amount-submit-btn">
-                                        <button className="btn global-primary-btn">Withdraw Now</button>
-                                    </div>
+                                <div className="amount-submit-btn">
+                                    <button className="btn global-primary-btn">Withdraw</button>
                                 </div>
                             </form>
+                            <div className="welcome-footer-container">
+                                <div className="welcome-footer">
+                                    <p>Copyright © 2024 Ausventure . All Rights Reserved.</p>
+                                    <div className="help-center-icon">
+                                        <Image
+                                            src={icon6}
+                                            alt="icon"
+                                            height={100}
+                                            width={100}
+                                            unoptimized
+                                        />
+                                    </div>
+                                </div>
+                            </div>
                         </>
                 }
+
+
+
             </section >
         </>
     )
