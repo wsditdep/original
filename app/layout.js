@@ -5,7 +5,7 @@ import "./styles/styles.scss";
 import "./styles/global.scss";
 import { Toaster } from "react-hot-toast";
 import LiveSupport from '@/components/liveSupport/LiveSupport';
-import favicon from "@/public/faviconV2.png";
+import favicon from "@/public/faviconV3.png";
 
 export const metadata = {
   title: "Tailor-made holidays, Luxury Tour Operator - Original Travel",
@@ -15,7 +15,7 @@ export const metadata = {
       url: {favicon},
       type: "image/png",
     },
-    shortcut: { url: "/faviconV2.png", type: "image/png" },
+    shortcut: { url: "/faviconV3.png", type: "image/png" },
   },
 };
 
