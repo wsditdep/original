@@ -8,8 +8,8 @@ import LiveSupport from '@/components/liveSupport/LiveSupport';
 import favicon from "@/public/faviconV2.png";
 
 export const metadata = {
-  title: "Travel Agency Automation Software Solution | AgencyAuto",
-  description: "Travel Agency Automation Software Solution | AgencyAuto",
+  title: "Tailor-made holidays, Luxury Tour Operator - Original Travel",
+  description: "Tailor-made holidays, Luxury Tour Operator - Original Travel",
   icons: {
     icon: {
       url: {favicon},

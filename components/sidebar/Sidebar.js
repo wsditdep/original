@@ -457,7 +457,7 @@ const Sidebar = ({ session, content }) => {
                                 </div>
                             </li>
                         </Link>
-                        <Link href="/dashboard/recovery/changePassword">
+                        <Link href="/dashboard">
                             <li>
                                 <div className="side-bar-list">
                                     <Image
@@ -525,7 +525,7 @@ const Sidebar = ({ session, content }) => {
                     </ul>
                     <div className='copy-right-parent'>
                         <div className='copy-right-child'>
-                            <p className="sidebar-copyright">Copyright © 2024 Ausventure. All Rights Reserved.</p>
+                            <p className="sidebar-copyright">Copyright © 2024 Original Travel. All Rights Reserved.</p>
                         </div>
                     </div>
                 </div>
