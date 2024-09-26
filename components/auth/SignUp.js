@@ -27,7 +27,7 @@ const SignUp = ({setIsLogin}) => {
 
             if (response.status === 201) {
                 toast.success(response.message);
-                window.location.reload();
+                setIsLogin(false);
                 return;
             } else {
                 toast.error(response.message);
