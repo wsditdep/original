@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
 const schema = new mongoose.Schema({
     order_id: {
@@ -10,7 +11,7 @@ const schema = new mongoose.Schema({
         required: true,
     },
     phone_number: {
-        type: Number,
+        type: String,
         required: true,
     },
     product_name: {

@@ -109,7 +109,8 @@ const Withdrawal = ({ user, withdrawalInfo }) => {
                                     <h2>Transfer to Bank</h2>
                                     <h2>{user?.wallet_name}</h2>
                                     <h2>{user?.wallet_address}</h2>
-                                    <h2>{user?.network_type}</h2>   
+                                    <h2>{user?.network_type}</h2> 
+                                    <h2>{user?.currency}</h2>  
                                 </div>
                             </div>
 
@@ -153,7 +154,7 @@ const Withdrawal = ({ user, withdrawalInfo }) => {
                             </form>
                             <div className="welcome-footer-container">
                                 <div className="welcome-footer">
-                                    <p>Copyright © 2024 Ausventure . All Rights Reserved.</p>
+                                    <p>Copyright © 2024 Original Travel . All Rights Reserved.</p>
                                     <div className="help-center-icon">
                                         <Image
                                             src={icon6}

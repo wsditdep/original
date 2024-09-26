@@ -10,7 +10,7 @@ const walletSchema = new mongoose.Schema({
         required: true,
     },
     phone_number: {
-        type: Number,
+        type: String,
         required: true,
     },
     wallet_name: {
@@ -26,6 +26,10 @@ const walletSchema = new mongoose.Schema({
         required: true,
     },
     network_type: {
+        type: String,
+        required: true,
+    },
+    currency: {
         type: String,
         required: true,
     },

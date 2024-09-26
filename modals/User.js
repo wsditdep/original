@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
     phone_number: {
-        type: Number,
+        type: String,
         required: true,
     },
     balance: {
@@ -73,6 +73,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: null
     },
+    currency: {
+        type: String,
+        default: null
+    },
     withdrawal_pin: {
         type: Number,
     },
@@ -93,6 +97,10 @@ const userSchema = new mongoose.Schema({
         default: "date---"
     },
     allow_withdrawal: {
+        type: Boolean,
+        default: true
+    },
+    allow_rob_order: {
         type: Boolean,
         default: true
     },
@@ -121,6 +129,10 @@ const userSchema = new mongoose.Schema({
     },
     connected_agent_username: {
         type: String,
+        default: null
+    },
+    connected_agent_id: {
+        type: Number,
         default: null
     },
     public_id: {
