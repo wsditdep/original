@@ -33,7 +33,7 @@ const changePassword = () => {
             if (response.status === 201) {
                 toast.success(response.message);
                 await logout();
-                push('/');
+                push('/dashboard');
                 return;
             } else {
                 toast.error(response.message);
