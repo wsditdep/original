@@ -1,6 +1,3 @@
-import Link from "next/link";
-import SignUp from "@/components/auth/SignUp";
-
 
 
 export const dynamic = "force-dynamic"
