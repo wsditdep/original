@@ -33,6 +33,10 @@ const commisssionSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    withdrawal_needed_order: {
+        type: Number,
+        required: true,
+    },
     is_default: {
         type: Boolean,
         default: false,

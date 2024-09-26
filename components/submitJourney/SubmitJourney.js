@@ -80,7 +80,7 @@ const SubmitJourney = () => {
 
 
     const reviews = [
-        {id: 1, data: "The movie is filled with amazing actors who truly,make the film." },
+        { id: 1, data: "The movie is filled with amazing actors who truly,make the film." },
         { id: 2, data: "The actors give a legendary performance in this film is absolutely hilarious." },
         { id: 3, data: "The film fully demonstrates the changing personalities of each character. It makes me feel empathetic." },
         { id: 4, data: "This movie was beyond amazing." },
@@ -99,6 +99,17 @@ const SubmitJourney = () => {
     const manage_review = (commandValue) => {
         setIsCommand(commandValue)
     }
+
+
+    const [rating, setRating] = useState(0);
+
+
+    const handleClick = (index) => {
+        setRating(index + 1);
+
+        console.log(index)
+    };
+
 
     return (
         <>
@@ -205,20 +216,20 @@ const SubmitJourney = () => {
                             </div>
                         </div>
                         <div className="rate-review-wrapper">
-                            <div className="rate-task-parent">
-                                <div className="rate-task-childs">
-                                    <h3>Hotel Ratings</h3>
-                                </div>
-                                <div className="rate-task-childs">
-                                    <ul>
-                                        <li><i className="fa fa-star"></i></li>
-                                        <li><i className="fa fa-star"></i></li>
-                                        <li><i className="fa fa-star"></i></li>
-                                        <li><i className="fa fa-star"></i></li>
-                                        <li><i className="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
+                    <div className="rate-task-parent">
+                        <div className="rate-task-childs">
+                            <h3>Hotel Ratings</h3>
+                        </div>
+                        <div className="rate-task-childs">
+                            <ul>
+                                {Array.from({ length: 5 }, (v, i) => (
+                                    <li key={i} onClick={() => handleClick(i)}>
+                                        <i className={`fa fa-star ${i < rating ? 'rated' : ''}`}></i>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
                             <Popup trigger={
                                 <div className="journey-review-tap-parent">
                                     <div className="journey-review-tap-child">
