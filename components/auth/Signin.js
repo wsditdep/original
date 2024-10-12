@@ -7,6 +7,8 @@ import { useFormStatus } from "react-dom";
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from "@/public/originaltravel_image/OriginalTravel-Logo-01.png";
+import AlartBox from '../alartbox/AlartBox';
+import { useState } from 'react';
 
 
 function Submit() {
@@ -20,6 +22,8 @@ function Submit() {
 
 const Signin = ({ setIsLogin }) => {
 
+    const [isSuccess, setIsSuccess] = useState(false)
+
     const { push } = useRouter();
 
     const handleForm = async (formData) => {
@@ -31,7 +35,8 @@ const Signin = ({ setIsLogin }) => {
                 push('/dashboard');
                 return;
             } else {
-                toast.error(response.message);
+                // toast.error(response.message);
+                setIsSuccess(true)
             }
 
         } catch (error) {
@@ -40,7 +45,22 @@ const Signin = ({ setIsLogin }) => {
     }
 
     return (
-        <div className="auth-wrapper">
+
+            <>
+            
+            {
+                isSuccess
+                    ?
+                    <AlartBox
+                        setIsSuccess={setIsSuccess}
+                        message="Invalid username, please try again"
+                    />
+                    :
+                    <></>
+            }
+
+
+            <div className="auth-wrapper">
             <div className="auth-login-logo">
                 <Image
                     src={logo}
@@ -64,7 +84,7 @@ const Signin = ({ setIsLogin }) => {
                             <label>Username</label>
                             <input
                                 type="text"
-                                placeholder="Type Username"
+                                placeholder="Type Username | Phone"
                                 name="username"
                                 required
                             />
@@ -93,6 +113,10 @@ const Signin = ({ setIsLogin }) => {
                 </form>
             </div>
         </div>
+            
+            </>
+
+        
     )
 }
 

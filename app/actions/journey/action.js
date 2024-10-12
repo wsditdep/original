@@ -10,6 +10,7 @@ import { Setting } from "@/modals/Setting";
 import { User } from "@/modals/User";
 import { connectToDB } from "@/utils/connection";
 import generateOrderId from "@/utils/generateOrderId";
+import { Product } from "@/modals/Product";
 
 export const submitJourney = async () => {
     try {
@@ -36,6 +37,12 @@ export const submitJourney = async () => {
 
         if (authenticatedUser?.balance < 0) return {
             message: `Insufficient balance to place this order!`,
+            status: 502,
+            type: "danger"
+        };
+
+        if (authenticatedUser?.daily_available_order === authenticatedUser?.today_order) return {
+            message: `Destinations completed at current tier level`,
             status: 502,
             type: "danger"
         };
@@ -97,22 +104,43 @@ export const submitJourney = async () => {
 
         let calBalance;
         let calFrozeAmount;
+        let ticketCommission;
+        var isNextJourney;
+
         if (isPendingProductObject?.isJourneyProduct) {
 
-            if (journeyStageArray?.length === 0) {
-                calBalance = authenticatedUser?.balance + authenticatedUser?.froze_amount;
-                calFrozeAmount = 0;
+            const currentJourneyProduct = isPendingProductObject;
+            const isNext = journeyStageArray[0] - currentJourneyProduct.stage;
 
+            // -------------
+            if (isNext !== 1) {
+                calBalance = authenticatedUser?.balance + authenticatedUser?.froze_amount + authenticatedUser?.ticket_commission;
+                calFrozeAmount = 0;
+                ticketCommission = 0;
+                isNextJourney = false;
             } else {
                 calBalance = authenticatedUser?.balance;
                 calFrozeAmount = authenticatedUser?.froze_amount;
+                ticketCommission = authenticatedUser?.ticket_commission
+                isNextJourney = true;
             }
+            // -------------
+
+
+            // if (journeyStageArray?.length === 0) {
+            //     calBalance = authenticatedUser?.balance + authenticatedUser?.froze_amount;
+            //     calFrozeAmount = 0;
+
+            // } else {
+            //     calBalance = authenticatedUser?.balance;
+            //     calFrozeAmount = authenticatedUser?.froze_amount;
+            // }
 
             await User.findByIdAndUpdate(authenticatedUser?._id, {
                 balance: calBalance,
                 today_order: calculateStage,
-                froze_amount: calFrozeAmount
-                // today_commission: calculateFinalCommission,
+                froze_amount: calFrozeAmount,
+                ticket_commission: ticketCommission,
             });
 
             await AccountChange.create({
@@ -131,7 +159,7 @@ export const submitJourney = async () => {
             const setting = await Setting.findOne();
             const uplineCommissionRate = (setting?.first_member) / 100;
 
-            const uplineUserCommission = isPendingProductObject?.productPrice * commission?.commission_rate;
+            const uplineUserCommission = isPendingProductObject?.productPrice * commission?.ticket_commission;
             const uplineFinealCommission = uplineUserCommission * uplineCommissionRate;
 
             const uplineUserAccount = await User.findOne({ id: authenticatedUser?.parent_id });
@@ -213,7 +241,8 @@ export const submitJourney = async () => {
         return {
             message: "Successful",
             status: 201,
-            type: "success"
+            type: "success",
+            isNextJourney
         };
     } catch (error) {
         console.log(error)
@@ -224,6 +253,9 @@ export const validateStartJourney = async () => {
     try {
         await connectToDB();
         const { user } = await auth();
+        // await Product.updateMany({},{
+        //     $set:{storeName:"TF"}
+        // })
 
         if (!user) {
             return {
@@ -265,17 +297,17 @@ export const validateStartJourney = async () => {
             };
         }
 
-        if (authenticatedUser?.journeyHistory === null) {
-            if (authenticatedUser?.today_order === 0) {
-                if (authenticatedUser?.balance < account_balance_limit) {
-                    return {
-                        message: "Insufficient balance!",
-                        status: 404,
-                        type: "danger"
-                    };
-                }
-            }
-        }
+        // if (authenticatedUser?.journeyHistory === null) {
+        //     if (authenticatedUser?.today_order === 0) {
+        //         if (authenticatedUser?.balance < account_balance_limit) {
+        //             return {
+        //                 message: "Insufficient balance!",
+        //                 status: 404,
+        //                 type: "danger"
+        //             };
+        //         }
+        //     }
+        // }
 
         if (authenticatedUser?.journeyHistory !== null) {
             const allUserHistoryRes = await JourneyHistory.findById(authenticatedUser?.journeyHistory);
@@ -288,7 +320,58 @@ export const validateStartJourney = async () => {
                     status: 101,
                     type: "success"
                 };
+            } else {
+
+                if (authenticatedUser?.journey !== null) {
+
+                    const journey = await Journey.findById(authenticatedUser?.journey);
+                    const userJourney = journey?.journey;
+                    const userCurrentStage = authenticatedUser?.today_order;
+                    const stages = userJourney.map(item => Number(item.stage));
+
+                    let isNext = stages[0] - userCurrentStage;
+
+                    if (userJourney?.length === 0) {
+                        isNext = 14456456456;
+                    }
+
+                    if (isNext === 1) {
+
+                    } else {
+                        if (authenticatedUser?.balance < account_balance_limit) {
+                            return {
+                                message: "Insufficient balance!",
+                                status: 404,
+                                type: "danger"
+                            };
+                        }
+                    }
+                } else {
+                    if (authenticatedUser?.balance < account_balance_limit) {
+                        return {
+                            message: "Insufficient balance!",
+                            status: 404,
+                            type: "danger"
+                        };
+                    }
+                }
             }
+        } else {
+            if (authenticatedUser?.balance < account_balance_limit) {
+                return {
+                    message: "Insufficient balance!",
+                    status: 404,
+                    type: "danger"
+                };
+            }
+        }
+
+        const uplineUserAccount = await User.findOne({ id: authenticatedUser?.parent_id });
+
+        if (!uplineUserAccount) return {
+            message: "No upline user, please contact customer support!",
+            status: 404,
+            type: "danger"
         }
 
         return {

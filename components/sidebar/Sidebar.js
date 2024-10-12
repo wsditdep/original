@@ -457,7 +457,7 @@ const Sidebar = ({ session, content }) => {
                                 </div>
                             </li>
                         </Link>
-                        <Link href="/dashboard">
+                        <Link href="/dashboard/transactions">
                             <li>
                                 <div className="side-bar-list">
                                     <Image

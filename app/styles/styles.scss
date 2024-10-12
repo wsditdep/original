@@ -138,6 +138,43 @@
             }
         }
     }
+
+    .pwd-footer-container {
+        margin-top: 18rem;
+
+        .pwd-footer {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 7rem;
+
+            p {
+                font-size: 1.2rem;
+                color: #97979b;
+            }
+
+            .help-center-icon {
+                background: #2C2C2C;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+                border-radius: 50%;
+                position: absolute;
+                height: 6rem;
+                width: 6rem;
+                top: 0;
+                right: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0rem 2rem;
+
+                img {
+                    height: auto;
+                    width: 4rem;
+                }
+            }
+        }
+    }
 }
 
 //Security Section Code End Here
@@ -819,31 +856,38 @@
 
                 .submit-journey-image-parent {
                     display: flex;
-                    justify-content: center;
 
                     .submit-journey-child {
-                        padding: 2rem 2rem;
-                        border-bottom: 1px solid rgba(46, 45, 45, 0.384);
+                        flex: 1;
+                        padding: 0rem 2rem;
+                        padding-bottom: 1em;
+                        border-bottom: 1.9px solid #e6e6e6;
 
-                        img {
-                            height: auto;
-                            width: 100%;
-                            border-radius: 2rem;
-                            // padding: 2rem 2rem;
+                        &:first-child {
+                            padding-right: 0.5rem;
+
+                            img {
+                                height: 100%;
+                                width: 100%;
+                                border-radius: 2rem;
+                            }
                         }
 
-                        h2 {
-                            font-size: 2rem;
-                        }
+                        &:last-child {
+                            padding-left: 0.5rem;
 
-                        p {
-                            font-size: 1.2rem;
-                            padding: 1.2rem 0rem;
-                            color: #7e7e7e;
+                            h2 {
+                                padding: 1rem 0rem;
+                                font-size: 2rem;
+                            }
+
+                            p {
+                                font-size: 1.2rem;
+                                color: #7e7e7e;
+                            }
                         }
                     }
                 }
-
                 .submit-journey-content-parent {
                     .submit-journey-content-child {
                         .price-parent {
@@ -922,6 +966,28 @@
             }
 
 
+        }
+        .good-comments-parent {
+            background-color: white;
+            box-shadow: $boxShadow1;
+            padding: 0.5rem 2rem;
+            margin-top: 2rem;
+            border-radius: 0.5rem;
+
+            .good-comments-child {
+                h3 {
+                    color: #01544b;
+                    font-weight: 400;
+                    font-size: 1.4rem;
+                }
+
+                p {
+                    line-height: 1.5rem;
+                    margin-top: 1rem;
+                    font-size: 1.2rem;
+                    color: #3b4a48;
+                }
+            }
         }
 
         .journey-review-tap-parent {
@@ -4492,165 +4558,371 @@
         }
     }
 }
+//------------------------transactions-section css start-------------------
+.transactions-section {
+    .transactions-wrapper {
+        .history-filter {
+            ul {
+                display: flex;
+                justify-content: center;
 
+                li {
+                    margin: 1rem 2rem;
 
+                    // flex: 1;
+                    button {
+                        width: 100%;
+                        border: none;
+                        outline: none;
+                        background: none;
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        color: rgb(169, 169, 169);
+                        padding: 0.6rem 0.6rem;
+                        cursor: pointer;
 
+                        .history-active {
+                            color: black !important;
+                        }
 
+                        &:hover {
+                            opacity: 0.9;
+                        }
+                    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media only screen and (max-width: 767px) {
-
-    .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs:first-child .dashboard-navigation-sub-childs h3 {
-        font-size: 1rem;
+                }
+            }
+        }
     }
 
+    .menu-divider {
+        border-top: 2.5px solid rgba(0, 0, 0, 0.137);
+    }
 
+    .transactions-parent {
+        border-bottom: 2.5px solid rgba(0, 0, 0, 0.137);
+        padding: 1rem 0rem;
+
+        .transactions-child {
+            padding: 0.7rem 2rem;
+
+            h1 {
+                font-size: 1.55rem;
+                color: #004a3e;
+            }
+
+            p {
+                font-size: 1.5rem;
+                color: #777777;
+                font-weight: 500;
+            }
+
+            h2 {
+                color: #5a5a5a;
+            }
+        }
+    }
 }
+
+//------------------------transactions-section css end---------------------
+
+
+
+.alart-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 20;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+
+    .alart-parent {
+        background: $primaryColor-red;
+        padding: 0rem 1rem;
+        width: 23rem;
+        border-radius: 20px;
+        box-shadow: $boxShadow1;
+
+        .alart-child {
+            padding: 1rem 0rem;
+
+            &:first-child {
+                display: flex;
+                justify-content: flex-end;
+
+                .close-btn {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: red;
+                    border-radius: 50%;
+                    height: 1.1rem;
+                    width: 1.1rem;
+
+                    i {
+                        color: white;
+                    }
+                }
+            }
+
+            &:nth-child(2) {
+                display: flex;
+                justify-content: center;
+
+                img {
+                    height: auto;
+                    width: 10rem;
+                }
+            }
+
+            &:last-child {
+                display: flex;
+                justify-content: center;
+                margin: 0rem 3rem;
+
+                p {
+                    color: red;
+                    font-size: 1.3rem;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-----------------------media-query-start---------------
+
 
 @media only screen and (max-width: 500px) {
 
     html {
-        font-size: 60%;
+        font-size: 80%;
     }
 
-    .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs:first-child .dashboard-navigation-sub-childs h3 {
-        display: none;
+    .main-home-wrapper .main-home .home-main-container {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs img {
-        width: 60%;
+    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0;
     }
 
-    .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs:last-child button {
-        padding: 0.6rem 0.8rem;
+    .model-side1 {
+        width: 35vh;
     }
 
-    .submit-journey-section .submit-journey-wrapper .submit-journey-image img {
-        height: 250px;
+    .model-side1 .content-side1 {
+        height: 90%;
+        width: 100%;
     }
 
-    .dashboard-wrapper .dashboard-navigation {
-        padding: 2rem 2rem;
+    .main-home-wrapper .main-home .home-main-container .home-cards-parent .home-cards-child .home-cards-sub-child .card-icon img {
+        width: 3.5rem;
     }
 
-    .sidebar-overlay {
-        position: fixed;
+    .main-home-wrapper .main-home .home-main-container .home-cards-parent .home-cards-child .home-cards-sub-child .card-name p {
+        white-space: nowrap;
+        width: 6rem;
     }
 
-    .side-navbar-wrapper {
-        position: fixed;
+}
+
+@media only screen and (max-width: 450px) {
+    html {
+        font-size: 75%;
     }
 
-    .journey-section {
-        padding: 0 1rem 1rem 1rem;
+    .main-home-wrapper .main-home .home-main-container {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .transaction-section {
-        padding: 0rem 1rem 2rem 1rem;
+    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0;
     }
 
-    .support-section {
-        padding: 0rem 1rem;
+    .modal {
+        width: 32rem;
     }
 
-    .auth-wrapper {
-        padding: 2rem 2rem !important;
+}
+
+@media only screen and (max-width: 420px) {
+    html {
+        font-size: 70%;
     }
 
-    .history-section {
-        padding: 1rem;
+    .main-home-wrapper .main-home .home-main-container {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .profile-section {
-        padding: 0rem 1rem;
+    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0;
     }
 
-    .withdrawal-hostory-section {
-        padding: 0rem 1rem;
+    .modal {
+        width: 32rem;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    html {
+        font-size: 67%;
     }
 
-    .progress-circle {
-        height: auto !important;
-        width: 90% !important;
+    .main-home-wrapper .main-home .home-main-container {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .main-home .top-nav .top-nav-parent {
-        height: auto;
+    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0;
     }
 
+    .modal {
+        width: 32rem;
+    }
+}
 
+@media only screen and (max-width: 380px) {
+    html {
+        font-size: 65%;
+    }
 
-    .welcome-page-parent .welcomepage-parent .welcomepage-child .wel-content-parent .wel-content-child .wel-content-img img {
+    .welcome-page-parent .welcomepage-parent .welcomepage-child .travel-programmes-parent .travel-programmes-child .programmes-card {
+        padding: 0rem;
+    }
+
+    .modal {
         width: 30rem;
     }
 
+    .main-home-wrapper .main-home .home-main-container {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%)
+    }
+
+    .model-side1 .content-side1 {
+        height: 90%;
+        width: 100%;
+    }
+
+    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0;
+    }
+
+    .model-side1 {
+        overflow-y: hidden;
+    }
 }
 
 
-
-
-@media only screen and (max-width: 375px) {
-
+@media only screen and (max-width: 360px) {
     html {
-        font-size: 45%;
+        font-size: 60%;
     }
 
-    .progress-circle {
-        height: auto !important;
-        width: 80% !important;
+    .main-home-wrapper .main-home .home-main-container {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .main-home .top-nav .top-nav-parent {
-        height: auto;
+    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0;
     }
-
-
-
-    .welcome-page-parent .welcomepage-parent .welcomepage-child .bg-wrapper .bg-parent .bg-child .bg-content .content p {
-        font-size: 2rem;
-    }
-
-    .welcome-page-parent .welcomepage-parent .welcomepage-child .bg-wrapper .bg-parent .bg-child .bg-content .content2 p {
-        font-size: 1.5rem;
-        padding: 0rem 7rem;
-    }
-
-    .auth-section .auth-wrapper .auth-login-logo {
-        margin-top: 4rem;
-    }
-
-    .auth-breadcrumb-logo .auth-signup-wrapper {
-        padding: 4rem 2rem;
-    }
-
-    .auth-breadcrumb-childs {
-        padding: 0rem 2rem;
-    }
-
-    .journey-section .explore-hotels {
-        padding: 2rem 1rem;
-    }
-
-    .welcome-page-parent .welcomepage-parent .welcomepage-child .wel-content-parent .wel-content-child .wel-content-video-bar .video-bar:last-child {
-        padding-right: 3rem;
-    }
-
-    .auth-section-parent .auth-section .auth-wrapper .security-tab-parent {
-        height: 25px;
-    }
-
 }
+
+@media only screen and (max-width: 340px) {
+    html {
+        font-size: 57%;
+    }
+
+    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0;
+    }
+}
+
+
+@media only screen and (max-width: 320px) {
+    html {
+        font-size: 54%;
+    }
+
+    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    html {
+        font-size: 50%;
+    }
+
+    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 280px) {
+    html {
+        font-size: 46.5%;
+    }
+
+    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 260px) {
+    html {
+        font-size: 43%;
+    }
+
+    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 240px) {
+    html {
+        font-size: 40%;
+    }
+
+    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0;
+    }
+}
+
+
+
+
+//-----------------------media-query-end---------------

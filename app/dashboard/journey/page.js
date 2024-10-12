@@ -112,7 +112,7 @@ const page = async () => {
                     </div>
                     <div className='balances'>
                       <p>Total Profit</p>
-                      <h1>$ 1,000.00</h1>
+                      <h1>$  {user?.balance?.toFixed(2) ?? ""}</h1>
                     </div>
                     <div className='balances'>
                       <p>Account Balance</p>

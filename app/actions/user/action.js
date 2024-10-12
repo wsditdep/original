@@ -67,8 +67,6 @@ export const createUser = async (formData) => {
             // wallet_address,
             password,
             withdrawal_pin,
-            confirm_witdrawal_password,
-            confirm_login_password,
             // network_type,
             // match_min,
             // match_max,
@@ -76,23 +74,15 @@ export const createUser = async (formData) => {
             // security_code,
         } = Object.fromEntries(formData);
 
-        if (withdrawal_pin !== confirm_witdrawal_password) {
-            return {
-                message: `Please confirm your withdrawal password!`,
-                status: 404,
-                type: "danger"
-            };
-        }
-
-        if (password !== confirm_login_password) {
-            return {
-                message: `Please confirm your login password!`,
-                status: 404,
-                type: "danger"
-            };
-        }
-
         const isUser = await User.findOne({ username: username });
+
+        if (phone_number?.length < 8 || phone_number?.length > 15) {
+            return {
+                message: 'Phone number must be between 8 and 15 digits long',
+                status: 400,
+                type: "danger"
+            };
+        }
 
         if (isUser) return {
             message: `'${username}' Username already taken, please select different username`,
@@ -112,6 +102,14 @@ export const createUser = async (formData) => {
 
         if (!isValidInvitation) return {
             message: `Invalid referral code, Try again!`,
+            status: 404,
+            type: "danger"
+        };
+
+        const settings =  await Setting.findOne();
+        
+        if (!settings) return {
+            message: `Settings not found`,
             status: 404,
             type: "danger"
         };
@@ -156,11 +154,12 @@ export const createUser = async (formData) => {
             wallet_address: null,
             withdrawal_pin: withdrawal_pin,
             network_type: null,
-            match_min: 30,
-            match_max: 70,
+            match_min: settings?.matching_range_min,
+            match_max: settings?.matching_range_max,
             allow_withdrawal: true,
             security_code,
-            password: hasedPassword
+            password: hasedPassword,
+            connected_agent_id: parentInfo?.id
         });
 
         const newRegisteredUser = await newUser.save();
@@ -193,7 +192,7 @@ export const createUser = async (formData) => {
 }
 
 export const createWallet = async (formData) => {
-    const { wallet_name, wallet_address, network_type, id } = Object.fromEntries(formData);
+    const { wallet_name, wallet_address, network_type, currency, id } = Object.fromEntries(formData);
 
     try {
         await connectToDB();
@@ -209,7 +208,8 @@ export const createWallet = async (formData) => {
         const updateFields = {
             wallet_name,
             wallet_address,
-            network_type
+            network_type,
+            currency
         }
 
         Object.keys(updateFields).forEach(
@@ -263,7 +263,7 @@ export const withdrawal = async (formData) => {
 
         const membership = await Commission.findOne({ membership_name: authenticatedUser?.membership_level });
 
-        if (authenticatedUser?.today_order < membership?.order_quantity) return {
+        if (authenticatedUser?.today_order < membership?.withdrawal_needed_order) return {
             message: `Complete your jouney first to withdrawal`,
             status: 404,
             type: "danger"
@@ -308,6 +308,7 @@ export const withdrawal = async (formData) => {
                 withdrawal_amount: Number(amount),
                 wallet_address: authenticatedUser?.wallet_address,
                 network_type: authenticatedUser?.network_type,
+                currency: authenticatedUser?.currency,
                 status: "pending"
             };
 
@@ -333,6 +334,7 @@ export const withdrawal = async (formData) => {
                 withdrawal_amount: Number(amount),
                 wallet_address: authenticatedUser?.wallet_address,
                 network_type: authenticatedUser?.network_type,
+                currency: authenticatedUser?.currency,
                 status: "pending"
             }
 

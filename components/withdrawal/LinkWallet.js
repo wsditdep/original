@@ -21,21 +21,31 @@ function Submit() {
 const LinkWallet = ({ user }) => {
     const { push } = useRouter();
 
-    const [selectVal, setSelectVal] = useState("TRC 20");
+    const [selectedCurrencyOption, setSelectedCurrencyOption] = useState("USDT");
+    const [selectedNetworkOption, setSelectedNetworkOption] = useState("TRC 20");
+
+    const handleOptionChange = (e) => {
+        setSelectedCurrencyOption(e.target.value);
+    };
+
+    const handleNetworkOptionChange = (e) => {
+        setSelectedNetworkOption(e.target.value);
+    };
 
     const handleForm = async (formData) => {
         try {
 
             formData.append("id", user?._id);
+            formData.append("currency", selectedCurrencyOption);
             formData.append("network_type", selectVal);
-
-            console.log(selectVal)
 
             const response = await createWallet(formData);
 
+            
             if (response.status === 201) {
                 toast.success(response.message);
                 push('/dashboard/withdrawal');
+                refresh();
                 return;
             } else {
                 return toast.error(response.message);
@@ -45,12 +55,16 @@ const LinkWallet = ({ user }) => {
             console.log(error)
         }
     }
+    useEffect(() => {
+        setSelectedCurrencyOption(user?.currency ?? "USDT")
+        setSelectedNetworkOption(user?.network_type ?? "TRC 20")
+    }, [])
 
     return (
 
 
         <>
-            <Breadcrumb title="Wallet Info" link="/dashboard" />
+           <Breadcrumb title="Wallet Info" link="/dashboard" />
             <section className="link-wallet-section">
 
                 <div className="wallet-section-wrapper">
@@ -86,48 +100,82 @@ const LinkWallet = ({ user }) => {
                             <div className="wallet-section-child">
                                 <div className="wallet-sub-child">
                                     <p>Currency</p>
-                                    <div className="radio-group">
-                                        <label onChange={(e) => setSelectVal(e.target.value)}>
-                                            <input type="radio" name="currency_type" value="USDT" />
-                                            <span>USDT</span>
-                                        </label>
-
-                                        <label onChange={(e) => setSelectVal(e.target.value)}>
-                                            <input type="radio" name="currency_type" value="USDC" />
-                                            <span>USDC</span>
-                                        </label>
-
-                                        <label onChange={(e) => setSelectVal(e.target.value)}>
-                                            <input type="radio" name="currency_type" value="EDH" />
-                                            <span>ETH</span>
-                                        </label>
+                                    <div className="cus-radio-btn-wrapper">
+                                        <div className="radio-btn-parent">
+                                            <div className="radio-btn-child">
+                                                <input className="radio"
+                                                    type="radio"
+                                                    name="currency"
+                                                    value="USDT"
+                                                    checked={selectedCurrencyOption === "USDT"}
+                                                    onChange={(e) => handleOptionChange(e)}
+                                                />
+                                                <span>USDT</span>
+                                            </div>
+                                            <div className="radio-btn-child">
+                                                <input className="radio"
+                                                    type="radio"
+                                                    name="currency"
+                                                    value="USDC"
+                                                    checked={selectedCurrencyOption === "USDC"}
+                                                    onChange={(e) => handleOptionChange(e)}
+                                                />
+                                                <span>USDC</span>
+                                            </div>
+                                            <div className="radio-btn-child">
+                                                <input className="radio"
+                                                    type="radio"
+                                                    name="currency"
+                                                    value="ETH"
+                                                    checked={selectedCurrencyOption === "ETH"}
+                                                    onChange={(e) => handleOptionChange(e)}
+                                                />
+                                                <span>ETH</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
 
                             <div className="wallet-section-child">
                                 <div className="wallet-sub-child">
                                     <p>Network</p>
-                                    <div className="radio-group">
-                                        <label onChange={(e) => setSelectVal(e.target.value)}>
-                                            <input type="radio" name="network_type" value="TRC 20" />
-                                            <span>TRC20</span>
-                                        </label>
-
-                                        <label onChange={(e) => setSelectVal(e.target.value)}>
-                                            <input type="radio" name="network_type" value="ERC 20" />
-                                            <span>ERC20</span>
-                                        </label>
-
-                                        <label onChange={(e) => setSelectVal(e.target.value)}>
-                                            <input type="radio" name="network_type" value="BTC" />
-                                            <span>BTC</span>
-                                        </label>
+                                    <div className="cus-radio-btn-wrapper">
+                                        <div className="radio-btn-parent">
+                                            <div className="radio-btn-child">
+                                                <input className="radio"
+                                                    type="radio"
+                                                    name="network_type"
+                                                    value="TRC 20"
+                                                    checked={selectedNetworkOption === "TRC 20"}
+                                                    onChange={(e) => handleNetworkOptionChange(e)}
+                                                />
+                                                <span>TRC 20</span>
+                                            </div>
+                                            <div className="radio-btn-child">
+                                                <input className="radio"
+                                                    type="radio"
+                                                    name="network_type"
+                                                    value="ERC 20"
+                                                    checked={selectedNetworkOption === "ERC 20"}
+                                                    onChange={(e) => handleNetworkOptionChange(e)}
+                                                />
+                                                <span>ERC 20</span>
+                                            </div>
+                                            <div className="radio-btn-child">
+                                                <input className="radio"
+                                                    type="radio"
+                                                    name="network_type"
+                                                    value="BTC"
+                                                    checked={selectedNetworkOption === "BTC"}
+                                                    onChange={(e) => handleNetworkOptionChange(e)}
+                                                />
+                                                <span>BTC</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
 
 
                             <div className="wallet-section-child">
@@ -156,7 +204,7 @@ const LinkWallet = ({ user }) => {
                 </div>
                 <div className="welcome-footer-container">
                     <div className="welcome-footer">
-                        <p>Copyright © 2024 Ausventure . All Rights Reserved.</p>
+                        <p>Copyright © 2024 FCM . All Rights Reserved.</p>
                         <div className="help-center-icon">
                             <Image
                                 src={icon6}

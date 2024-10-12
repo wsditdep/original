@@ -40,6 +40,10 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    ticket_commission: {
+        type: Number,
+        default: 0
+    },
     parent_user: {
         type: String,
         required: true,

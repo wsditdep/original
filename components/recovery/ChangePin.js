@@ -11,6 +11,8 @@ import { useRouter } from "next/navigation";
 import Breadcrumb from "../breadcrumb/Breadcrumb";
 import icon6 from "@/public/home-page/icon6.png";
 
+
+
 function Submit() {
     const { pending } = useFormStatus();
     return (
@@ -54,7 +56,7 @@ const ChangePin = () => {
                                 <button>Login Password</button>
                             </Link>
                             <Link href="/dashboard/recovery/changePin">
-                                <button className="security-tab-active">Withdrawal PIN</button>
+                                <button className="security-tab-active">Withdraw PIN</button>
                             </Link>
                         </div>
                         <div className="security-tab-parent">
@@ -84,12 +86,10 @@ const ChangePin = () => {
                                                     <i onClick={() => setIsShow(!isShow)} className="fa fa-eye-slash"></i>
                                             }
                                         </div>
-
                                     </div>
                                     <div className="sec-label-parent">
                                         <div className="sec-label-child">
                                             <label>New Password</label>
-
                                         </div>
                                         <div className="sec-label-child">
                                             <input
@@ -135,29 +135,32 @@ const ChangePin = () => {
 
                                     </div>
                                     <div className="app-form-group">
-                                        <Submit />
+                                        <div className="change-btn">
+                                            <Submit />
+                                        </div>
                                     </div>
 
                                 </div>
                             </form>
                         </div>
-                        <div className="welcome-footer-container">
-                                <div className="welcome-footer">
-                                    <p>Copyright © 2024 Original Travel . All Rights Reserved.</p>
-                                    <div className="help-center-icon">
-                                        <Image
-                                            src={icon6}
-                                            alt="icon"
-                                            height={100}
-                                            width={100}
-                                            unoptimized
-                                        />
-                                    </div>
-                                </div>
-                            </div>
                     </div>
-
                 </section>
+                <div className="pwd-footer-container">
+                    <div className="pwd-footer">
+                        <p>Copyright © 2024 FCM . All Rights Reserved</p>
+                        <div className="help-center-icon">
+                            <Link href="/dashboard/support">
+                                <Image
+                                    src={icon6}
+                                    alt="icon"
+                                    height={100}
+                                    width={100}
+                                    unoptimized
+                                />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     )

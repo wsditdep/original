@@ -41,21 +41,31 @@ const SubmitJourney = () => {
     const [isSuccess, setIsSuccess] = useState(false);
     const [myState, setMyState] = useState({});
     const [loading, setLoading] = useState(true);
+    const [isPressed, setIsPressed] = useState(false);
 
     const handleForm = async () => {
         try {
             const response = await submitJourney();
 
             if (response.status === 201) {
-                toast.success(response.message);
-                setIsSuccess(true);
-                return;
+                if (response?.isNextJourney) {
+                    window.location.reload();
+                }
+                else {
+                    toast.success(response.message);
+                    setIsSuccess(true);
+                    setIsPressed(true);
+                    push("/dashboard/journey")
+                    return;
+                }
             } else {
                 toast.error(response.message);
+                setIsPressed(true);
                 push("/dashboard/recharge");
             }
 
         } catch (error) {
+            setIsPressed(false);
             console.log(error)
         }
     }
@@ -78,29 +88,6 @@ const SubmitJourney = () => {
 
 
 
-
-    const reviews = [
-        { id: 1, data: "The movie is filled with amazing actors who truly,make the film." },
-        { id: 2, data: "The actors give a legendary performance in this film is absolutely hilarious." },
-        { id: 3, data: "The film fully demonstrates the changing personalities of each character. It makes me feel empathetic." },
-        { id: 4, data: "This movie was beyond amazing." },
-        { id: 5, data: "That was the icing on the cake in this movie for me :)" },
-        { id: 6, data: "This film fulfilled my imagination of the character" },
-        { id: 7, data: "Really recommended you guys to watch it sia~" },
-        { id: 8, data: "There's nothing more to say, in one word: EXCELLENT!!!" },
-        { id: 9, data: "HOU SAI LEI!!!!" },
-        { id: 10, data: "This is the only best hotel I have ever recommended in my life." }
-    ];
-
-
-    const [isCommand, setIsCommand] = useState("Comment Good Review");
-
-
-    const manage_review = (commandValue) => {
-        setIsCommand(commandValue)
-    }
-
-
     const [rating, setRating] = useState(0);
 
 
@@ -111,15 +98,43 @@ const SubmitJourney = () => {
     };
 
 
+
+
+    const reviews = [
+        { id: 1, data: "The hotel is filled with amazing actors who truly make the film." },
+        { id: 2, data: "The actors give a legendary performance in this film, it is absolutely hilarious." },
+        { id: 3, data: "The film fully demonstrates the changing personalities of each character. It makes me feel empathetic." },
+        { id: 4, data: "This hotel was beyond amazing." },
+        { id: 5, data: "That was the icing on the cake in this hotel for me :)" },
+        { id: 6, data: "This film fulfilled my imagination of the character." },
+        { id: 7, data: "Really recommended you guys to watch it sia~" },
+        { id: 8, data: "There's nothing more to say, in one word: EXCELLENT!!!" },
+        { id: 9, data: "HOU SAI LEI!!!!" },
+        { id: 10, data: "This is the only best hotel I have ever recommended in my life." }
+    ];
+
+
+
+    const [isCommand, setIsCommand] = useState("Comment Good Review");
+
+
+    const manage_review = (commandValue) => {
+        setIsCommand(commandValue)
+    }
+
+
+
+
+
     return (
         <>
-            {
+            {/* {
                 isSuccess
                     ?
                     <SuccessModal setIsSuccess={setIsSuccess} img={successImg} redirect={"/dashboard/journey"} />
                     :
                     <></>
-            }
+            } */}
             {
                 loading
                     ?
@@ -138,14 +153,19 @@ const SubmitJourney = () => {
                     :
                     <></>
             }
-            <section className="submit-journey-section"
-                style={{
-                    backgroundImage: `url(${blurbg.src})`,
-                    height: '100%',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: '100% auto',
-                }}
-            >
+
+
+
+            <section className="submit-journey-section" style={{
+                backgroundImage: `url(${blurbg.src})`,
+                height: '100%',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: '100% auto',
+                // filter: 'blur(5px)'
+                // backgroundPosition: 'top -4rem right -4rem',
+
+            }}>
+
 
                 <div className="submit-journey-container-parent">
 
@@ -159,7 +179,8 @@ const SubmitJourney = () => {
                                 <Link href="/dashboard/journey" >
                                     <div className="submit-head-child">
                                         <i className="fa-solid fa-xmark"></i>
-                                    </div></Link>
+                                    </div>
+                                </Link>
                             </div>
                             <div className="submit-journey-image-parent">
                                 <div className="submit-journey-child">
@@ -174,7 +195,6 @@ const SubmitJourney = () => {
                                             />
                                         )
                                     }
-                                    <div className="submit-overlay"></div>
                                 </div>
                                 <div className="submit-journey-child">
                                     <h2>{myState?.product?.productName ?? ""}</h2>
@@ -211,45 +231,55 @@ const SubmitJourney = () => {
                                             <h3>$ {myState?.totalValue?.toFixed(2) ?? ""}</h3>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                         <div className="rate-review-wrapper">
-                    <div className="rate-task-parent">
-                        <div className="rate-task-childs">
-                            <h3>Hotel Ratings</h3>
-                        </div>
-                        <div className="rate-task-childs">
-                            <ul>
-                                {Array.from({ length: 5 }, (v, i) => (
-                                    <li key={i} onClick={() => handleClick(i)}>
-                                        <i className={`fa fa-star ${i < rating ? 'rated' : ''}`}></i>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
+                            <div className="rate-task-parent">
+                                <div className="rate-task-childs">
+                                    <h3>Hotel Ratings</h3>
+                                </div>
+                                <div className="rate-task-childs">
+                                    <ul>
+                                        {Array.from({ length: 5 }, (v, i) => (
+                                            <li key={i} onClick={() => handleClick(i)}>
+                                                <i className={`fa fa-star ${i < rating ? 'rated' : ''}`}></i>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+
+
+
+
+
                             <Popup trigger={
-                                <div className="journey-review-tap-parent">
-                                    <div className="journey-review-tap-child">
+
+
+                                <div className="good-comments-parent">
+                                    <div className="good-comments-child">
+                                        <h3>Comment Good Reviews</h3>
+                                    </div>
+                                    <div className="good-comments-child">
                                         <p>{isCommand}</p>
-                                        <i className="fa-solid fa-chevron-down"></i>
                                     </div>
                                 </div>
+
+
                             } position="right center" modal nested>
                                 {close => (
-                                    <div className="modal model-side">
+                                    <div className="modal model-side1">
                                         <div className='nav-bar nav-bar-side'>
                                             <h1></h1>
                                             <div onClick={close} className="close-btn">
                                                 <i className="fa-solid fa-xmark"></i>
                                             </div>
                                         </div>
-                                        <div className='nav-bar nav-bar-side1'>
+                                        <div className='nav-bar nav-bar-side'>
                                             <h1>Good Review</h1>
                                         </div>
-                                        <div className="content content-side">
+                                        <div className="content content-side1">
                                             <div className="review-wrapper">
                                                 <div className="review-parent">
                                                     {reviews.map((review) => (
@@ -265,14 +295,25 @@ const SubmitJourney = () => {
                             </Popup>
 
 
-                            <div className="submit-btn mt2">
-                                <form action={handleForm}>
-                                    <Submit />
-                                </form>
+
+
+                            <div className="submit-button">
+                                <div className="submit-btn mt2">
+                                    <form action={handleForm}>
+                                        {
+                                            isPressed
+                                                ?
+                                                <p>Processing Please Wait <i className="fa fa-spinner"></i></p>
+                                                :
+                                                <Submit />
+                                        }
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
 
 
             </section>
