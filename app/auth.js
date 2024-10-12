@@ -8,7 +8,12 @@ import { User } from "@/modals/User";
 const login = async (credentials) => {
     try {
         await connectToDB();
-        const user = await User.findOne({ username: credentials.username });
+        const user = await User.findOne({
+            $or: [
+                { username: credentials.username },
+                { phone_number: credentials.username }
+            ]
+        });
 
         if (!user) {
             return null

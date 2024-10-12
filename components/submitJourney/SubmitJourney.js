@@ -42,6 +42,7 @@ const SubmitJourney = () => {
     const [myState, setMyState] = useState({});
     const [loading, setLoading] = useState(true);
     const [isPressed, setIsPressed] = useState(false);
+    const [isNextData, setIsNextData] = useState(false);
 
     const handleForm = async () => {
         try {
@@ -49,14 +50,14 @@ const SubmitJourney = () => {
 
             if (response.status === 201) {
                 if (response?.isNextJourney) {
-                    window.location.reload();
-                }
-                else {
-                    toast.success(response.message);
+                    setIsNextData(true);
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, [3000])
+                } else {
                     setIsSuccess(true);
                     setIsPressed(true);
-                    push("/dashboard/journey")
-                    return;
+                    toast.success(response.message);
                 }
             } else {
                 toast.error(response.message);
@@ -150,6 +151,16 @@ const SubmitJourney = () => {
                         height={window.innerHeight}
                         numberOfPieces={200}
                     />
+                    :
+                    <></>
+            }
+
+            {
+                isNextData
+                    ?
+                    <div className="fetchNextData">
+                        <h3>Please wait....Matching next data <i className="fa fa-spinner"></i></h3>
+                    </div>
                     :
                     <></>
             }
