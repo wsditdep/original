@@ -49,7 +49,7 @@ const Support = ({ setting }) => {
                                 </div>
                                 <div className="support-footer-container">
                             <div className="support-footer">
-                                <p>Copyright © 2024 Ausventure . All Rights Reserved</p>
+                                <p>Copyright © 2024 Original Travel . All Rights Reserved</p>
                             </div>
                         </div>
                             </div>

@@ -55,7 +55,7 @@ const Invite = ({ user }) => {
                         </div>
                         <div className="invite-footer-container">
                             <div className="invite-footer">
-                                <p> Copyright © 2024 Ausventure . All Rights Reserved</p>
+                                <p> Copyright © 2024 Original Travel . All Rights Reserved</p>
                                 <div className="help-center-icon">
                                     <Link href="/dashboard/support">
                                         <Image

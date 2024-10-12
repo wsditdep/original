@@ -149,7 +149,7 @@ const changePassword = () => {
                 </section>
                 <div className="pwd-footer-container">
                     <div className="pwd-footer">
-                        <p>Copyright © 2024 FCM . All Rights Reserved</p>
+                        <p>Copyright © 2024 Original Travel . All Rights Reserved</p>
                         <div className="help-center-icon">
                             <Link href="/dashboard/support">
                                 <Image

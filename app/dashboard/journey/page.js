@@ -225,7 +225,7 @@ const page = async () => {
                 <div className='journey-next-main-child'>
                   <div className="welcome-footer-container">
                     <div className="welcome-footer">
-                      <p>Copyright © 2024 Ausventure . All Rights Reserved.</p>
+                      <p>Copyright © 2024 Original Travel . All Rights Reserved.</p>
                       <div className="help-center-icon">
                         <Image
                           src={icon6}

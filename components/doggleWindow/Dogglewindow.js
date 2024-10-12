@@ -3,12 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import icon5 from "@/public/home-page/icon5.png";
-import vip1 from "@/public/home-page/vip1.png"
-import vip2 from "@/public/home-page/vip2.png"
-import vip3 from "@/public/home-page/vip3.png"
-import vip4 from "@/public/home-page/vip4.png"
+import vip1 from "@/public/home-page/vip1.png";
+import vip2 from "@/public/home-page/vip2.png";
+import vip3 from "@/public/home-page/vip3.png";
+import vip4 from "@/public/home-page/vip4.png";
 
 export default function Dogglewindow({ memberShipLevel }) {
+
     const [isOpen, setIsOpen] = useState(false);
     const [isUpSideDouwnIcon, setIsUpSideDouwnIcon,] = useState(false)
     const membership = memberShipLevel.membership_name;
@@ -78,7 +79,7 @@ export default function Dogglewindow({ memberShipLevel }) {
                                 </div>
                                 <div className="content-child">
                                     {
-                                        membership === "Basic" ? <button>Current</button> : <></>
+                                        membership === "Basic Tour" ? <button>Current</button> : <></>
                                     }
 
                                 </div>
@@ -111,7 +112,7 @@ export default function Dogglewindow({ memberShipLevel }) {
                                 </div>
                                 <div className="content-child">
                                     {
-                                        membership === "Silver" ? <button>Current</button> : <></>
+                                        membership === "Silver Tour" ? <button>Current</button> : <></>
                                     }
                                 </div>
                             </div>
@@ -143,7 +144,7 @@ export default function Dogglewindow({ memberShipLevel }) {
                                 </div>
                                 <div className="content-child">
                                     {
-                                        membership === "Gold" ? <button>Current</button> : <></>
+                                        membership === "Gold Tour" ? <button>Current</button> : <></>
                                     }
                                 </div>
                             </div>
@@ -175,7 +176,7 @@ export default function Dogglewindow({ memberShipLevel }) {
                                 </div>
                                 <div className="content-child">
                                     {
-                                        membership === "Elite" ? <button>Current</button> : <></>
+                                        membership === "Elite Tour" ? <button>Current</button> : <></>
                                     }
                                 </div>
                             </div>

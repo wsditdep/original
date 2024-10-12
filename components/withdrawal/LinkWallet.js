@@ -3,11 +3,11 @@
 import { useFormStatus } from "react-dom";
 import { createWallet } from "@/app/actions/user/action";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Breadcrumb from "../breadcrumb/Breadcrumb";
 import icon6 from "@/public/home-page/icon6.png";
-import Image from "next/image";
+import Image from 'next/image';
 
 function Submit() {
     const { pending } = useFormStatus();
@@ -19,7 +19,7 @@ function Submit() {
 }
 
 const LinkWallet = ({ user }) => {
-    const { push } = useRouter();
+    const { push, refresh } = useRouter();
 
     const [selectedCurrencyOption, setSelectedCurrencyOption] = useState("USDT");
     const [selectedNetworkOption, setSelectedNetworkOption] = useState("TRC 20");
@@ -32,16 +32,16 @@ const LinkWallet = ({ user }) => {
         setSelectedNetworkOption(e.target.value);
     };
 
+
     const handleForm = async (formData) => {
         try {
 
             formData.append("id", user?._id);
             formData.append("currency", selectedCurrencyOption);
-            formData.append("network_type", selectVal);
+            formData.append("network_type", selectedNetworkOption);
 
             const response = await createWallet(formData);
 
-            
             if (response.status === 201) {
                 toast.success(response.message);
                 push('/dashboard/withdrawal');
@@ -55,16 +55,24 @@ const LinkWallet = ({ user }) => {
             console.log(error)
         }
     }
+
+    // useEffect(() => {
+    //     setSelectedCurrencyOption(user?.currency ?? "USDT")
+    //     setSelectedNetworkOption(user?.network_type ?? "TRC 20")
+    // }, [])
+
     useEffect(() => {
-        setSelectedCurrencyOption(user?.currency ?? "USDT")
-        setSelectedNetworkOption(user?.network_type ?? "TRC 20")
-    }, [])
+        if (user.network_type !== null) {
+            // push("/dashboard/withdrawal");
+            toast.success("Wallet Info is already saved!");
+        }
+    }, []);
 
     return (
 
 
         <>
-           <Breadcrumb title="Wallet Info" link="/dashboard" />
+            <Breadcrumb title="Wallet Info" link="/dashboard" />
             <section className="link-wallet-section">
 
                 <div className="wallet-section-wrapper">
@@ -81,6 +89,7 @@ const LinkWallet = ({ user }) => {
                                         type="text"
                                         placeholder="Type Full Name"
                                         name="wallet_name"
+                                        defaultValue={user?.wallet_name ?? ""}
                                         required
                                         onKeyDown={(e) => { if (e.key === 'Enter') e.preventDefault(); }} />
                                 </div>
@@ -93,6 +102,7 @@ const LinkWallet = ({ user }) => {
                                         type="text"
                                         placeholder="Type Wallet Address"
                                         name="wallet_address"
+                                        defaultValue={user?.wallet_address}
                                         required onKeyDown={(e) => { if (e.key === 'Enter') e.preventDefault(); }} />
                                 </div>
                             </div>
@@ -185,6 +195,7 @@ const LinkWallet = ({ user }) => {
                                         type="number"
                                         placeholder="Type Phone No"
                                         name="phone_number"
+                                        defaultValue={user?.phone_number}
                                         required onKeyDown={(e) => { if (e.key === 'Enter') e.preventDefault(); }} />
                                 </div>
                             </div>
@@ -195,7 +206,14 @@ const LinkWallet = ({ user }) => {
                             <div className="wallet-section-child">
                                 <div className="wallet-sub-child">
                                     <div className="app-form-group">
-                                        <Submit />
+                                        {
+                                            user?.network_type === null
+                                            ?
+                                            <Submit />
+                                            :
+                                            <></>
+                                        }
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -204,7 +222,7 @@ const LinkWallet = ({ user }) => {
                 </div>
                 <div className="welcome-footer-container">
                     <div className="welcome-footer">
-                        <p>Copyright © 2024 FCM . All Rights Reserved.</p>
+                        <p>Copyright © 2024 Original Travel . All Rights Reserved.</p>
                         <div className="help-center-icon">
                             <Image
                                 src={icon6}

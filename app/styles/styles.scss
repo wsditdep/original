@@ -926,28 +926,27 @@
 
         .rate-task-parent {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            // border: 2px solid black;
+            padding: 0rem 2rem;
             background-color: white;
-            padding: 1rem 1rem;
-            border-radius: 0.6rem;
-            box-shadow: 0px 0px 10px 0.5px rgba(142, 238, 233, 0.616);
+            height: 4rem;
+            width: 100%;
+            border-radius: 0.5rem;
+            box-shadow: $boxShadow1;
+
             .rate-task-childs {
-              
-              
-                
                 h3 {
-                    color: black;
+                    color: #01544b;
                     font-size: 1.4rem;
                     margin-right: 1rem;
+                    font-weight: 500;
                 }
 
                 ul {
                     list-style: none;
                     padding: 0;
                     display: flex;
-                    justify-content: center;
 
                     li {
                         cursor: pointer;
@@ -959,13 +958,11 @@
                         }
 
                         .rated {
-                            color: gold;
+                            color: orange;
                         }
                     }
                 }
             }
-
-
         }
         .good-comments-parent {
             background-color: white;
@@ -2630,19 +2627,28 @@
                     justify-content: center;
 
                     .logo-panel {
-                        padding: 9rem 0rem;
+                        padding: 7rem 0rem;
 
                         img {
                             height: auto;
-                            width: 30rem;
+                            width: 20rem;
                         }
                     }
 
                     .text-panel {
                         display: flex;
                         justify-content: center;
+                        flex-direction: column;
+                        align-items: center;
                         margin: 0rem 5rem;
 
+                        h3 {
+                            text-align: center;
+                            font-size: 1.6rem;
+                            font-weight: bold;
+                            color: white;
+                            line-height: 2.5rem;
+                        }
                         p {
                             text-align: center;
                             font-size: 1.6rem;
@@ -2662,16 +2668,16 @@
                 .home-cards-child {
                     display: flex;
                     justify-content: space-around;
-                    padding: 1.6rem 1.2rem;
+                    padding: 1.5rem 0rem;
 
 
                     .home-cards-sub-child {
                         flex: 1;
                         background: white;
-                        // margin: 0rem 1rem;
-                        padding: 1rem 1.8rem;
+                        margin: 0rem 0.4rem;
+                        padding: 2rem 1rem;
                         border-radius: 1.5rem;
-                        // box-shadow: 0px 0px 15px 1.5px #fce2a6;
+                        box-shadow: $boxShadow2;
 
                         .card-icon {
                             display: flex;
@@ -2680,7 +2686,7 @@
 
                             img {
                                 height: auto;
-                                width: 4.5rem;
+                                width: 4.3rem;
                             }
                         }
 
@@ -2689,8 +2695,11 @@
                             justify-content: center;
 
                             p {
-                                font-size: 1.5rem;
+                                font-size: 1.2rem;
                                 color: #3b4a48;
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                                text-align: center;
                             }
                         }
                     }
@@ -2698,21 +2707,16 @@
 
                 .home-vip-card-container {
                     background: white;
-                    margin: 0rem 2rem;
+                    margin: 1rem 1rem;
                     border-radius: 1.5rem;
-
-                    // box-shadow: 0px 0px 15px 1.5px #fce2a6;
-
-
+                    box-shadow: $boxShadow2;
 
                     .home-vip-cards-parent {
                         display: flex;
 
-
                         .home-vip-cards-child {
                             display: flex;
                             align-items: center;
-
 
                             .home-vip-cards-sub-child {
                                 .vip-card-icon {
@@ -2723,7 +2727,6 @@
                                     img {
                                         height: auto;
                                         width: 8rem;
-                                        padding: 1rem 1rem;
                                     }
                                 }
 
@@ -2774,13 +2777,6 @@
                                     display: flex;
                                     justify-content: space-between;
 
-                                    &:first-child {
-                                        // width: 50%;
-                                    }
-
-                                    &:last-child {
-                                        // width: 50%;
-                                    }
 
                                     .content-child {
                                         display: flex;
@@ -2826,8 +2822,6 @@
                                         }
                                     }
 
-                                    &:first-child {}
-
                                     &:last-child {
                                         padding: 0rem 0.6rem;
                                     }
@@ -2840,12 +2834,6 @@
                         }
 
                     }
-
-                }
-
-                .home-card-parent1 {
-                    background-color: #e5f6f6;
-                    padding: 1rem 1rem;
 
                 }
             }
@@ -4059,6 +4047,64 @@
                         text-decoration: underline;
                     }
 
+                    .modal {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0, 0, 0, 0.5);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        .modal-content {
+                            background-color: white;
+                            padding: 20px;
+                            border-radius: 8px;
+                            text-align: center;
+                            max-width: 500px;
+                            width: 100%;
+                        }
+
+                        .yesno {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 1rem;
+
+                            button {
+                                flex: 1;
+                                margin: 0rem 1rem;
+                                color: white;
+                                border: none;
+                                cursor: pointer;
+                                border-radius: 4px;
+
+
+                                &:first-child {
+                                    background-color: green;
+
+                                    &:hover {
+                                        background-color: rgb(68, 190, 68);
+                                    }
+                                }
+
+                                &:last-child {
+                                    background-color: rgb(190, 13, 13);
+
+                                    &:hover {
+                                        background-color: rgb(245, 78, 78);
+                                    }
+                                }
+
+                            }
+
+
+                        }
+
+                    }
+
                     i {
                         color: $primaryColor;
                         width: 100%;
@@ -4201,7 +4247,7 @@
 
             .wallet-section-child {
                 .wallet-sub-child {
-                    padding: 1rem 0rem;
+                    padding: 0.5rem 0rem;
 
                     p {
                         font-size: 1.3rem;
@@ -4214,9 +4260,9 @@
                         outline: none;
                         background: white;
                         font-size: 1.4rem;
-                        padding: 1rem 1.5rem;
+                        padding: 1.5rem 1.5rem;
                         border-radius: 1rem;
-                        // box-shadow: 0px 0px 15px 1.5px #fce2a6;
+                        box-shadow: $boxShadow2;
                         border: none;
 
                         &::placeholder {
@@ -4224,67 +4270,65 @@
                         }
                     }
 
-                    .radio-group {
-                        display: flex;
-                        justify-content: space-between;
-                        padding: 0rem 2.5rem;
+                    .cus-radio-btn-wrapper {
+                        .radio-btn-parent {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 1rem 0rem;
 
-                        label {
-                            display: inline-block;
-                            padding: 5px 10px;
-                            cursor: pointer;
-
-                            input {
-                                box-shadow: none;
-                                display: none;
-
-                                &:checked+span:after {
-                                    opacity: 1;
-                                }
-                            }
-
-                            span {
-                                position: relative;
-                                line-height: 22px;
-                                font-size: 1.2rem;
-                                font-weight: bold;
+                            .radio-btn-child {
+                                flex: 1;
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
 
-                                &::before,
-                                &::after {
-                                    content: '';
+                                .radio[type="radio"] {
+                                    appearance: none;
+                                    width: 0;
+                                    height: 0;
+                                    padding: 1rem;
+                                    cursor: pointer;
+                                    position: relative;
+                                    outline: none;
+                                    background: #fff;
+                                    box-shadow: $boxShadow2;
+                                    border-radius: 0.7rem !important;
+                                    box-shadow: $boxShadow2 !important;
+
+                                    &:checked::before {
+                                        content: '';
+                                        padding: 0.5rem;
+                                        background: $primaryColor;
+                                        border-radius: 0.3rem;
+                                        position: absolute;
+                                        top: 50%;
+                                        left: 50%;
+                                        transform: translate(-50%, -50%);
+                                    }
+
+                                    &:checked~span {
+                                        color: black;
+                                        font-weight: bold;
+                                        transition: all 0.6s ease;
+                                    }
                                 }
 
-                                &::before {
-                                    background: #ffff;
-                                    width: 1.5rem;
-                                    height: 1.5rem;
-                                    margin-right: 10px;
-                                    display: inline-block;
-                                    vertical-align: top;
-                                    // box-shadow: 0px 0px 15px 1.5px #fce2a6;
-                                    border-radius: 0.5rem;
+                                span {
+                                    color: black;
+                                    font-weight: 450;
+                                    font-size: 1.5rem;
+                                    padding: 0rem 1rem;
 
-                                }
-
-                                &::after {
-                                    background: #222021;
-                                    width: 1.1rem;
-                                    height: 1.1rem;
-                                    position: absolute;
-                                    top: 3px;
-                                    left: 3.2px;
-                                    transition: 300ms;
-                                    opacity: 0;
-                                    border-radius: 0.5rem;
-                                    background: $primaryColor;
                                 }
                             }
                         }
-
                     }
+
+
+
+
+
 
                     .app-form-group {
                         display: flex;
