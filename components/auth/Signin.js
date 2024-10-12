@@ -8,7 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import logo from "@/public/originaltravel_image/OriginalTravel-Logo-01.png";
 import AlartBox from '../alartbox/AlartBox';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 function Submit() {
@@ -26,16 +26,37 @@ const Signin = ({ setIsLogin }) => {
 
     const { push } = useRouter();
 
+    const [defaultVal, setDefaultVal] = useState({
+        username: "",
+        password: ""
+    });
+
+    const saveLoginData = (data) => {
+
+        const { username, password } = Object.fromEntries(data);
+
+        const loginData = {
+            username: username,
+            password: password
+        };
+
+        console.log( username)
+
+        localStorage.setItem("xjdeiuqx_history", JSON.stringify(loginData));
+    };
+
     const handleForm = async (formData) => {
         try {
             const response = await authenticate(formData);
+            console.log(response);
 
-            if (response.status === 201) {
-                toast.success(response.message);
+            if (response === undefined) {
+                toast.success("successfully logged In");
                 push('/dashboard');
+                saveLoginData(formData);
                 return;
             } else {
-                // toast.error(response.message);
+                toast.error(response.message);
                 setIsSuccess(true)
             }
 
@@ -43,6 +64,19 @@ const Signin = ({ setIsLogin }) => {
             console.log(error)
         }
     }
+
+    useEffect(() => {
+        const fromHistory = localStorage.getItem("xjdeiuqx_history");
+
+        if (fromHistory) {
+            const parsedData = JSON.parse(fromHistory);
+            setDefaultVal({
+                username: parsedData?.username || "",
+                password: parsedData?.password || ""
+            });
+        }
+
+    }, []);
 
     return (
 
@@ -86,6 +120,7 @@ const Signin = ({ setIsLogin }) => {
                                 type="text"
                                 placeholder="Type Username | Phone"
                                 name="username"
+                                defaultValue={defaultVal?.username}
                                 required
                             />
                         </div>
@@ -97,6 +132,7 @@ const Signin = ({ setIsLogin }) => {
                                 type="password"
                                 placeholder="Type Password"
                                 name="password"
+                                defaultValue={defaultVal?.password}
                                 required
                             />
                         </div>
