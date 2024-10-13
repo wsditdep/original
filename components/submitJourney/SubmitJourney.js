@@ -58,6 +58,7 @@ const SubmitJourney = () => {
                     setIsSuccess(true);
                     setIsPressed(true);
                     toast.success(response.message);
+                    push("/dashboard/journey");
                 }
             } else {
                 toast.error(response.message);
@@ -314,7 +315,7 @@ const SubmitJourney = () => {
                                         {
                                             isPressed
                                                 ?
-                                                <p>Processing Please Wait <i className="fa fa-spinner"></i></p>
+                                                <p>Processing Please Wait <i className="fa fa-spinner animatespinner"></i></p>
                                                 :
                                                 <Submit />
                                         }

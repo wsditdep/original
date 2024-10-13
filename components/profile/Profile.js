@@ -1,6 +1,5 @@
 "use client";
 
-import Breadcrumb from '@/components/breadcrumb/Breadcrumb'
 import logo_white from "@/public/user.svg";
 import Image from 'next/image';
 import { useState } from 'react';
@@ -11,7 +10,7 @@ import toast from 'react-hot-toast';
 import { uploadProfile } from '@/app/actions/profile/action';
 import Loader from '../loader/Loader';
 
-export const Profile = ({ user }) => {
+export const Profile = ({ session }) => {
 
     const { push } = useRouter();
     const router = useRouter();
@@ -81,10 +80,14 @@ export const Profile = ({ user }) => {
         }
         // upload image to cloudinary::end
     };
+    const copyToClipboard = (val) => {
+        navigator.clipboard.writeText(val);
+        return toast.success(`Copied - (${val})`);
+    }
+
 
     return (
         <>
-            <Breadcrumb title="Profile" link="/dashboard" />
             {
                 isConfirm
                     ?
@@ -100,67 +103,63 @@ export const Profile = ({ user }) => {
             {
                 pending ? <Loader /> : <></>
             }
-            <section className="profile-section">
-                <div className="profile-wrapper">
-                    <div className="profile-wrapper-childs">
-                        {
-                            file === null
-                                ?
-                                <Image
-                                    src={user?.url === null ? logo_white : user?.url}
-                                    width={100}
-                                    height={100}
-                                    alt="choosen file"
-                                    className={user?.url === null ? "image-pre" : ""}
-                                    unoptimized
-                                />
-                                :
-                                <Image
-                                    src={URL.createObjectURL(file)}
-                                    width={100}
-                                    height={100}
-                                    alt="file"
-                                    unoptimized
-                                />
 
-                        }
+            <div className="profile-wrapper">
+                <div className="profile-wrapper-childs">
+                    {
+                        file === null
+                            ?
+                            <Image
+                                src={session?.url === null ? logo_white : session?.url}
+                                width={100}
+                                height={100}
+                                alt="choosen file"
+                                className={session?.url === null ? "image-pre" : ""}
+                                unoptimized
+                            />
+                            :
+                            <Image
+                                src={URL.createObjectURL(file)}
+                                width={100}
+                                height={100}
+                                alt="file"
+                                unoptimized
+                            />
+
+                    }
+                </div>
+                <div className="profile-wrapper-childs">
+                    <div className="profile-image-upload">
+                        <form>
+                            <div className="file-upload-container">
+                                <label htmlFor="file-upload" className="custom-file-upload">
+                                    <i className="fa fa-cloud-upload"></i> Choose Profile
+                                </label>
+                                <input
+                                    id="file-upload"
+                                    type="file"
+                                    accept=".png, .jpg, .jpeg, .gif"
+                                    onChange={(e) => setFile(e.target.files[0])}
+                                />
+                                <div id="file-upload-filename"></div>
+                            </div>
+                        </form>
                     </div>
-                    <div className="profile-wrapper-childs">
-                        <div className="profile-image-upload">
-                            <form>
-                                <div className="file-upload-container">
-                                    <label htmlFor="file-upload" className="custom-file-upload">
-                                        <i className="fa fa-cloud-upload"></i> Choose Profile
-                                    </label>
-                                    <input
-                                        id="file-upload"
-                                        type="file"
-                                        accept=".png, .jpg, .jpeg, .gif"
-                                        onChange={(e) => setFile(e.target.files[0])}
-                                    />
-                                    <div id="file-upload-filename"></div>
-                                </div>
-                            </form>
-                        </div>
-                        {
-                            file === null
-                                ?
-                                <></>
-                                :
-                                <div className="upload_btn">
-                                    <button onClick={() => handleForm()}>Update</button>
-                                </div>
-                        }
-                    </div>
+                    {
+                        file === null
+                            ?
+                            <></>
+                            :
+                            <div className="upload_btn">
+                                <button onClick={() => handleForm()}>Update</button>
+                            </div>
+                    }
                 </div>
-                <div className="profile-info">
-                    <h3>{user?.username}</h3>
-                    <p>Invite Code: {user?.invitation_code}</p>
-                </div>
-                <div className="submit-btn">
-                    <button onClick={() => setIsConfirm(true)} className="btn global-primary-btn">LOG OUT</button>
-                </div>
-            </section>
+            </div>
+            <div className="profile-info">
+                <h3>{session?.username}</h3>
+                <p onClick={() => copyToClipboard(session?.invitation_code ?? "")}>Invite Code: {session?.invitation_code}</p>
+            </div>
         </>
     )
 }
