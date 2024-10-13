@@ -185,7 +185,7 @@ const SubmitJourney = () => {
                         <div className="submit-journey-wrapper">
                             <div className="submit-head-parent">
                                 <div className="submit-head-child">
-                                    <h2>Explore Hotels</h2>
+                                    <h2>Explore</h2>
                                 </div>
                                 <Link href="/dashboard/journey" >
                                     <div className="submit-head-child">
@@ -228,7 +228,7 @@ const SubmitJourney = () => {
                                     </div>
                                     <div className="price-parent">
                                         <div className="price-child">
-                                            <p>Commission</p>
+                                            <p>Profit</p>
                                         </div>
                                         <div className="price-child">
                                             <h3>$ {myState?.commission?.toFixed(2) ?? ""}</h3>
@@ -248,7 +248,7 @@ const SubmitJourney = () => {
                         <div className="rate-review-wrapper">
                             <div className="rate-task-parent">
                                 <div className="rate-task-childs">
-                                    <h3>Hotel Ratings</h3>
+                                    <h3>Rate Us Now</h3>
                                 </div>
                                 <div className="rate-task-childs">
                                     <ul>
@@ -265,7 +265,7 @@ const SubmitJourney = () => {
 
 
 
-                            <Popup trigger={
+                            {/* <Popup trigger={
 
 
                                 <div className="good-comments-parent">
@@ -303,7 +303,7 @@ const SubmitJourney = () => {
                                         </div>
                                     </div>
                                 )}
-                            </Popup>
+                            </Popup> */}
 
 
 

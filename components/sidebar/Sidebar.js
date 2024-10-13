@@ -242,7 +242,7 @@ const Sidebar = ({ session, content }) => {
                             <div className='prof-sub-child'>
                                 <div className='balance'>
                                     <h1>$ {(session?.balance !== undefined ? session.today_commission.toFixed(2) : "0.00")}</h1>
-                                    <p>Commission</p>
+                                    <p>Profit</p>
                                 </div>
                             </div>
                         </div>
@@ -377,7 +377,7 @@ const Sidebar = ({ session, content }) => {
 
                 <div className="side-bar-lists">
                     <ul>
-                        <Link href="/dashboard/journey">
+                        {/* <Link href="/dashboard/journey">
                             <li>
                                 <div className="side-bar-list">
                                     <Image
@@ -392,8 +392,8 @@ const Sidebar = ({ session, content }) => {
                                     <i className="fa fa-angle-right"></i>
                                 </div>
                             </li>
-                        </Link>
-                        <Link href="/dashboard/recharge">
+                        </Link> */}
+                        {/* <Link href="/dashboard/recharge">
                             <li>
                                 <div className="side-bar-list">
                                     <Image
@@ -408,8 +408,8 @@ const Sidebar = ({ session, content }) => {
                                     <i className="fa fa-angle-right"></i>
                                 </div>
                             </li>
-                        </Link>
-                        <Link href="/dashboard/withdrawal">
+                        </Link> */}
+                        {/* <Link href="/dashboard/withdrawal">
                             <li>
                                 <div className="side-bar-list">
                                     <Image
@@ -424,8 +424,8 @@ const Sidebar = ({ session, content }) => {
                                     <i className="fa fa-angle-right"></i>
                                 </div>
                             </li>
-                        </Link>
-                        <Link href="/dashboard/invite">
+                        </Link> */}
+                        {/* <Link href="/dashboard/invite">
                             <li>
                                 <div className="side-bar-list">
                                     <Image
@@ -440,7 +440,7 @@ const Sidebar = ({ session, content }) => {
                                     <i className="fa fa-angle-right"></i>
                                 </div>
                             </li>
-                        </Link>
+                        </Link> */}
                         <Link href="/dashboard/history">
                             <li>
                                 <div className="side-bar-list">
@@ -457,7 +457,7 @@ const Sidebar = ({ session, content }) => {
                                 </div>
                             </li>
                         </Link>
-                        <Link href="">
+                        {/* <Link href="">
                             <li>
                                 <div className="side-bar-list">
                                     <Image
@@ -472,7 +472,7 @@ const Sidebar = ({ session, content }) => {
                                     <i className="fa fa-angle-right"></i>
                                 </div>
                             </li>
-                        </Link>
+                        </Link> */}
                         <Link href="/dashboard/recovery/changePassword">
                             <li>
                                 <div className="side-bar-list">
@@ -489,7 +489,7 @@ const Sidebar = ({ session, content }) => {
                                 </div>
                             </li>
                         </Link>
-                        <Link href="/dashboard/transactions">
+                        {/* <Link href="/dashboard/transactions">
                             <li>
                                 <div className="side-bar-list">
                                     <Image
@@ -504,7 +504,7 @@ const Sidebar = ({ session, content }) => {
                                     <i className="fa fa-angle-right"></i>
                                 </div>
                             </li>
-                        </Link>
+                        </Link> */}
                         <Link href="/dashboard/support">
                             <li>
                                 <div className="side-bar-list">

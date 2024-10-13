@@ -74,7 +74,7 @@ export default function Dogglewindow({ memberShipLevel }) {
                                     </div>
                                     <div className="content-sub-child">
                                         <h3>Level 1 Traveller</h3>
-                                        <p>$ 100.00</p>
+                                        {/* <p>$ 100.00</p> */}
                                     </div>
                                 </div>
                                 <div className="content-child">
@@ -86,8 +86,8 @@ export default function Dogglewindow({ memberShipLevel }) {
                             </div>
                             <div className="content-parent">
                                 <div className="content-child">
-                                    <p>0.25% profit per transaction, 1 withdrawal after completing
-                                        20 transactions per day, 0% handling fee</p>
+                                    {/* <p>0.25% profit per transaction, 1 withdrawal after completing
+                                        20 transactions per day, 0% handling fee</p> */}
                                 </div>
                             </div>
                         </div>
@@ -107,7 +107,7 @@ export default function Dogglewindow({ memberShipLevel }) {
                                     </div>
                                     <div className="content-sub-child">
                                         <h3>Level 2 Traveller</h3>
-                                        <p>$ 100.00</p>
+                                        {/* <p>$ 100.00</p> */}
                                     </div>
                                 </div>
                                 <div className="content-child">
@@ -118,8 +118,8 @@ export default function Dogglewindow({ memberShipLevel }) {
                             </div>
                             <div className="content-parent">
                                 <div className="content-child">
-                                    <p>0.25% profit per transaction, 1 withdrawal after completing
-                                        20 transactions per day, 0% handling fee</p>
+                                    {/* <p>0.25% profit per transaction, 1 withdrawal after completing
+                                        20 transactions per day, 0% handling fee</p> */}
                                 </div>
                             </div>
                         </div>
@@ -139,7 +139,7 @@ export default function Dogglewindow({ memberShipLevel }) {
                                     </div>
                                     <div className="content-sub-child">
                                         <h3>Level 3 Traveller</h3>
-                                        <p>$ 100.00</p>
+                                        {/* <p>$ 100.00</p> */}
                                     </div>
                                 </div>
                                 <div className="content-child">
@@ -150,8 +150,8 @@ export default function Dogglewindow({ memberShipLevel }) {
                             </div>
                             <div className="content-parent">
                                 <div className="content-child">
-                                    <p>0.25% profit per transaction, 1 withdrawal after completing
-                                        20 transactions per day, 0% handling fee</p>
+                                    {/* <p>0.25% profit per transaction, 1 withdrawal after completing
+                                        20 transactions per day, 0% handling fee</p> */}
                                 </div>
                             </div>
                         </div>
@@ -171,7 +171,7 @@ export default function Dogglewindow({ memberShipLevel }) {
                                     </div>
                                     <div className="content-sub-child">
                                         <h3>Level 4 Traveller</h3>
-                                        <p>$ 100.00</p>
+                                        {/* <p>$ 100.00</p> */}
                                     </div>
                                 </div>
                                 <div className="content-child">
@@ -182,8 +182,8 @@ export default function Dogglewindow({ memberShipLevel }) {
                             </div>
                             <div className="content-parent">
                                 <div className="content-child">
-                                    <p>0.25% profit per transaction, 1 withdrawal after completing
-                                        20 transactions per day, 0% handling fee</p>
+                                    {/* <p>0.25% profit per transaction, 1 withdrawal after completing
+                                        20 transactions per day, 0% handling fee</p> */}
                                 </div>
                             </div>
                         </div>

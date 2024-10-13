@@ -62,7 +62,7 @@
                 border-bottom: 2px solid rgba(131, 128, 128, 0.582);
                 width: 100%;
                 position: absolute;
-                top: 5.3rem;
+                // top: 5.3rem;
                 left: 0;
             }
 
@@ -678,17 +678,19 @@
 
                             .balances {
                                 display: flex;
+                                padding-bottom: 1.5rem;
 
                                 p {
                                     font-size: 1.2rem;
                                     color: #77777c;
                                     font-weight: 400;
-                                    padding-bottom: 1.5rem;
+                                  
                                 }
 
                                 h1 {
                                     font-weight: 850;
                                     margin-left: 1.5rem;
+                                    
                                 }
                             }
                         }
@@ -823,12 +825,12 @@
 .submit-journey-section {
     //    background-color: $primaryColor-red;
     height: 100vh;
-    padding: 6.5rem 2rem;
+    padding: 7rem 2rem;
 
     .submit-journey-container-parent {
-
+        padding: 0rem 0.5rem;
         .submit-journey-container-child {
-            padding: 0rem 3rem;
+            // padding: 0rem 0.5rem;
 
 
             .submit-journey-wrapper {
@@ -2833,7 +2835,7 @@
             //     }
             // }
             .home-cards-parent {
-                padding: 0rem 1rem;
+                padding: 0rem 0.6rem;
 
                 .home-cards-child {
                     display: flex;
@@ -2844,7 +2846,7 @@
                     .home-cards-sub-child {
                         flex: 1;
                         background: white;
-                        margin: 0rem 0.4rem;
+                        // margin: 0rem 0.4rem;
                         padding: 2rem 1.5rem;
                         border-radius: 1.5rem;
                         box-shadow: $boxShadow2;
@@ -2897,6 +2899,7 @@
                                     img {
                                         height: auto;
                                         width: 8rem;
+                                        padding: 1rem 1rem;
                                     }
                                 }
 
@@ -4938,43 +4941,158 @@
 //-----------------------media-query-start---------------
 
 
-@media only screen and (max-width: 500px) {
 
-    html {
-        font-size: 80%;
+@media only screen and (max-width: 767px) {
+
+    .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs:first-child .dashboard-navigation-sub-childs h3 {
+        font-size: 1rem;
     }
 
-    .main-home-wrapper .main-home .home-main-container {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-        margin: 0;
-    }
-
-    .model-side1 {
-        width: 35vh;
-    }
-
-    .model-side1 .content-side1 {
-        height: 90%;
-        width: 100%;
-    }
-
-    .main-home-wrapper .main-home .home-main-container .home-cards-parent .home-cards-child .home-cards-sub-child .card-icon img {
-        width: 3.5rem;
-    }
-
-    .main-home-wrapper .main-home .home-main-container .home-cards-parent .home-cards-child .home-cards-sub-child .card-name p {
-        white-space: nowrap;
-        width: 6rem;
-    }
 
 }
 
+
+//  @media only screen and (max-width: 500px) {
+
+//     html {
+//         font-size: 65%;
+//     }
+
+//     .main-home-wrapper .main-home .home-main-container {
+//         position: absolute;
+//         top: 0;
+//         left: 50%;
+//         transform: translateX(-50%);
+//     }
+
+//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+//         margin: 0;
+//     }
+
+//     .model-side1 {
+//         width: 35vh;
+//     }
+
+//     .model-side1 .content-side1 {
+//         height: 90%;
+//         width: 100%;
+//     }
+
+//     .main-home-wrapper .main-home .home-main-container .home-cards-parent .home-cards-child .home-cards-sub-child .card-icon img {
+//         width: 3.5rem;
+//     }
+
+//     .main-home-wrapper .main-home .home-main-container .home-cards-parent .home-cards-child .home-cards-sub-child .card-name p {
+//         white-space: nowrap;
+//         width: 6rem;
+//     }
+
+// }
+@media only screen and (max-width: 500px) {
+
+    html {
+        font-size: 75%;
+    }
+
+    .fixedBottom {
+        position: relative;
+    }
+
+    .success-modal-wrapper {
+        position: fixed;
+    }
+
+    .nav-profile-outer-wrapper {
+        padding: 1rem 0 1rem 0;
+    }
+
+    .nav-profile-outer-wrapper .sidebar-account-info-wrapper .sidebar-account-info-parent {
+        flex-direction: column;
+
+        .sidebar-account-info-childs {
+            border-right: none !important;
+            margin: 1rem 0;
+        }
+    }
+
+    .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs:first-child .dashboard-navigation-sub-childs h3 {
+        display: none;
+    }
+
+    .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs .sidebar-profile-img {
+        height: 8rem;
+        width: 8rem;
+    }
+
+
+    .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs:last-child button {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .submit-journey-section .submit-journey-wrapper .submit-journey-image img {
+        height: 250px;
+    }
+
+    .dashboard-wrapper .dashboard-navigation {
+        padding: 2rem 1rem;
+    }
+
+    .sidebar-overlay {
+        position: fixed;
+    }
+
+    .side-navbar-wrapper {
+        position: fixed;
+    }
+
+    .journey-section {
+        padding: 0 1rem 1rem 1rem;
+    }
+
+    .transaction-section {
+        padding: 0rem 1rem 2rem 1rem;
+    }
+
+    .support-section {
+        padding: 0rem 1rem;
+    }
+
+    .auth-wrapper {
+        padding: 2rem 2rem !important;
+    }
+
+    .history-section {
+        padding: 1rem;
+    }
+
+    .profile-section {
+        padding: 0rem 1rem;
+    }
+
+    .withdrawal-hostory-section {
+        padding: 0rem 1rem;
+    }
+
+    .landing-profile {
+        padding: 0rem 1rem 1rem 1rem;
+    }
+
+    .notice-board-parent {
+        margin: 0rem 1rem 1rem 1rem;
+    }
+
+    .vip-wrapper {
+        padding: 1rem 1rem;
+    }
+
+    .landing-page-tab {
+        margin: 0rem 1rem;
+    }
+
+    .landing-feature-images {
+        padding: 1rem 1rem;
+    }
+}
 @media only screen and (max-width: 450px) {
     html {
         font-size: 75%;
@@ -5148,6 +5266,87 @@
 
     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
         margin: 0;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    html {
+        font-size: 50%;
+    }
+
+    .submit-journey-section .rate-review-wrapper .rate-task-parent .rate-task-childs h3{
+        font-size: 0.9rem;
+    }
+}
+@media only screen and (max-width: 360px) {
+    html {
+        font-size: 30%;
+    }
+
+
+}
+@media only screen and (max-width: 444px) {
+    html {
+        font-size: 58%;
+    }
+
+
+}
+@media only screen and (max-width: 390px) {
+    html {
+        font-size: 50%;
+    }
+
+
+}
+@media only screen and (max-width: 412px) {
+    html {
+        font-size: 55%;
+    }
+
+
+}
+@media only screen and (max-width: 448px) {
+    html {
+        font-size: 61%;
+    }
+
+
+}
+@media only screen and (max-width: 458px) {
+    html {
+        font-size: 62%;
+    }
+
+
+}
+@media only screen and (max-width: 464px) {
+    html {
+        font-size: 65%;
+    }
+
+
+}
+@media only screen and (max-width: 470px) {
+    html {
+        font-size: 66%;
+    }
+
+
+}
+@media only screen and (max-width: 502px) {
+    html{
+        font-size: 70%;
+    }
+}
+@media only screen and (max-width: 506px) {
+    html{
+        font-size: 70%;
+    }
+}
+@media only screen and (max-width: 524px) {
+    .submit-journey-section .rate-review-wrapper .rate-task-parent .rate-task-childs h3{
+        font-size: 0.9rem;
     }
 }
 
