@@ -822,16 +822,19 @@
 
 //Submit Journey Code Start
 
+
+
 .submit-journey-section {
-    //    background-color: $primaryColor-red;
     height: 100vh;
-    padding: 7rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .submit-journey-container-parent {
-        padding: 0rem 0.5rem;
-        .submit-journey-container-child {
-            // padding: 0rem 0.5rem;
 
+
+        .submit-journey-container-child {
+            padding: 0rem 3rem;
 
             .submit-journey-wrapper {
                 background-color: white;
@@ -841,17 +844,18 @@
                 .submit-head-parent {
                     display: flex;
                     justify-content: space-between;
-                    padding: 2rem 2rem;
-                    color: $primaryColor;
+                    padding: 1.5rem 1.5rem;
 
                     .submit-head-child {
                         h2 {
-                            font-size: 2rem;
+                            font-size: 2.1rem;
+                            font-weight: bold;
+                            color: $primaryColor;
                         }
 
                         i {
-                            font-size: 2rem;
-                            color: $primaryColor;
+                            font-size: 2.2rem;
+                            color: #adadad;
                         }
                     }
                 }
@@ -890,23 +894,24 @@
                         }
                     }
                 }
+
                 .submit-journey-content-parent {
                     .submit-journey-content-child {
                         .price-parent {
                             display: flex;
                             justify-content: space-between;
                             padding: 1.5rem 2rem;
-                            border-bottom: 1px solid rgba(46, 45, 45, 0.384);
+                            border-bottom: 1.9px solid #e6e6e6;
 
 
                             .price-child {
                                 p {
-                                    font-size: 1.2rem;
-                                    color: #7e7e7e;
+                                    font-size: 1.3rem;
                                 }
 
                                 h3 {
-                                    font-size: 1.3rem;
+                                    font-size: 1.4rem;
+                                    font-weight: bold;
                                 }
                             }
                         }
@@ -920,8 +925,7 @@
 
 
     .rate-review-wrapper {
-        padding: 2rem 5rem;
-        // margin-top: 2rem;
+        padding: 1rem 1.5rem;
         background-color: white;
         border-bottom-left-radius: 2rem;
         border-bottom-right-radius: 2rem;
@@ -958,14 +962,14 @@
                             font-size: 2rem;
                             color: #a6a6a6;
                         }
-
                         .rated {
-                            color: orange;
+                            color: $tertiaryColor;
                         }
                     }
                 }
             }
         }
+
         .good-comments-parent {
             background-color: white;
             box-shadow: $boxShadow1;
@@ -989,25 +993,11 @@
             }
         }
 
-        .journey-review-tap-parent {
-            // margin: 0rem 1rem;
-            margin-top: 6rem;
-            margin-bottom: 5rem;
-
-            .journey-review-tap-child {
-                display: flex;
-                justify-content: space-between;
-                background: white;
-                padding: 1.5rem 1.5rem;
-                border-radius: 0.6rem;
-                box-shadow: 0px 0px 10px 0.5px rgba(142, 238, 233, 0.616);
-                color: #b2b2b2;
-
-                p {}
-
-                i {}
-            }
-        }
+        // .submit-button {
+        //     display: flex;
+        //     justify-content: center;
+        //     padding-top: 1.5rem;
+        // }
     }
 }
 
@@ -2940,7 +2930,7 @@
                         }
 
                         .down-content-parent {
-                            padding: 2rem 0rem;
+                            padding: 1rem 0rem;
                             border-bottom: 2px solid #e5e5e5;
 
                             .down-content-child {
@@ -2956,7 +2946,7 @@
                                         .content-sub-child {
                                             img {
                                                 height: auto;
-                                                width: 5.5rem;
+                                                width: 5rem;
                                             }
 
                                             h3 {
@@ -4988,111 +4978,423 @@
 //     }
 
 // }
+// @media only screen and (max-width: 500px) {
+
+//     html {
+//         font-size: 75%;
+//     }
+
+//     .fixedBottom {
+//         position: relative;
+//     }
+
+//     .success-modal-wrapper {
+//         position: fixed;
+//     }
+
+//     .nav-profile-outer-wrapper {
+//         padding: 1rem 0 1rem 0;
+//     }
+
+//     .nav-profile-outer-wrapper .sidebar-account-info-wrapper .sidebar-account-info-parent {
+//         flex-direction: column;
+
+//         .sidebar-account-info-childs {
+//             border-right: none !important;
+//             margin: 1rem 0;
+//         }
+//     }
+
+//     .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs:first-child .dashboard-navigation-sub-childs h3 {
+//         display: none;
+//     }
+
+//     .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs .sidebar-profile-img {
+//         height: 8rem;
+//         width: 8rem;
+//     }
+
+
+//     .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs:last-child button {
+//         padding: 0.6rem 0.8rem;
+//     }
+
+//     .submit-journey-section .submit-journey-wrapper .submit-journey-image img {
+//         height: 250px;
+//     }
+
+//     .dashboard-wrapper .dashboard-navigation {
+//         padding: 2rem 1rem;
+//     }
+
+//     .sidebar-overlay {
+//         position: fixed;
+//     }
+
+//     .side-navbar-wrapper {
+//         position: fixed;
+//     }
+
+//     .journey-section {
+//         padding: 0 1rem 1rem 1rem;
+//     }
+
+//     .transaction-section {
+//         padding: 0rem 1rem 2rem 1rem;
+//     }
+
+//     .support-section {
+//         padding: 0rem 1rem;
+//     }
+
+//     .auth-wrapper {
+//         padding: 2rem 2rem !important;
+//     }
+
+//     .history-section {
+//         padding: 1rem;
+//     }
+
+//     .profile-section {
+//         padding: 0rem 1rem;
+//     }
+
+//     .withdrawal-hostory-section {
+//         padding: 0rem 1rem;
+//     }
+
+//     .landing-profile {
+//         padding: 0rem 1rem 1rem 1rem;
+//     }
+
+//     .notice-board-parent {
+//         margin: 0rem 1rem 1rem 1rem;
+//     }
+
+//     .vip-wrapper {
+//         padding: 1rem 1rem;
+//     }
+
+//     .landing-page-tab {
+//         margin: 0rem 1rem;
+//     }
+
+//     .landing-feature-images {
+//         padding: 1rem 1rem;
+//     }
+// }
+// @media only screen and (max-width: 450px) {
+//     html {
+//         font-size: 75%;
+//     }
+
+//     .main-home-wrapper .main-home .home-main-container {
+//         position: absolute;
+//         top: 0;
+//         left: 50%;
+//         transform: translateX(-50%);
+//     }
+
+//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+//         margin: 0;
+//     }
+
+//     .modal {
+//         width: 32rem;
+//     }
+
+// }
+
+// @media only screen and (max-width: 420px) {
+//     html {
+//         font-size: 70%;
+//     }
+
+//     .main-home-wrapper .main-home .home-main-container {
+//         position: absolute;
+//         top: 0;
+//         left: 50%;
+//         transform: translateX(-50%);
+//     }
+
+//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+//         margin: 0;
+//     }
+
+//     .modal {
+//         width: 32rem;
+//     }
+// }
+
+// @media only screen and (max-width: 400px) {
+//     html {
+//         font-size: 67%;
+//     }
+
+//     .main-home-wrapper .main-home .home-main-container {
+//         position: absolute;
+//         top: 0;
+//         left: 50%;
+//         transform: translateX(-50%);
+//     }
+
+//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+//         margin: 0;
+//     }
+
+//     .modal {
+//         width: 32rem;
+//     }
+// }
+
+// @media only screen and (max-width: 380px) {
+//     html {
+//         font-size: 65%;
+//     }
+
+//     .welcome-page-parent .welcomepage-parent .welcomepage-child .travel-programmes-parent .travel-programmes-child .programmes-card {
+//         padding: 0rem;
+//     }
+
+//     .modal {
+//         width: 30rem;
+//     }
+
+//     .main-home-wrapper .main-home .home-main-container {
+//         position: absolute;
+//         left: 50%;
+//         transform: translateX(-50%)
+//     }
+
+//     .model-side1 .content-side1 {
+//         height: 90%;
+//         width: 100%;
+//     }
+
+//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+//         margin: 0;
+//     }
+
+//     .model-side1 {
+//         overflow-y: hidden;
+//     }
+// }
+
+
+// @media only screen and (max-width: 360px) {
+//     html {
+//         font-size: 60%;
+//     }
+
+//     .main-home-wrapper .main-home .home-main-container {
+//         position: absolute;
+//         top: 0;
+//         left: 50%;
+//         transform: translateX(-50%);
+//     }
+
+//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+//         margin: 0;
+//     }
+// }
+
+// @media only screen and (max-width: 340px) {
+//     html {
+//         font-size: 57%;
+//     }
+
+//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+//         margin: 0;
+//     }
+// }
+
+
+// @media only screen and (max-width: 320px) {
+//     html {
+//         font-size: 54%;
+//     }
+
+//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+//         margin: 0;
+//     }
+// }
+
+// @media only screen and (max-width: 300px) {
+//     html {
+//         font-size: 50%;
+//     }
+
+//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+//         margin: 0;
+//     }
+// }
+
+// @media only screen and (max-width: 280px) {
+//     html {
+//         font-size: 46.5%;
+//     }
+
+//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+//         margin: 0;
+//     }
+// }
+
+// @media only screen and (max-width: 260px) {
+//     html {
+//         font-size: 43%;
+//     }
+
+//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+//         margin: 0;
+//     }
+// }
+
+// @media only screen and (max-width: 240px) {
+//     html {
+//         font-size: 40%;
+//     }
+
+//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+//         margin: 0;
+//     }
+// }
+
+// @media only screen and (max-width: 375px) {
+//     html {
+//         font-size: 50%;
+//     }
+
+//     .submit-journey-section .rate-review-wrapper .rate-task-parent .rate-task-childs h3{
+//         font-size: 0.9rem;
+//     }
+//     .submit-journey-section .submit-journey-container-parent {
+//         padding: 0rem 0rem;
+//         width: 330px;
+//     }
+// }
+// @media only screen and (max-width: 360px) {
+//     html {
+//         font-size: 30%;
+//     }
+
+
+// }
+// @media only screen and (max-width: 444px) {
+//     html {
+//         font-size: 58%;
+//     }
+
+
+// }
+// @media only screen and (max-width: 390px) {
+//     html {
+//         font-size: 50%;
+//     }
+
+
+// }
+// @media only screen and (max-width: 412px) {
+//     html {
+//         font-size: 55%;
+//     }
+
+
+// }
+// @media only screen and (max-width: 448px) {
+//     html {
+//         font-size: 61%;
+//     }
+
+
+// }
+// @media only screen and (max-width: 458px) {
+//     html {
+//         font-size: 62%;
+//     }
+
+
+// }
+// @media only screen and (max-width: 464px) {
+//     html {
+//         font-size: 65%;
+//     }
+
+
+// }
+// @media only screen and (max-width: 470px) {
+//     html {
+//         font-size: 66%;
+//     }
+
+
+// }
+// @media only screen and (max-width: 502px) {
+//     html{
+//         font-size: 70%;
+//     }
+// }
+// @media only screen and (max-width: 506px) {
+//     html{
+//         font-size: 70%;
+//     }
+// }
+// @media only screen and (max-width: 524px) {
+//     .submit-journey-section .rate-review-wrapper .rate-task-parent .rate-task-childs h3{
+//         font-size: 0.9rem;
+//     }
+// }
+
+
+
+
+//-----------------------media-query-end---------------
+
+
+
+
+
+//-----------------------media-query-start---------------
+
+
 @media only screen and (max-width: 500px) {
 
     html {
-        font-size: 75%;
+        font-size: 80%;
     }
 
-    .fixedBottom {
-        position: relative;
-    }
-
-    .success-modal-wrapper {
-        position: fixed;
-    }
-
-    .nav-profile-outer-wrapper {
-        padding: 1rem 0 1rem 0;
-    }
-
-    .nav-profile-outer-wrapper .sidebar-account-info-wrapper .sidebar-account-info-parent {
-        flex-direction: column;
-
-        .sidebar-account-info-childs {
-            border-right: none !important;
-            margin: 1rem 0;
-        }
-    }
-
-    .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs:first-child .dashboard-navigation-sub-childs h3 {
-        display: none;
-    }
-
-    .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs .sidebar-profile-img {
-        height: 8rem;
-        width: 8rem;
+    .main-home-wrapper .main-home .home-main-container {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
 
-    .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs:last-child button {
-        padding: 0.6rem 0.8rem;
+
+    .model-side1 {
+        width: 35vh;
     }
 
-    .submit-journey-section .submit-journey-wrapper .submit-journey-image img {
-        height: 250px;
+    .model-side1 .content-side1 {
+        height: 90%;
+        width: 100%;
     }
 
-    .dashboard-wrapper .dashboard-navigation {
-        padding: 2rem 1rem;
+    .main-home-wrapper .main-home .home-main-container .home-cards-parent .home-cards-child .home-cards-sub-child .card-icon img {
+        width: 3.5rem;
     }
 
-    .sidebar-overlay {
-        position: fixed;
+    .main-home-wrapper .main-home .home-main-container .home-cards-parent .home-cards-child .home-cards-sub-child .card-name p {
+        white-space: nowrap;
+        width: 6rem;
     }
 
-    .side-navbar-wrapper {
-        position: fixed;
+    .side-navbar-wrapper .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0rem;
     }
 
-    .journey-section {
-        padding: 0 1rem 1rem 1rem;
-    }
-
-    .transaction-section {
-        padding: 0rem 1rem 2rem 1rem;
-    }
-
-    .support-section {
-        padding: 0rem 1rem;
-    }
-
-    .auth-wrapper {
-        padding: 2rem 2rem !important;
-    }
-
-    .history-section {
-        padding: 1rem;
-    }
-
-    .profile-section {
-        padding: 0rem 1rem;
-    }
-
-    .withdrawal-hostory-section {
-        padding: 0rem 1rem;
-    }
-
-    .landing-profile {
-        padding: 0rem 1rem 1rem 1rem;
-    }
-
-    .notice-board-parent {
-        margin: 0rem 1rem 1rem 1rem;
-    }
-
-    .vip-wrapper {
-        padding: 1rem 1rem;
-    }
-
-    .landing-page-tab {
-        margin: 0rem 1rem;
-    }
-
-    .landing-feature-images {
-        padding: 1rem 1rem;
-    }
 }
+
 @media only screen and (max-width: 450px) {
     html {
         font-size: 75%;
@@ -5105,14 +5407,21 @@
         transform: translateX(-50%);
     }
 
-    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-        margin: 0;
-    }
-
     .modal {
         width: 32rem;
     }
 
+    .welcome-page-parent .welcomepage-parent .welcomepage-child .welcome-content .content-main .img-content-container .img-content-parent .img-footer-name h1 {
+        font-size: larger;
+    }
+
+    .journey-section .journey-main-wrapper .journey-main-parent .journey-main-child .journey-next-main-parent .journey-next-main-child .img-content-container .img-content-parent .img-footer-name h1 {
+        font-size: larger;
+    }
+
+    .side-navbar-wrapper .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0rem;
+    }
 }
 
 @media only screen and (max-width: 420px) {
@@ -5127,12 +5436,12 @@
         transform: translateX(-50%);
     }
 
-    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-        margin: 0;
-    }
-
     .modal {
         width: 32rem;
+    }
+
+    .side-navbar-wrapper .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0rem;
     }
 }
 
@@ -5148,12 +5457,12 @@
         transform: translateX(-50%);
     }
 
-    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-        margin: 0;
-    }
-
     .modal {
         width: 32rem;
+    }
+
+    .side-navbar-wrapper .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0rem;
     }
 }
 
@@ -5181,12 +5490,12 @@
         width: 100%;
     }
 
-    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-        margin: 0;
-    }
-
     .model-side1 {
         overflow-y: hidden;
+    }
+
+    .side-navbar-wrapper .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0rem;
     }
 }
 
@@ -5203,8 +5512,8 @@
         transform: translateX(-50%);
     }
 
-    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-        margin: 0;
+    .side-navbar-wrapper .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0rem;
     }
 }
 
@@ -5213,8 +5522,8 @@
         font-size: 57%;
     }
 
-    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-        margin: 0;
+    .side-navbar-wrapper .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0rem;
     }
 }
 
@@ -5223,10 +5532,10 @@
     html {
         font-size: 54%;
     }
-
-    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-        margin: 0;
+    .side-navbar-wrapper .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0rem;
     }
+
 }
 
 @media only screen and (max-width: 300px) {
@@ -5234,8 +5543,8 @@
         font-size: 50%;
     }
 
-    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-        margin: 0;
+    .side-navbar-wrapper .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0rem;
     }
 }
 
@@ -5244,8 +5553,8 @@
         font-size: 46.5%;
     }
 
-    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-        margin: 0;
+    .side-navbar-wrapper .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0rem;
     }
 }
 
@@ -5254,8 +5563,8 @@
         font-size: 43%;
     }
 
-    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-        margin: 0;
+    .side-navbar-wrapper .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0rem;
     }
 }
 
@@ -5264,90 +5573,10 @@
         font-size: 40%;
     }
 
-    .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-        margin: 0;
-    }
-}
-
-@media only screen and (max-width: 375px) {
-    html {
-        font-size: 50%;
+    .side-navbar-wrapper .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
+        margin: 0rem;
     }
 
-    .submit-journey-section .rate-review-wrapper .rate-task-parent .rate-task-childs h3{
-        font-size: 0.9rem;
-    }
-}
-@media only screen and (max-width: 360px) {
-    html {
-        font-size: 30%;
-    }
-
-
-}
-@media only screen and (max-width: 444px) {
-    html {
-        font-size: 58%;
-    }
-
-
-}
-@media only screen and (max-width: 390px) {
-    html {
-        font-size: 50%;
-    }
-
-
-}
-@media only screen and (max-width: 412px) {
-    html {
-        font-size: 55%;
-    }
-
-
-}
-@media only screen and (max-width: 448px) {
-    html {
-        font-size: 61%;
-    }
-
-
-}
-@media only screen and (max-width: 458px) {
-    html {
-        font-size: 62%;
-    }
-
-
-}
-@media only screen and (max-width: 464px) {
-    html {
-        font-size: 65%;
-    }
-
-
-}
-@media only screen and (max-width: 470px) {
-    html {
-        font-size: 66%;
-    }
-
-
-}
-@media only screen and (max-width: 502px) {
-    html{
-        font-size: 70%;
-    }
-}
-@media only screen and (max-width: 506px) {
-    html{
-        font-size: 70%;
-    }
-}
-@media only screen and (max-width: 524px) {
-    .submit-journey-section .rate-review-wrapper .rate-task-parent .rate-task-childs h3{
-        font-size: 0.9rem;
-    }
 }
 
 

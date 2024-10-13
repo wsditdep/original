@@ -13,7 +13,7 @@ import Confetti from 'react-confetti';
 import { useRouter } from "next/navigation";
 import Breadcrumb from "../breadcrumb/Breadcrumb";
 import Link from "next/link";
-import blurbg from "@/public/journey-page/blurbg.png"
+import blurbg from "@/public/journey-page/blurbg1.png"
 import Popup from "reactjs-popup";
 
 function Submit() {
