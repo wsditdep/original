@@ -264,7 +264,7 @@ export const withdrawal = async (formData) => {
         const membership = await Commission.findOne({ membership_name: authenticatedUser?.membership_level });
 
         if (authenticatedUser?.today_order < membership?.withdrawal_needed_order) return {
-            message: `Complete your jouney first to withdrawal`,
+            message: `Complete your Explore first to withdrawal`,
             status: 404,
             type: "danger"
         };

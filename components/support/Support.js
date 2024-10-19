@@ -4,6 +4,7 @@ import Navbar from "@/components/navBar/Navbar";
 import bgimg from "@/public/home-page/bgimg.png";
 import headphone from "@/public/home-page/icon6.png";
 import logo from "@/public/originaltravel_image/OriginalTravel-Logo-03.png";
+import Link from 'next/link';
 
 
 const Support = ({ setting }) => {
@@ -40,12 +41,14 @@ const Support = ({ setting }) => {
                                         width={100}
                                         unoptimized
                                     />
-                                    <h1>Contact Us via Whatsapp</h1>
+                                    <h1>Contact Us via Telegram</h1>
                                     <p>Operation Hours: 10:00AM - 10:00PM</p>
                                     <p>(Mon - Sun)</p>
+                                    <Link href="/">
                                     <div className='support-button'>
-                                        <button>Redirect to Whatsapp</button>
+                                        <button>Redirect to Telegram</button>
                                     </div>
+                                    </Link>
                                 </div>
                                 <div className="support-footer-container">
                             <div className="support-footer">

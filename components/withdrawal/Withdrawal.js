@@ -114,7 +114,7 @@ const Withdrawal = ({ user, withdrawalInfo }) => {
                                     <h2>{user?.wallet_name}</h2>
                                     <h2>{user?.wallet_address}</h2>
                                     <h2>{user?.network_type}</h2> 
-                                    <h2>{user?.currency}</h2>  
+                                    {/* <h2>{user?.currency}</h2>   */}
                                 </div>
                             </div>
 

@@ -107,7 +107,7 @@ const LinkWallet = ({ user }) => {
                                 </div>
                             </div>
 
-                            <div className="wallet-section-child">
+                            {/* <div className="wallet-section-child">
                                 <div className="wallet-sub-child">
                                     <p>Currency</p>
                                     <div className="cus-radio-btn-wrapper">
@@ -145,7 +145,7 @@ const LinkWallet = ({ user }) => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
 
                             <div className="wallet-section-child">
                                 <div className="wallet-sub-child">
