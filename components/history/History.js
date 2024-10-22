@@ -1,6 +1,7 @@
 "use client";
 
-import moment from "moment";
+import moment from 'moment';
+import 'moment-timezone';
 import Image from "next/image";
 import { useState } from "react";
 import data_not_found from "@/public/not_found.png";
@@ -66,7 +67,7 @@ const History = ({ data, membership }) => {
                                     <div className="journey-history-card-child">
                                         <div className="card-sub-child">
                                             <div className="card-date">
-                                                <p>{moment(data?.createdAt).format("Do MMM YYYY, h:mm a")}</p>
+                                                <p>{moment.tz(data?.createdAt, process.env.NEXT_PUBLIC_TIMWZONE).format('MMM, Do YYYY, h:mm:ss a')}</p>
                                             </div>
                                             <div className="card-status">
                                                 <button>{data?.status}</button>
