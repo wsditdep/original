@@ -49,17 +49,21 @@ const SubmitJourney = () => {
             const response = await submitJourney();
 
             if (response.status === 201) {
-                if (response?.isNextJourney) {
-                    setIsNextData(true);
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, [3000])
-                } else {
-                    setIsSuccess(true);
-                    setIsPressed(true);
-                    toast.success(response.message);
-                    push("/dashboard/journey");
-                }
+                setLoading(true);
+                setTimeout(() => {
+                    setLoading(false);
+                    if (response?.isNextJourney) {
+                        setIsNextData(true);
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, [3000])
+                    } else {
+                        setIsSuccess(true);
+                        setIsPressed(true);
+                        toast.success(response.message);
+                        push("/dashboard/journey");
+                    }
+                }, [response?.waitingTime * 1000])
             } else {
                 toast.error(response.message);
                 setIsPressed(true);
@@ -99,9 +103,6 @@ const SubmitJourney = () => {
         console.log(index)
     };
 
-
-
-
     const reviews = [
         { id: 1, data: "The hotel is filled with amazing actors who truly make the film." },
         { id: 2, data: "The actors give a legendary performance in this film, it is absolutely hilarious." },
@@ -115,18 +116,11 @@ const SubmitJourney = () => {
         { id: 10, data: "This is the only best hotel I have ever recommended in my life." }
     ];
 
-
-
     const [isCommand, setIsCommand] = useState("Comment Good Review");
-
 
     const manage_review = (commandValue) => {
         setIsCommand(commandValue)
     }
-
-
-
-
 
     return (
         <>

@@ -19,7 +19,7 @@ const page = async () => {
 
     return (
         <>
-            <Navbar/>
+            <Navbar />
             <Breadcrumb title="Dealing Records" link="/dashboard" />
             <section className="history-section">
                 <History

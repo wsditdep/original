@@ -1,8 +1,9 @@
 import React from 'react'
 import Breadcrumb from '../breadcrumb/Breadcrumb'
-import moment from 'moment';
 import data_not_found from "@/public/not_found.png";
 import Image from 'next/image';
+import moment from 'moment';
+import 'moment-timezone';
 
 const RechargeHistory = ({ history }) => {
 
@@ -38,13 +39,13 @@ const RechargeHistory = ({ history }) => {
                                                 <>
                                                     <h3>${data?.amount} has been crediteds to your account</h3>
                                                     <p>Recharged Amount: ${data?.amount}</p>
-                                                    <h6>{moment(data?.createdAt).format("Do MMM YYYY, h:mm a")}</h6>
+                                                    <h6>{moment.tz(data?.createdAt, process.env.NEXT_PUBLIC_TIMWZONE).format('MMM, Do YYYY, h:mm:ss a')}</h6>
                                                 </>
                                                 :
                                                 <>
                                                 <h3>${data?.amount} has been debited from your account</h3>
                                                 <p>Debited Amount: ${data?.amount}</p>
-                                                <h6>{moment(data?.createdAt).format("Do MMM YYYY, h:mm a")}</h6>
+                                                <h6>{moment.tz(data?.createdAt, process.env.NEXT_PUBLIC_TIMWZONE).format('MMM, Do YYYY, h:mm:ss a')}</h6>
                                                 </>
                                         }
                                     </div>
