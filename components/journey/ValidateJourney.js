@@ -19,7 +19,7 @@ function Submit() {
                 pending ?
                     <> Please wait... <i className="fa fa-spinner loading_animation"></i></>
                     :
-                    `Explore Hotel`
+                    `Start Explore`
 
             }
             </button>

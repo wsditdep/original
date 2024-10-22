@@ -16,7 +16,7 @@ function Submit() {
     const { pending } = useFormStatus();
     return (
         <>
-            <button type="submit" disabled={pending} className="btn global-primary-btn">{pending ? "Submitting..." : "Change Login PIN"}</button>
+            <button type="submit" disabled={pending} className="btn global-primary-btn">{pending ? "Submitting..." : "Change Security PIN"}</button>
         </>
     )
 }
@@ -58,7 +58,7 @@ const changePassword = () => {
                                 <button className="security-tab-active">Login Password</button>
                             </Link>
                             <Link href="/dashboard/recovery/changePin">
-                                <button>Withdrawal PIN</button>
+                                <button>Withdraw PIN</button>
                             </Link>
                         </div>
                         <div className="security-tab-parent">
@@ -88,12 +88,10 @@ const changePassword = () => {
                                                     <i onClick={() => setIsShow(!isShow)} className="fa fa-eye-slash"></i>
                                             }
                                         </div>
-
                                     </div>
                                     <div className="sec-label-parent">
                                         <div className="sec-label-child">
                                             <label>New Password</label>
-
                                         </div>
                                         <div className="sec-label-child">
                                             <input
@@ -139,30 +137,32 @@ const changePassword = () => {
 
                                     </div>
                                     <div className="app-form-group">
-                                        <Submit />
+                                        <div className="change-btn">
+                                            <Submit />
+                                        </div>
                                     </div>
 
                                 </div>
                             </form>
-                     
                         </div>
-                        <div className="welcome-footer-container">
-                                <div className="welcome-footer">
-                                    <p>Copyright © 2024 Original Travel . All Rights Reserved.</p>
-                                    <div className="help-center-icon">
-                                        <Image
-                                            src={icon6}
-                                            alt="icon"
-                                            height={100}
-                                            width={100}
-                                            unoptimized
-                                        />
-                                    </div>
-                                </div>
-                            </div>
                     </div>
-
                 </section>
+                <div className="pwd-footer-container">
+                    <div className="pwd-footer">
+                        <p>Copyright © 2024 Original Travel . All Rights Reserved</p>
+                        {/* <div className="help-center-icon">
+                            <Link href="/dashboard/support">
+                                <Image
+                                    src={icon6}
+                                    alt="icon"
+                                    height={100}
+                                    width={100}
+                                    unoptimized
+                                />
+                            </Link>
+                        </div> */}
+                    </div>
+                </div>
             </div>
         </>
     )

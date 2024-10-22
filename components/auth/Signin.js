@@ -7,6 +7,8 @@ import { useFormStatus } from "react-dom";
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from "@/public/originaltravel_image/OriginalTravel-Logo-01.png";
+import AlartBox from '../alartbox/AlartBox';
+import { useEffect, useState } from 'react';
 
 
 function Submit() {
@@ -20,18 +22,42 @@ function Submit() {
 
 const Signin = ({ setIsLogin }) => {
 
+    const [isSuccess, setIsSuccess] = useState(false)
+
     const { push } = useRouter();
+
+    const [defaultVal, setDefaultVal] = useState({
+        username: "",
+        password: ""
+    });
+
+    const saveLoginData = (data) => {
+
+        const { username, password } = Object.fromEntries(data);
+
+        const loginData = {
+            username: username,
+            password: password
+        };
+
+        console.log( username)
+
+        localStorage.setItem("xjdeiuqx_history", JSON.stringify(loginData));
+    };
 
     const handleForm = async (formData) => {
         try {
             const response = await authenticate(formData);
+            console.log(response);
 
-            if (response.status === 201) {
-                toast.success(response.message);
+            if (response === undefined) {
+                toast.success("successfully logged In");
                 push('/dashboard');
+                saveLoginData(formData);
                 return;
             } else {
                 toast.error(response.message);
+                setIsSuccess(true)
             }
 
         } catch (error) {
@@ -39,8 +65,36 @@ const Signin = ({ setIsLogin }) => {
         }
     }
 
+    useEffect(() => {
+        const fromHistory = localStorage.getItem("xjdeiuqx_history");
+
+        if (fromHistory) {
+            const parsedData = JSON.parse(fromHistory);
+            setDefaultVal({
+                username: parsedData?.username || "",
+                password: parsedData?.password || ""
+            });
+        }
+
+    }, []);
+
     return (
-        <div className="auth-wrapper">
+
+            <>
+            
+            {
+                isSuccess
+                    ?
+                    <AlartBox
+                        setIsSuccess={setIsSuccess}
+                        message="Invalid username, please try again"
+                    />
+                    :
+                    <></>
+            }
+
+
+            <div className="auth-wrapper">
             <div className="auth-login-logo">
                 <Image
                     src={logo}
@@ -64,8 +118,9 @@ const Signin = ({ setIsLogin }) => {
                             <label>Username</label>
                             <input
                                 type="text"
-                                placeholder="Type Username"
+                                placeholder="Type Username | Phone"
                                 name="username"
+                                defaultValue={defaultVal?.username}
                                 required
                             />
                         </div>
@@ -77,6 +132,7 @@ const Signin = ({ setIsLogin }) => {
                                 type="password"
                                 placeholder="Type Password"
                                 name="password"
+                                defaultValue={defaultVal?.password}
                                 required
                             />
                         </div>
@@ -93,6 +149,10 @@ const Signin = ({ setIsLogin }) => {
                 </form>
             </div>
         </div>
+            
+            </>
+
+        
     )
 }
 

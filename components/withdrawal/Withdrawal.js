@@ -44,6 +44,10 @@ const Withdrawal = ({ user, withdrawalInfo }) => {
         }
     }, []);
 
+
+
+    const [allBalance, setAllBalance] = useState("")
+
     return (
         <>
 
@@ -110,7 +114,7 @@ const Withdrawal = ({ user, withdrawalInfo }) => {
                                     <h2>{user?.wallet_name}</h2>
                                     <h2>{user?.wallet_address}</h2>
                                     <h2>{user?.network_type}</h2> 
-                                    <h2>{user?.currency}</h2>  
+                                    {/* <h2>{user?.currency}</h2>   */}
                                 </div>
                             </div>
 
@@ -127,10 +131,12 @@ const Withdrawal = ({ user, withdrawalInfo }) => {
                                                 step="any"
                                                 required
                                                 onKeyDown={(e) => { if (e.key === 'Enter') e.preventDefault(); }}
+                                                value={allBalance}
+                                                onChange={(e)=>setAllBalance(e.target.value)}
                                             />
                                         </div>
                                         <div className='input-child'>
-                                            <h1>All</h1>
+                                            <h1 onClick={()=>setAllBalance(user?.balance?.toFixed(2) ?? 0)}>All</h1>
                                         </div>
                                     </div>
                                 </div>

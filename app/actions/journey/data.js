@@ -168,8 +168,31 @@ export const fetchProduct = async () => {
                 ];
 
                 products = await Product.aggregate(pipeline);
-                randomIndex = Math.floor(Math.random() * products.length);
+                let relocatePorducts = products;
 
+                // remove the dublication
+                if (checkPending !== null) {
+                    const allHistoryProducts = checkPending?.JourneyHistory || [];
+
+                    const allHistoryProductIds = allHistoryProducts.map(product => product._id.toString());
+                    products = products.filter(product => !allHistoryProductIds.includes(product._id.toString()));
+
+                    if (products?.length === 0) {
+                        products = relocatePorducts
+                    }
+                } else {
+                    products = relocatePorducts
+                }
+
+                if (authenticatedUser?.balance < membership?.account_balance_limit) {
+                    return {
+                        message: "Insufficient balance!",
+                        status: 405,
+                        type: "danger"
+                    };
+                }
+
+                randomIndex = Math.floor(Math.random() * products.length);
                 product = products[randomIndex];
 
                 if (!product) return {
@@ -208,7 +231,7 @@ export const fetchProduct = async () => {
                     createdAt: createdAt
                 }
 
-                const updateArray = [...withoutPendingList, newObj]
+                const updateArray = [...withoutPendingList, newObj];
 
                 await JourneyHistory.findByIdAndUpdate(authenticatedUser?.journeyHistory, {
                     JourneyHistory: updateArray
@@ -217,8 +240,13 @@ export const fetchProduct = async () => {
 
             // calculate commission
 
-            commission = product?.productPrice * membership?.commission_rate;
-            totalValue = product?.productPrice + commission;
+            if (product?.isJourneyProduct) {
+                commission = product?.productPrice * membership?.ticket_commission;
+                totalValue = product?.productPrice + commission;
+            } else {
+                commission = product?.productPrice * membership?.commission_rate;
+                totalValue = product?.productPrice + commission;
+            }
         }
 
         // updating the db
@@ -229,21 +257,23 @@ export const fetchProduct = async () => {
         if (hasPendingProduct) {
 
         } else {
-
             if (journeyProduct?.isJourneyProduct) {
                 const deduction = journeyProduct?.productPrice * membership?.ticket_commission;
-                calculateBalance = (authenticatedUser?.balance - product?.productPrice) - deduction;
+                // calculateBalance = (authenticatedUser?.balance - product?.productPrice) - deduction;
+                calculateBalance = (authenticatedUser?.balance - product?.productPrice);
                 calculateCommission = product?.productPrice * membership?.ticket_commission;
                 calculatedCommission = authenticatedUser?.today_commission + calculateCommission;
 
                 const negativeValue = authenticatedUser?.balance - product?.productPrice;
                 const netFrozeAmount = product?.productPrice - Math.abs(negativeValue);
-                const calFrozeAmount = authenticatedUser?.froze_amount + Math.abs(netFrozeAmount) + deduction;
+                // const calFrozeAmount = authenticatedUser?.froze_amount + Math.abs(netFrozeAmount) + deduction;
+                const calFrozeAmount = authenticatedUser?.froze_amount + Math.abs(netFrozeAmount);
 
                 await User.findByIdAndUpdate(authenticatedUser?._id, {
                     balance: calculateBalance?.toFixed(2),
                     froze_amount: calFrozeAmount?.toFixed(2),
-                    today_commission: calculatedCommission?.toFixed(2)
+                    today_commission: calculatedCommission?.toFixed(2),
+                    ticket_commission: (authenticatedUser?.ticket_commission ?? 0) + deduction
                 });
 
                 await AccountChange.create({

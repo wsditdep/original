@@ -110,7 +110,7 @@ const page = async () => {
                                         />
                                     </div>
                                     <div className="card-name">
-                                        <p>Reload</p>
+                                        <p>Recharge</p>
                                     </div>
                                 </div>
                                 </Link>

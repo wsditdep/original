@@ -7,12 +7,13 @@ import toast from "react-hot-toast";
 import Link from 'next/link';
 import { logout } from '@/app/actions/user/action';
 import { useRouter } from 'next/navigation';
+
 import sidebtn from "@/public/sidebar/sidebtn.png"
 import nouser from "@/public/sidebar/nouser.png"
-import bronzelevel from "@/public/home-page/vip1.png"
-import silverlevel from "@/public/home-page/vip2.png"
-import goldlevel from "@/public/home-page/vip3.png"
-import elitelevel from "@/public/home-page/vip4.png"
+import bronzelevel from "@/public/sidebar/vip1.png"
+import silverlevel from "@/public/sidebar/vip2.png"
+import goldlevel from "@/public/sidebar/vip3.png"
+import elitelevel from "@/public/sidebar/vip4.png"
 import copy from "@/public/sidebar/copy.png";
 import icon1 from "@/public/sidebar/icon1.png";
 import icon2 from "@/public/sidebar/icon2.png";
@@ -33,6 +34,7 @@ import Tc from '../content/Tc';
 import Agent from '../content/Agent';
 import Faq from '../content/Faq';
 import About from '../content/About';
+import { Profile } from '../profile/Profile';
 
 
 const Sidebar = ({ session, content }) => {
@@ -52,6 +54,16 @@ const Sidebar = ({ session, content }) => {
     }
 
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const openModal = () => setIsOpen(true);
+    const closeModal = () => setIsOpen(false);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
+    };
 
     return (
         <div className="dashboard-navigation-childs">
@@ -75,21 +87,21 @@ const Sidebar = ({ session, content }) => {
                         <div className='side-bar-profile-child'>
                             <div className='profile-parent'>
                                 <div className='profile-child'>
-                                    <div className='side-close-btn' onClick={() => setIsNav(false)}>
+                                    <div className='side-close-btn'>
                                         <Image
                                             src={sidebtn}
                                             alt='icon'
                                             height={100}
                                             width={100}
                                             unoptimized
+                                            onClick={() => setIsNav(false)}
                                         />
                                     </div>
                                 </div>
                             </div>
-                            <Link href="/dashboard/profile">
                             <div className='profile-parent'>
                                 <div className='profile-child'>
-                                    <div className='user-img'>
+                                    <div className='user-img' onClick={openModal}>
                                         {
                                             session && session?.url && session?.url === null
                                                 ?
@@ -110,9 +122,29 @@ const Sidebar = ({ session, content }) => {
                                                 />
                                         }
                                     </div>
+
+
+
+                                    <div className="modal-container">
+                                        {isOpen && (
+                                            <div className="modal-overlay" onClick={closeModal}>
+                                                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                                                    <div className='model-title'>
+                                                        <h2>Profile</h2>
+                                                    </div>
+                                                    <Profile session={JSON.parse(JSON.stringify(session))} />
+                                                    <div className='btn-wrap'>
+                                                        <button onClick={closeModal}>Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+
+
+
                                 </div>
                             </div>
-                            </Link>
                             <div className='profile-parent'>
                                 <div className='profile-child'>
                                     <div className='class-name'>
@@ -135,7 +167,7 @@ const Sidebar = ({ session, content }) => {
                                 <div className='user-level'>
 
                                     {
-                                        session?.membership_level === "Bronze"
+                                        session?.membership_level === "Basic Tour"
                                             ?
                                             <Image
                                                 src={bronzelevel}
@@ -144,7 +176,7 @@ const Sidebar = ({ session, content }) => {
                                                 width={100}
                                                 unoptimized
                                             />
-                                            : session?.membership_level === "Silver"
+                                            : session?.membership_level === "Silver Tour"
                                                 ? <Image
                                                     src={silverlevel}
                                                     alt='icon'
@@ -152,7 +184,7 @@ const Sidebar = ({ session, content }) => {
                                                     width={100}
                                                     unoptimized
                                                 />
-                                                : session?.membership_level === "Gold"
+                                                : session?.membership_level === "Gold Tour"
                                                     ? <Image
                                                         src={goldlevel}
                                                         alt='icon'
@@ -160,7 +192,7 @@ const Sidebar = ({ session, content }) => {
                                                         width={100}
                                                         unoptimized
                                                     />
-                                                    : session?.membership_level === "Elite"
+                                                    : session?.membership_level === "Elite Tour"
                                                         ? <Image
                                                             src={elitelevel}
                                                             alt='icon'
@@ -210,7 +242,7 @@ const Sidebar = ({ session, content }) => {
                             <div className='prof-sub-child'>
                                 <div className='balance'>
                                     <h1>$ {(session?.balance !== undefined ? session.today_commission.toFixed(2) : "0.00")}</h1>
-                                    <p>Commission</p>
+                                    <p>Profit</p>
                                 </div>
                             </div>
                         </div>
@@ -345,7 +377,7 @@ const Sidebar = ({ session, content }) => {
 
                 <div className="side-bar-lists">
                     <ul>
-                        <Link href="/dashboard/journey">
+                        {/* <Link href="/dashboard/journey">
                             <li>
                                 <div className="side-bar-list">
                                     <Image
@@ -360,8 +392,8 @@ const Sidebar = ({ session, content }) => {
                                     <i className="fa fa-angle-right"></i>
                                 </div>
                             </li>
-                        </Link>
-                        <Link href="/dashboard/recharge">
+                        </Link> */}
+                        {/* <Link href="/dashboard/recharge">
                             <li>
                                 <div className="side-bar-list">
                                     <Image
@@ -376,8 +408,8 @@ const Sidebar = ({ session, content }) => {
                                     <i className="fa fa-angle-right"></i>
                                 </div>
                             </li>
-                        </Link>
-                        <Link href="/dashboard/withdrawal">
+                        </Link> */}
+                        {/* <Link href="/dashboard/withdrawal">
                             <li>
                                 <div className="side-bar-list">
                                     <Image
@@ -392,8 +424,8 @@ const Sidebar = ({ session, content }) => {
                                     <i className="fa fa-angle-right"></i>
                                 </div>
                             </li>
-                        </Link>
-                        <Link href="/dashboard/invite">
+                        </Link> */}
+                        {/* <Link href="/dashboard/invite">
                             <li>
                                 <div className="side-bar-list">
                                     <Image
@@ -408,7 +440,7 @@ const Sidebar = ({ session, content }) => {
                                     <i className="fa fa-angle-right"></i>
                                 </div>
                             </li>
-                        </Link>
+                        </Link> */}
                         <Link href="/dashboard/history">
                             <li>
                                 <div className="side-bar-list">
@@ -425,7 +457,7 @@ const Sidebar = ({ session, content }) => {
                                 </div>
                             </li>
                         </Link>
-                        <Link href="/">
+                        {/* <Link href="">
                             <li>
                                 <div className="side-bar-list">
                                     <Image
@@ -440,7 +472,7 @@ const Sidebar = ({ session, content }) => {
                                     <i className="fa fa-angle-right"></i>
                                 </div>
                             </li>
-                        </Link>
+                        </Link> */}
                         <Link href="/dashboard/recovery/changePassword">
                             <li>
                                 <div className="side-bar-list">
@@ -457,7 +489,7 @@ const Sidebar = ({ session, content }) => {
                                 </div>
                             </li>
                         </Link>
-                        <Link href="/dashboard">
+                        {/* <Link href="/dashboard/transactions">
                             <li>
                                 <div className="side-bar-list">
                                     <Image
@@ -472,7 +504,7 @@ const Sidebar = ({ session, content }) => {
                                     <i className="fa fa-angle-right"></i>
                                 </div>
                             </li>
-                        </Link>
+                        </Link> */}
                         <Link href="/dashboard/support">
                             <li>
                                 <div className="side-bar-list">
@@ -505,15 +537,27 @@ const Sidebar = ({ session, content }) => {
                                 </div>
                             </li>
                         </Link>
-                        <div className="logout-style" onClick={() => handleLogout()}>
+                        <div className="logout-style" onClick={toggleModal}>
                             <div className='logout-parent'>
                                 <div className="side-bar-list">
-
                                 </div>
                             </div>
                             <div className='logout-parent'>
                                 <div className="side-bar-list">
                                     <p>Logout</p>
+                                    <div className="App">
+                                        {isModalOpen && (
+                                            <div className="modal">
+                                                <div className="modal-content">
+                                                    <p>Are you sure you want to logout?</p>
+                                                    <div className='yesno'>
+                                                        <button onClick={() => handleLogout()}>Yes</button>
+                                                        <button onClick={toggleModal}>No</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                             <div className='logout-parent'>
@@ -525,7 +569,7 @@ const Sidebar = ({ session, content }) => {
                     </ul>
                     <div className='copy-right-parent'>
                         <div className='copy-right-child'>
-                            <p className="sidebar-copyright">Copyright © 2024 Original Travel. All Rights Reserved.</p>
+                            <p className="sidebar-copyright">Copyright © 2024 Original Travel . All Rights Reserved.</p>
                         </div>
                     </div>
                 </div>

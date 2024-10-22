@@ -34,7 +34,7 @@ const page = async () => {
   return (
     <>
       <Navbar />
-      <Breadcrumb title="Explore Hotel" link="/dashboard" />
+      <Breadcrumb title="Explore" link="/dashboard" />
       <section className="journey-section">
 
         <div className='journey-main-wrapper'>
@@ -110,10 +110,10 @@ const page = async () => {
                       <p>Today Profit</p>
                       <h1>$ {user?.today_commission?.toFixed(2) ?? ""}</h1>
                     </div>
-                    <div className='balances'>
+                    {/* <div className='balances'>
                       <p>Total Profit</p>
-                      <h1>$ 1,000.00</h1>
-                    </div>
+                      <h1>$  {user?.balance?.toFixed(2) ?? ""}</h1>
+                    </div> */}
                     <div className='balances'>
                       <p>Account Balance</p>
                       <h1>$ {user?.balance?.toFixed(2) ?? ""}</h1>
@@ -225,7 +225,7 @@ const page = async () => {
                 <div className='journey-next-main-child'>
                   <div className="welcome-footer-container">
                     <div className="welcome-footer">
-                      <p>Copyright © 2024 Ausventure . All Rights Reserved.</p>
+                      <p>Copyright © 2024 Original Travel . All Rights Reserved.</p>
                       <div className="help-center-icon">
                         <Image
                           src={icon6}
