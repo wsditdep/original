@@ -1,13 +1,12 @@
 "use client";
 
-import moment from 'moment';
-import 'moment-timezone';
 import Image from "next/image";
 import { useState } from "react";
 import data_not_found from "@/public/not_found.png";
 import Link from "next/link";
-
 import icon6 from "@/public/home-page/icon6.png";
+import moment from 'moment';
+import 'moment-timezone';
 
 
 const History = ({ data, membership }) => {

@@ -238,11 +238,14 @@ export const submitJourney = async () => {
 
         }
 
+        const awaitTime = await Setting.findOne();
+
         return {
             message: "Successful",
             status: 201,
             type: "success",
-            isNextJourney
+            isNextJourney,
+            waitingTime: awaitTime?.payment_waiting_time
         };
     } catch (error) {
         console.log(error)

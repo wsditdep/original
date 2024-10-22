@@ -5,10 +5,7 @@ import { fetchAuthenticatedUser, fetchCommission, fetchMembership } from "../act
 import Image from "next/image";
 import SecurityCheck from "@/components/checkSecurityCode/CheckSecurityCode";
 
-
-import logo1 from "@/public/originaltravel_image/OriginalTravel-Logo-01.png";
 import logo from "@/public/originaltravel_image/OriginalTravel-Logo-03.png";
-import notifiicon from "@/public/sidebar/notifiicon.png";
 import bgimg from "@/public/home-page/bgimg.png";
 import icon1 from "@/public/home-page/icon1.png";
 import icon2 from "@/public/home-page/icon2.png";
@@ -26,16 +23,12 @@ import Dogglewindow from "@/components/doggleWindow/Dogglewindow";
 import Link from "next/link";
 import Navbar from "@/components/navBar/Navbar";
 
-
-
-
 const page = async () => {
 
     const { user } = await auth();
     const authenticatedUser = await fetchAuthenticatedUser() || {};
     const notice = await fetchNotice() || [];
     const { allCommission, userCommission } = await fetchCommission();
-
 
     const memberShipLevel = await fetchMembership();
 
@@ -81,74 +74,76 @@ const page = async () => {
 
                         <div className="home-cards-parent">
                             <div className="home-cards-child">
-                            <Link href="/dashboard/journey">
-                                <div className="home-cards-sub-child">
-                                   
-                                    <div className="card-icon">
-                                        <Image
-                                            src={icon1}
-                                            alt="icon"
-                                            height={100}
-                                            width={100}
-                                            unoptimized
-                                        />
+                                <Link href="/dashboard/journey">
+                                    <div className="home-cards-sub-child">
+
+                                        <div className="card-icon">
+                                            <Image
+                                                src={icon1}
+                                                alt="icon"
+                                                height={100}
+                                                width={100}
+                                                unoptimized
+                                            />
+                                        </div>
+                                        <div className="card-name">
+                                            <p>Explore</p>
+                                        </div>
                                     </div>
-                                    <div className="card-name">
-                                        <p>Explore</p>
-                                    </div>
-                                </div>
                                 </Link>
                                 <Link href="/dashboard/recharge">
-                                <div className="home-cards-sub-child">
-                                    <div className="card-icon">
-                                        <Image
-                                            src={icon2}
-                                            alt="icon"
-                                            height={100}
-                                            width={100}
-                                            unoptimized
-                                        />
+                                    <div className="home-cards-sub-child">
+                                        <div className="card-icon">
+                                            <Image
+                                                src={icon2}
+                                                alt="icon"
+                                                height={100}
+                                                width={100}
+                                                unoptimized
+                                            />
+                                        </div>
+                                        <div className="card-name">
+                                            <p>Recharge</p>
+                                        </div>
                                     </div>
-                                    <div className="card-name">
-                                        <p>Recharge</p>
-                                    </div>
-                                </div>
                                 </Link>
                                 <Link href="/dashboard/withdrawal">
-                                <div className="home-cards-sub-child">
-                                    <div className="card-icon">
-                                        <Image
-                                            src={icon3}
-                                            alt="icon"
-                                            height={100}
-                                            width={100}
-                                            unoptimized
-                                        />
+                                    <div className="home-cards-sub-child">
+                                        <div className="card-icon">
+                                            <Image
+                                                src={icon3}
+                                                alt="icon"
+                                                height={100}
+                                                width={100}
+                                                unoptimized
+                                            />
+                                        </div>
+                                        <div className="card-name">
+                                            <p>Withdraw</p>
+                                        </div>
                                     </div>
-                                    <div className="card-name">
-                                        <p>Withdraw</p>
-                                    </div>
-                                </div>
                                 </Link>
                                 <Link href="/dashboard/invite">
-                                <div className="home-cards-sub-child">
-                                    <div className="card-icon">
-                                        <Image
-                                            src={icon4}
-                                            alt="icon"
-                                            height={100}
-                                            width={100}
-                                            unoptimized
-                                        />
+                                    <div className="home-cards-sub-child">
+                                        <div className="card-icon">
+                                            <Image
+                                                src={icon4}
+                                                alt="icon"
+                                                height={100}
+                                                width={100}
+                                                unoptimized
+                                            />
+                                        </div>
+                                        <div className="card-name">
+                                            <p>Referral</p>
+                                        </div>
                                     </div>
-                                    <div className="card-name">
-                                        <p>Referral</p>
-                                    </div>
-                                </div>
                                 </Link>
                             </div>
 
-                            <Dogglewindow memberShipLevel={JSON.parse(JSON.stringify(memberShipLevel))} />
+                            <Dogglewindow
+                                memberShipLevel={JSON.parse(JSON.stringify(memberShipLevel))}
+                            />
 
                         </div>
                         <div className="home-center-content-parent">
