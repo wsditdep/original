@@ -4729,6 +4729,26 @@
 }
 
 
+.isPressedValidation {
+    height: 5rem;
+    background: #00000038;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        color: white;
+        text-align: center;
+        font-size: 1.4rem;
+
+        i {
+            margin-left: 0.5rem;
+            animation: spinerAnimation 0.4s ease-in infinite;
+        }
+    }
+}
+
+
 
 
 
