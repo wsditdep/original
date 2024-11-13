@@ -2642,181 +2642,6 @@
                 }
             }
 
-            // .home-cards-parent {
-            //     padding: 0rem 1rem;
-
-            //     .home-cards-child {
-            //         display: flex;
-            //         justify-content: space-around;
-            //         padding: 1.5rem 0rem;
-
-
-            //         .home-cards-sub-child {
-            //             flex: 1;
-            //             background: white;
-            //             // margin: 0rem 0.4rem;
-            //             padding: 2rem 1.3rem;
-            //             border-radius: 1.5rem;
-            //             box-shadow: $boxShadow2;
-
-            //             .card-icon {
-            //                 display: flex;
-            //                 justify-content: center;
-            //                 padding-bottom: 0.8rem;
-
-            //                 img {
-            //                     height: auto;
-            //                     width: 4.3rem;
-            //                 }
-            //             }
-
-            //             .card-name {
-            //                 display: flex;
-            //                 justify-content: center;
-
-            //                 p {
-            //                     font-size: 1.2rem;
-            //                     color: #3b4a48;
-            //                     text-overflow: ellipsis;
-            //                     overflow: hidden;
-            //                     text-align: center;
-            //                 }
-            //             }
-            //         }
-            //     }
-
-            //     .home-vip-card-container {
-            //         background: white;
-            //         margin: 1rem 1rem;
-            //         border-radius: 1.5rem;
-            //         box-shadow: $boxShadow2;
-
-            //         .home-vip-cards-parent {
-            //             display: flex;
-
-            //             .home-vip-cards-child {
-            //                 display: flex;
-            //                 align-items: center;
-
-            //                 .home-vip-cards-sub-child {
-            //                     .vip-card-icon {
-            //                         display: flex;
-            //                         justify-content: center;
-            //                         align-items: center;
-
-            //                         img {
-            //                             height: auto;
-            //                             width: 8rem;
-            //                         }
-            //                     }
-
-            //                     .vip-card-name {
-            //                         p {
-            //                             font-size: 1.7rem;
-            //                             font-weight: bold;
-            //                         }
-            //                     }
-            //                 }
-
-            //                 &:first-child {
-            //                     padding-left: 1rem;
-            //                     width: 90%;
-            //                 }
-
-            //                 &:last-child {
-            //                     width: 10%;
-
-            //                     .vip-card-btn {
-            //                         i {
-            //                             font-size: 1.5rem;
-            //                             color: $primaryColor;
-            //                             cursor: pointer;
-            //                         }
-            //                     }
-            //                 }
-            //             }
-            //         }
-
-            //         .down-content-container {
-            //             .down-top-heading {
-            //                 padding: 0rem 2.3rem;
-
-            //                 h1 {
-            //                     color: #0c1b46;
-            //                 }
-            //             }
-
-            //             .down-content-parent {
-            //                 padding: 2rem 0rem;
-            //                 border-bottom: 2px solid #e5e5e5;
-
-            //                 .down-content-child {
-            //                     padding: 0rem 2rem;
-
-            //                     .content-parent {
-            //                         display: flex;
-            //                         justify-content: space-between;
-
-
-            //                         .content-child {
-            //                             display: flex;
-            //                             align-items: center;
-
-            //                             .content-sub-child {
-            //                                 img {
-            //                                     height: auto;
-            //                                     width: 5.5rem;
-            //                                 }
-
-            //                                 h3 {
-            //                                     font-weight: bold;
-            //                                     font-size: 1.6rem;
-            //                                     padding-left: 2rem;
-            //                                     padding-top: 0.25rem;
-            //                                     padding-bottom: 0.25rem;
-            //                                 }
-
-            //                                 p {
-            //                                     font-weight: bold;
-            //                                     font-size: 1.3rem;
-            //                                     color: #ff008e;
-            //                                     padding-left: 2rem;
-            //                                     padding-top: 0.25rem;
-            //                                     padding-bottom: 0.25rem;
-            //                                 }
-            //                             }
-
-            //                             button {
-            //                                 background: none;
-            //                                 font-weight: bold;
-            //                                 font-size: 1.2rem;
-            //                                 border-radius: 1.5rem;
-            //                                 padding: 0.5rem 1rem;
-            //                                 color: #9e9e9e;
-            //                                 border: #9e9e9e 3px solid;
-            //                             }
-
-            //                             p {
-            //                                 color: #9e9e9e;
-            //                                 font-size: 1.5rem;
-            //                             }
-            //                         }
-
-            //                         &:last-child {
-            //                             padding: 0rem 0.6rem;
-            //                         }
-            //                     }
-            //                 }
-
-            //                 &:last-child {
-            //                     border: none;
-            //                 }
-            //             }
-
-            //         }
-
-            //     }
-            // }
             .home-cards-parent {
                 padding: 0rem 0.6rem;
 
@@ -2888,7 +2713,7 @@
 
                                 .vip-card-name {
                                     p {
-                                        font-size: 1.7rem;
+                                        font-size: 1.5rem;
                                         font-weight: bold;
                                     }
                                 }
@@ -2919,6 +2744,7 @@
 
                             h1 {
                                 color: #0c1b46;
+                                font-size: 1.7rem;
                             }
                         }
 
@@ -2944,7 +2770,7 @@
 
                                             h3 {
                                                 font-weight: bold;
-                                                font-size: 1.6rem;
+                                                font-size: 1.4rem;
                                                 padding-left: 2rem;
                                                 padding-top: 0.25rem;
                                                 padding-bottom: 0.25rem;
@@ -3417,7 +3243,7 @@
                 .user-name {
                     p {
                         font-weight: bold;
-                        font-size: 2.3rem;
+                        font-size: 2rem;
                     }
                 }
 
@@ -3446,12 +3272,12 @@
                     align-items: center;
 
                     p {
-                        font-size: 1.5rem;
+                        font-size: 1.3rem;
                         color: black;
 
                         span {
                             font-weight: bold;
-                            font-size: 1.7rem;
+                            font-size: 1.5rem;
                             padding: 0rem 0.5rem;
                         }
                     }
@@ -3534,7 +3360,7 @@
 
                         h3 {
                             font-weight: 500;
-                            font-size: 1.5rem;
+                            font-size: 1.2rem;
                         }
                     }
                 }
@@ -4114,82 +3940,6 @@
     }
 }
 
-
-
-
-
-
-
-
-// .side-bar-lists {
-//     padding: 1rem;
-
-//     .sidebar-copyright {
-//         text-align: center;
-//         margin-top: 1rem;
-//         font-weight: 500;
-//         color: #7d7d7d;
-//     }
-
-//     ul {
-//         li {
-//             display: flex;
-//             justify-content: space-between;
-//             align-items: center;
-//             cursor: pointer;
-//             padding: 1rem;
-//             border-radius: 1rem;
-
-//             &:hover {
-//                 background: #f8f8f8;
-//                 padding: 1rem;
-//                 border-radius: 1rem;
-//             }
-
-//             .side-bar-list {
-
-//                 img {
-//                     height: auto;
-//                     width: 2.2rem !important;
-//                 }
-
-//                 p {
-//                     margin-left: 0.6rem;
-//                     font-size: 1.1rem;
-//                     font-weight: 500;
-//                     color: black;
-//                 }
-
-//                 &:first-child {
-//                     display: flex;
-//                     justify-content: center;
-//                     align-items: center;
-//                 }
-
-//                 &:last-child {
-//                     i {
-//                         font-size: 1.2rem;
-//                     }
-//                 }
-//             }
-//         }
-
-//         .logout-style {
-//             background: #ffeeee;
-
-//             .side-bar-list {
-//                 color: red;
-
-//                 p {
-//                     color: red;
-//                 }
-//             }
-//         }
-//     }
-// }
-
-
-
 .side-bar-lists {
     .sidebar-copyright {
         text-align: center;
@@ -4222,7 +3972,7 @@
 
                 p {
                     margin-left: 1.8rem;
-                    font-size: 1.6rem;
+                    font-size: 1.2rem;
                     font-weight: 500;
                     color: black;
                 }
@@ -5000,413 +4750,6 @@
 
 }
 
-
-//  @media only screen and (max-width: 500px) {
-
-//     html {
-//         font-size: 65%;
-//     }
-
-//     .main-home-wrapper .main-home .home-main-container {
-//         position: absolute;
-//         top: 0;
-//         left: 50%;
-//         transform: translateX(-50%);
-//     }
-
-//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-//         margin: 0;
-//     }
-
-//     .model-side1 {
-//         width: 35vh;
-//     }
-
-//     .model-side1 .content-side1 {
-//         height: 90%;
-//         width: 100%;
-//     }
-
-//     .main-home-wrapper .main-home .home-main-container .home-cards-parent .home-cards-child .home-cards-sub-child .card-icon img {
-//         width: 3.5rem;
-//     }
-
-//     .main-home-wrapper .main-home .home-main-container .home-cards-parent .home-cards-child .home-cards-sub-child .card-name p {
-//         white-space: nowrap;
-//         width: 6rem;
-//     }
-
-// }
-// @media only screen and (max-width: 500px) {
-
-//     html {
-//         font-size: 75%;
-//     }
-
-//     .fixedBottom {
-//         position: relative;
-//     }
-
-//     .success-modal-wrapper {
-//         position: fixed;
-//     }
-
-//     .nav-profile-outer-wrapper {
-//         padding: 1rem 0 1rem 0;
-//     }
-
-//     .nav-profile-outer-wrapper .sidebar-account-info-wrapper .sidebar-account-info-parent {
-//         flex-direction: column;
-
-//         .sidebar-account-info-childs {
-//             border-right: none !important;
-//             margin: 1rem 0;
-//         }
-//     }
-
-//     .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs:first-child .dashboard-navigation-sub-childs h3 {
-//         display: none;
-//     }
-
-//     .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs .sidebar-profile-img {
-//         height: 8rem;
-//         width: 8rem;
-//     }
-
-
-//     .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs:last-child button {
-//         padding: 0.6rem 0.8rem;
-//     }
-
-//     .submit-journey-section .submit-journey-wrapper .submit-journey-image img {
-//         height: 250px;
-//     }
-
-//     .dashboard-wrapper .dashboard-navigation {
-//         padding: 2rem 1rem;
-//     }
-
-//     .sidebar-overlay {
-//         position: fixed;
-//     }
-
-//     .side-navbar-wrapper {
-//         position: fixed;
-//     }
-
-//     .journey-section {
-//         padding: 0 1rem 1rem 1rem;
-//     }
-
-//     .transaction-section {
-//         padding: 0rem 1rem 2rem 1rem;
-//     }
-
-//     .support-section {
-//         padding: 0rem 1rem;
-//     }
-
-//     .auth-wrapper {
-//         padding: 2rem 2rem !important;
-//     }
-
-//     .history-section {
-//         padding: 1rem;
-//     }
-
-//     .profile-section {
-//         padding: 0rem 1rem;
-//     }
-
-//     .withdrawal-hostory-section {
-//         padding: 0rem 1rem;
-//     }
-
-//     .landing-profile {
-//         padding: 0rem 1rem 1rem 1rem;
-//     }
-
-//     .notice-board-parent {
-//         margin: 0rem 1rem 1rem 1rem;
-//     }
-
-//     .vip-wrapper {
-//         padding: 1rem 1rem;
-//     }
-
-//     .landing-page-tab {
-//         margin: 0rem 1rem;
-//     }
-
-//     .landing-feature-images {
-//         padding: 1rem 1rem;
-//     }
-// }
-// @media only screen and (max-width: 450px) {
-//     html {
-//         font-size: 75%;
-//     }
-
-//     .main-home-wrapper .main-home .home-main-container {
-//         position: absolute;
-//         top: 0;
-//         left: 50%;
-//         transform: translateX(-50%);
-//     }
-
-//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-//         margin: 0;
-//     }
-
-//     .modal {
-//         width: 32rem;
-//     }
-
-// }
-
-// @media only screen and (max-width: 420px) {
-//     html {
-//         font-size: 70%;
-//     }
-
-//     .main-home-wrapper .main-home .home-main-container {
-//         position: absolute;
-//         top: 0;
-//         left: 50%;
-//         transform: translateX(-50%);
-//     }
-
-//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-//         margin: 0;
-//     }
-
-//     .modal {
-//         width: 32rem;
-//     }
-// }
-
-// @media only screen and (max-width: 400px) {
-//     html {
-//         font-size: 67%;
-//     }
-
-//     .main-home-wrapper .main-home .home-main-container {
-//         position: absolute;
-//         top: 0;
-//         left: 50%;
-//         transform: translateX(-50%);
-//     }
-
-//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-//         margin: 0;
-//     }
-
-//     .modal {
-//         width: 32rem;
-//     }
-// }
-
-// @media only screen and (max-width: 380px) {
-//     html {
-//         font-size: 65%;
-//     }
-
-//     .welcome-page-parent .welcomepage-parent .welcomepage-child .travel-programmes-parent .travel-programmes-child .programmes-card {
-//         padding: 0rem;
-//     }
-
-//     .modal {
-//         width: 30rem;
-//     }
-
-//     .main-home-wrapper .main-home .home-main-container {
-//         position: absolute;
-//         left: 50%;
-//         transform: translateX(-50%)
-//     }
-
-//     .model-side1 .content-side1 {
-//         height: 90%;
-//         width: 100%;
-//     }
-
-//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-//         margin: 0;
-//     }
-
-//     .model-side1 {
-//         overflow-y: hidden;
-//     }
-// }
-
-
-// @media only screen and (max-width: 360px) {
-//     html {
-//         font-size: 60%;
-//     }
-
-//     .main-home-wrapper .main-home .home-main-container {
-//         position: absolute;
-//         top: 0;
-//         left: 50%;
-//         transform: translateX(-50%);
-//     }
-
-//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-//         margin: 0;
-//     }
-// }
-
-// @media only screen and (max-width: 340px) {
-//     html {
-//         font-size: 57%;
-//     }
-
-//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-//         margin: 0;
-//     }
-// }
-
-
-// @media only screen and (max-width: 320px) {
-//     html {
-//         font-size: 54%;
-//     }
-
-//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-//         margin: 0;
-//     }
-// }
-
-// @media only screen and (max-width: 300px) {
-//     html {
-//         font-size: 50%;
-//     }
-
-//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-//         margin: 0;
-//     }
-// }
-
-// @media only screen and (max-width: 280px) {
-//     html {
-//         font-size: 46.5%;
-//     }
-
-//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-//         margin: 0;
-//     }
-// }
-
-// @media only screen and (max-width: 260px) {
-//     html {
-//         font-size: 43%;
-//     }
-
-//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-//         margin: 0;
-//     }
-// }
-
-// @media only screen and (max-width: 240px) {
-//     html {
-//         font-size: 40%;
-//     }
-
-//     .side-bar-top-wrapper .side-bar-har-list-parent .side-bar-har-list-child {
-//         margin: 0;
-//     }
-// }
-
-// @media only screen and (max-width: 375px) {
-//     html {
-//         font-size: 50%;
-//     }
-
-//     .submit-journey-section .rate-review-wrapper .rate-task-parent .rate-task-childs h3{
-//         font-size: 0.9rem;
-//     }
-//     .submit-journey-section .submit-journey-container-parent {
-//         padding: 0rem 0rem;
-//         width: 330px;
-//     }
-// }
-// @media only screen and (max-width: 360px) {
-//     html {
-//         font-size: 30%;
-//     }
-
-
-// }
-// @media only screen and (max-width: 444px) {
-//     html {
-//         font-size: 58%;
-//     }
-
-
-// }
-// @media only screen and (max-width: 390px) {
-//     html {
-//         font-size: 50%;
-//     }
-
-
-// }
-// @media only screen and (max-width: 412px) {
-//     html {
-//         font-size: 55%;
-//     }
-
-
-// }
-// @media only screen and (max-width: 448px) {
-//     html {
-//         font-size: 61%;
-//     }
-
-
-// }
-// @media only screen and (max-width: 458px) {
-//     html {
-//         font-size: 62%;
-//     }
-
-
-// }
-// @media only screen and (max-width: 464px) {
-//     html {
-//         font-size: 65%;
-//     }
-
-
-// }
-// @media only screen and (max-width: 470px) {
-//     html {
-//         font-size: 66%;
-//     }
-
-
-// }
-// @media only screen and (max-width: 502px) {
-//     html{
-//         font-size: 70%;
-//     }
-// }
-// @media only screen and (max-width: 506px) {
-//     html{
-//         font-size: 70%;
-//     }
-// }
-// @media only screen and (max-width: 524px) {
-//     .submit-journey-section .rate-review-wrapper .rate-task-parent .rate-task-childs h3{
-//         font-size: 0.9rem;
-//     }
-// }
-
-
-
-
-//-----------------------media-query-end---------------
 
 
 
