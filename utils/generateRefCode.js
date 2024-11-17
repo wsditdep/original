@@ -1,6 +1,6 @@
 
 async function generateReferralCode() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let referralCode = '';
   
     for (let i = 0; i < 6; i++) {

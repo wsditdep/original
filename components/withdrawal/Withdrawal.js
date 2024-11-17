@@ -9,10 +9,19 @@ import { useEffect, useState } from 'react';
 import { withdrawal } from '@/app/actions/user/action';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import { useFormStatus } from "react-dom";
 
 import bgimg from "@/public/home-page/bgimg.png"
 import icon6 from "@/public/home-page/icon6.png";
 
+function Submit() {
+    const { pending } = useFormStatus();
+    return (
+        <>
+            <button type="submit" disabled={pending} className="btn global-primary-btn">{pending ? "Submitting..." : "Withdraw Now"}</button>
+        </>
+    )
+}
 
 const Withdrawal = ({ user, withdrawalInfo }) => {
 
@@ -37,14 +46,6 @@ const Withdrawal = ({ user, withdrawalInfo }) => {
             console.log(error)
         }
     }
-
-    useEffect(() => {
-        if (withdrawalInfo?.status === "pending") {
-            setIsSuccess(true);
-        }
-    }, []);
-
-
 
     const [allBalance, setAllBalance] = useState("")
 
@@ -155,7 +156,7 @@ const Withdrawal = ({ user, withdrawalInfo }) => {
                                     </div>
                                 </div>
                                 <div className="amount-submit-btn">
-                                    <button className="btn global-primary-btn">Withdraw</button>
+                                    <Submit />
                                 </div>
                             </form>
                             <div className="welcome-footer-container">

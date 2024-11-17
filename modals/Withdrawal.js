@@ -5,6 +5,10 @@ const walletSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    iid: {
+        type: String,
+        required: false,
+    },
     username: {
         type: String,
         required: true,
@@ -37,7 +41,15 @@ const walletSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-}, { _id: false, timestamps: true });
+    createdAt: {
+        type: Date,
+        required: false,
+    },
+    updatedAt: {
+        type: Date,
+        required: false,
+    },
+}, { _id: false });
 
 const withdrawalSchema = new mongoose.Schema({
     wallet: [walletSchema],

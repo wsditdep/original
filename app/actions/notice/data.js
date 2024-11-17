@@ -2,6 +2,7 @@
 
 import { Notice } from "@/modals/Notice";
 import { Setting } from "@/modals/Setting";
+import { Support } from "@/modals/Support";
 import { connectToDB } from "@/utils/connection";
 
 export const fetchNotice = async () => {
@@ -23,6 +24,18 @@ export const fetchSetting = async () => {
         const setting = await Setting.findOne();
 
         return setting;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const fetchSupport = async () => {
+    try {
+        await connectToDB();
+
+        const support = await Support.findOne();
+
+        return support;
     } catch (error) {
         console.log(error)
     }

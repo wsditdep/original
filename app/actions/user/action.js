@@ -12,6 +12,7 @@ import { auth, signIn, signOut } from "@/app/auth";
 import { Withdrawal } from "@/modals/Withdrawal";
 import { Setting } from "@/modals/Setting";
 import { AccountChange } from "@/modals/AccountChange";
+import { Recharge } from "@/modals/Recharge";
 
 export const authenticate = async (formData) => {
 
@@ -67,6 +68,8 @@ export const createUser = async (formData) => {
             // wallet_address,
             password,
             withdrawal_pin,
+            cpassword,
+            cwithdrawal_pin,
             // network_type,
             // match_min,
             // match_max,
@@ -75,6 +78,14 @@ export const createUser = async (formData) => {
         } = Object.fromEntries(formData);
 
         const isUser = await User.findOne({ username: username });
+
+        if (username?.length < 4 || username?.length > 15) {
+            return {
+                message: 'Username must be between 4 and 15 characters long',
+                status: 400,
+                type: "danger"
+            };
+        }
 
         if (phone_number?.length < 8 || phone_number?.length > 15) {
             return {
@@ -106,10 +117,14 @@ export const createUser = async (formData) => {
             type: "danger"
         };
 
-        const settings =  await Setting.findOne();
-        
-        if (!settings) return {
-            message: `Settings not found`,
+        if (password !== cpassword) return {
+            message: `Confirm your password`,
+            status: 404,
+            type: "danger"
+        };
+
+        if (withdrawal_pin !== cwithdrawal_pin) return {
+            message: `Confirm your redemption pin`,
             status: 404,
             type: "danger"
         };
@@ -136,6 +151,8 @@ export const createUser = async (formData) => {
             type: "danger"
         };
 
+        const setting = await Setting.findOne();
+
         const newUser = new User({
             id,
             username,
@@ -154,8 +171,8 @@ export const createUser = async (formData) => {
             wallet_address: null,
             withdrawal_pin: withdrawal_pin,
             network_type: null,
-            match_min: settings?.matching_range_min,
-            match_max: settings?.matching_range_max,
+            match_min: setting?.matching_range_min || 30,
+            match_max: setting?.matching_range_max || 70,
             allow_withdrawal: true,
             security_code,
             password: hasedPassword,
@@ -165,7 +182,7 @@ export const createUser = async (formData) => {
         const newRegisteredUser = await newUser.save();
 
         // registration gift amount
-        const setting = await Setting.findOne();
+
         await User.findByIdAndUpdate(newRegisteredUser?._id, {
             balance: newRegisteredUser?.balance + setting?.gift_amount
         });
@@ -174,6 +191,7 @@ export const createUser = async (formData) => {
 
         await AccountChange.create({
             username: newRegisteredUser?.username,
+            phone_number: newRegisteredUser?.phone_number,
             amount: newRegisteredUser?.balance,
             after_operation: finalRegisteredGift,
             account_type: "registrationGift"
@@ -192,10 +210,10 @@ export const createUser = async (formData) => {
 }
 
 export const createWallet = async (formData) => {
-    const { wallet_name, wallet_address, network_type, currency, id } = Object.fromEntries(formData);
+    const { wallet_name, wallet_address, network_type, currency, id, wallet_phone } = Object.fromEntries(formData);
 
     try {
-        await connectToDB();
+        await connectToDB(formData);
 
         const authenticatedUser = await User.findById(id);
 
@@ -209,7 +227,8 @@ export const createWallet = async (formData) => {
             wallet_name,
             wallet_address,
             network_type,
-            currency
+            currency,
+            wallet_phone
         }
 
         Object.keys(updateFields).forEach(
@@ -251,8 +270,15 @@ export const withdrawal = async (formData) => {
             type: "danger"
         };
 
+        if (authenticatedUser?.allow_withdrawal === false) return {
+            message: `Can not process your withdrawal at this moment!`,
+            status: 502,
+            type: "danger"
+        };
+
         // check withdrawal allow or not
         const setting = await Setting.findOne();
+
         const isTimeAllow = setting?.is_withdrawal_allow;
 
         if (!isTimeAllow) return {
@@ -263,11 +289,36 @@ export const withdrawal = async (formData) => {
 
         const membership = await Commission.findOne({ membership_name: authenticatedUser?.membership_level });
 
-        if (authenticatedUser?.today_order < membership?.withdrawal_needed_order) return {
-            message: `Complete your Explore first to withdrawal`,
-            status: 404,
-            type: "danger"
-        };
+        // check number of withdrawal
+        if (authenticatedUser?.withdrawal !== null) {
+            const checkNumberOf = await Withdrawal.findById(authenticatedUser?.withdrawal);
+            const checkNumberOfList = checkNumberOf?.wallet || [];
+
+            const pendingNumber = checkNumberOfList.filter((item) => item.status === "pending");
+            const numberOfPending = pendingNumber?.length;
+
+            if (membership?.number_of_withdrawal <= numberOfPending) return {
+                message: `Your redemtion limit already exceed.`,
+                status: 404,
+                type: "danger"
+            };
+        }
+
+        // if(membership?.number_of_withdrawal)
+
+        if (authenticatedUser?.withdrawal_needed_order !== "") {
+            if (authenticatedUser?.today_order < Number(authenticatedUser?.withdrawal_needed_order)) return {
+                message: `Complete your jouney first to withdrawal`,
+                status: 404,
+                type: "danger"
+            };
+        } else {
+            if (authenticatedUser?.today_order < membership?.withdrawal_needed_order) return {
+                message: `Complete your jouney first to withdrawal`,
+                status: 404,
+                type: "danger"
+            };
+        }
 
         if (authenticatedUser?.balance < Number(amount)) return {
             message: `Your account has $${authenticatedUser?.balance} and you have entered $${amount} for withdrawal. Insufficient balance!`,
@@ -281,35 +332,62 @@ export const withdrawal = async (formData) => {
             type: "danger"
         };
 
-        if (membership?.min_withdrawal_amount > Number(amount)) {
-            return {
-                message: `The withdrawal amount must be at least ${membership?.min_withdrawal_amount}.`,
-                status: 404,
-                type: "danger"
-            };
+
+        if (authenticatedUser?.min_withdrawal_amount !== "") {
+            if (Number(authenticatedUser?.min_withdrawal_amount) > Number(amount)) {
+                return {
+                    message: `The withdrawal amount must be at least ${authenticatedUser?.min_withdrawal_amount}.`,
+                    status: 404,
+                    type: "danger"
+                };
+            }
+        } else {
+            if (membership?.min_withdrawal_amount > Number(amount)) {
+                return {
+                    message: `The withdrawal amount must be at least ${membership?.min_withdrawal_amount}.`,
+                    status: 404,
+                    type: "danger"
+                };
+            }
         }
 
-        if (membership?.max_withdrawal_amount < Number(amount)) {
-            return {
-                message: `Maximum withdrawal amount is ${membership?.max_withdrawal_amount}.`,
-                status: 404,
-                type: "danger"
-            };
+        if (authenticatedUser?.max_withdrawal_amount !== "") {
+            if (Number(authenticatedUser?.max_withdrawal_amount) < Number(amount)) {
+                return {
+                    message: `The withdrawal amount must be at most ${authenticatedUser?.max_withdrawal_amount}.`,
+                    status: 404,
+                    type: "danger"
+                };
+            }
+        } else {
+            if (membership?.max_withdrawal_amount < Number(amount)) {
+                return {
+                    message: `Maximum withdrawal amount is ${membership?.max_withdrawal_amount}.`,
+                    status: 404,
+                    type: "danger"
+                };
+            }
         }
 
         const calAmount = authenticatedUser?.balance - Number(amount);
 
+        const uniqueId = `id-${Date.now()}-${Math.floor(Math.random() * 10000)}`;
+        const newData = new Date();
+
         if (authenticatedUser?.withdrawal === null) {
             const walletData = {
                 id: authenticatedUser?._id,
+                iid: uniqueId,
                 username: authenticatedUser?.username,
-                phone_number: authenticatedUser?.phone_number,
+                phone_number: authenticatedUser?.wallet_phone,
                 wallet_name: authenticatedUser?.wallet_name,
                 withdrawal_amount: Number(amount),
                 wallet_address: authenticatedUser?.wallet_address,
                 network_type: authenticatedUser?.network_type,
                 currency: authenticatedUser?.currency,
-                status: "pending"
+                status: "pending",
+                createdAt: newData,
+                updatedAt: newData
             };
 
             const withdrawal = await Withdrawal.create({
@@ -321,21 +399,37 @@ export const withdrawal = async (formData) => {
                 balance: calAmount
             });
 
+            const afterWithdrawal = authenticatedUser?.balance - Number(amount);
+
+            await AccountChange.create({
+                username: authenticatedUser?.username,
+                phone_number: authenticatedUser?.phone_number,
+                amount: Number(amount),
+                after_operation: afterWithdrawal,
+                account_type: "withdrawal"
+            });
+
         } else {
 
             const withdrawals = await Withdrawal.findById(authenticatedUser?.withdrawal);
             const allWithdrawals = withdrawals?.wallet || [];
 
+            const uniqueId = `id-${Date.now()}-${Math.floor(Math.random() * 10000)}`;
+            const newDate = new Date();
+
             const newObj = {
                 id: authenticatedUser?._id,
+                iid: uniqueId,
                 username: authenticatedUser?.username,
-                phone_number: authenticatedUser?.phone_number,
+                phone_number: authenticatedUser?.wallet_phone,
                 wallet_name: authenticatedUser?.wallet_name,
                 withdrawal_amount: Number(amount),
                 wallet_address: authenticatedUser?.wallet_address,
                 network_type: authenticatedUser?.network_type,
                 currency: authenticatedUser?.currency,
-                status: "pending"
+                status: "pending",
+                createdAt: newDate,
+                updatedAt: newDate,
             }
 
             const updateArray = [...allWithdrawals, newObj];
@@ -346,6 +440,16 @@ export const withdrawal = async (formData) => {
 
             await User.findByIdAndUpdate(authenticatedUser?._id, {
                 balance: calAmount
+            });
+
+            const afterWithdrawal = authenticatedUser?.balance - Number(amount);
+
+            await AccountChange.create({
+                username: authenticatedUser?.username,
+                phone_number: authenticatedUser?.phone_number,
+                amount: Number(amount),
+                after_operation: afterWithdrawal,
+                account_type: "withdrawal"
             });
         }
 
@@ -458,6 +562,64 @@ export const resetPin = async (formData) => {
 
         return {
             message: `Withdrawal password reset successfully!`,
+            status: 201,
+            type: "success"
+        };
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const updateLuckyDraw = async (amount) => {
+
+    try {
+        await connectToDB();
+
+        const { user } = await auth();
+
+        if (!user) return {
+            message: `User not found!`,
+            status: 404,
+            type: "danger"
+        };
+
+        const authenticatedUser = await User.findById(user?._id);
+        const authenticatedAgent = await User.findOne({ id: authenticatedUser?.connected_agent_id });
+
+        if (!authenticatedUser) return {
+            message: `User not found!`,
+            status: 404,
+            type: "danger"
+        };
+
+        if (!authenticatedUser) return {
+            message: `User not found!!`,
+            status: 404,
+            type: "danger"
+        };
+
+
+        if (amount !== "Try Again") {
+            await Recharge.create({
+                username: authenticatedUser?.username,
+                recharge_by: authenticatedAgent?.username,
+                amount: Number(amount),
+                after_recharge: authenticatedUser?.balance + Number(amount),
+                recharge_type: "credit"
+            });
+
+            await User.findByIdAndUpdate(authenticatedUser?._id, {
+                used_number_of_draws: authenticatedUser?.used_number_of_draws + 1,
+                balance: authenticatedUser?.balance + Number(amount)
+            });
+
+        } else {
+
+        }
+
+        return {
+            message: `Successfull`,
             status: 201,
             type: "success"
         };

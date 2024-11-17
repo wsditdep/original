@@ -40,13 +40,13 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    ticket_commission: {
-        type: Number,
-        default: 0
-    },
     parent_user: {
         type: String,
         required: true,
+    },
+    ticket_commission: {
+        type: Number,
+        default: 0
     },
     invitation_code: {
         type: String,
@@ -70,6 +70,10 @@ const userSchema = new mongoose.Schema({
         default: null
     },
     wallet_address: {
+        type: String,
+        default: null
+    },
+    wallet_phone: {
         type: String,
         default: null
     },
@@ -107,6 +111,18 @@ const userSchema = new mongoose.Schema({
     allow_rob_order: {
         type: Boolean,
         default: true
+    },
+    min_withdrawal_amount: {
+        type: String,
+        default: ""
+    },
+    max_withdrawal_amount: {
+        type: String,
+        default: ""
+    },
+    withdrawal_needed_order: {
+        type: String,
+        default: ""
     },
     security_code: {
         type: String,
@@ -146,7 +162,7 @@ const userSchema = new mongoose.Schema({
     url: {
         type: String,
         default: null
-    }
+    },
 }, { timestamps: true });
 
 

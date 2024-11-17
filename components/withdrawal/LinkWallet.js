@@ -56,18 +56,6 @@ const LinkWallet = ({ user }) => {
         }
     }
 
-    // useEffect(() => {
-    //     setSelectedCurrencyOption(user?.currency ?? "USDT")
-    //     setSelectedNetworkOption(user?.network_type ?? "TRC 20")
-    // }, [])
-
-    useEffect(() => {
-        if (user.network_type !== null) {
-            // push("/dashboard/withdrawal");
-            toast.success("Wallet Info is already saved!");
-        }
-    }, []);
-
     return (
 
 
@@ -106,47 +94,6 @@ const LinkWallet = ({ user }) => {
                                         required onKeyDown={(e) => { if (e.key === 'Enter') e.preventDefault(); }} />
                                 </div>
                             </div>
-
-                            {/* <div className="wallet-section-child">
-                                <div className="wallet-sub-child">
-                                    <p>Currency</p>
-                                    <div className="cus-radio-btn-wrapper">
-                                        <div className="radio-btn-parent">
-                                            <div className="radio-btn-child">
-                                                <input className="radio"
-                                                    type="radio"
-                                                    name="currency"
-                                                    value="USDT"
-                                                    checked={selectedCurrencyOption === "USDT"}
-                                                    onChange={(e) => handleOptionChange(e)}
-                                                />
-                                                <span>USDT</span>
-                                            </div>
-                                            <div className="radio-btn-child">
-                                                <input className="radio"
-                                                    type="radio"
-                                                    name="currency"
-                                                    value="USDC"
-                                                    checked={selectedCurrencyOption === "USDC"}
-                                                    onChange={(e) => handleOptionChange(e)}
-                                                />
-                                                <span>USDC</span>
-                                            </div>
-                                            <div className="radio-btn-child">
-                                                <input className="radio"
-                                                    type="radio"
-                                                    name="currency"
-                                                    value="ETH"
-                                                    checked={selectedCurrencyOption === "ETH"}
-                                                    onChange={(e) => handleOptionChange(e)}
-                                                />
-                                                <span>ETH</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> */}
-
                             <div className="wallet-section-child">
                                 <div className="wallet-sub-child">
                                     <p>Network</p>
@@ -186,34 +133,21 @@ const LinkWallet = ({ user }) => {
                                     </div>
                                 </div>
                             </div>
-
-
                             <div className="wallet-section-child">
                                 <div className="wallet-sub-child">
                                     <p>Phone No</p>
                                     <input
                                         type="number"
                                         placeholder="Type Phone No"
-                                        name="phone_number"
-                                        defaultValue={user?.phone_number}
+                                        name="wallet_phone"
+                                        defaultValue={user?.wallet_phone}
                                         required onKeyDown={(e) => { if (e.key === 'Enter') e.preventDefault(); }} />
                                 </div>
                             </div>
-
-
-
-
                             <div className="wallet-section-child">
                                 <div className="wallet-sub-child">
                                     <div className="app-form-group">
-                                        {
-                                            user?.network_type === null
-                                            ?
-                                            <Submit />
-                                            :
-                                            <></>
-                                        }
-                                        
+                                        <Submit />
                                     </div>
                                 </div>
                             </div>
@@ -223,15 +157,6 @@ const LinkWallet = ({ user }) => {
                 <div className="welcome-footer-container">
                     <div className="welcome-footer">
                         <p>Copyright © 2024 Original Travel . All Rights Reserved.</p>
-                        {/* <div className="help-center-icon">
-                            <Image
-                                src={icon6}
-                                alt="icon"
-                                height={100}
-                                width={100}
-                                unoptimized
-                            />
-                        </div> */}
                     </div>
                 </div>
 

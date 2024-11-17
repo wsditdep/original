@@ -14,7 +14,7 @@ const page = async () => {
 
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <LinkWallet user={JSON.parse(JSON.stringify(user))} />
       <SecurityCheck
         user={JSON.parse(JSON.stringify(logedinUser))}

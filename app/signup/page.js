@@ -1,10 +1,3 @@
-
-// import Link from "next/link";
-// import SignUp from "@/components/auth/SignUp";
-// import Image from "next/image";
-// import logo from "@/public/auth/logo.png";
-
-
 export const dynamic = "force-dynamic"
 
 const page = () => {

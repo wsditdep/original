@@ -10,7 +10,6 @@ import { Setting } from "@/modals/Setting";
 import { User } from "@/modals/User";
 import { connectToDB } from "@/utils/connection";
 import generateOrderId from "@/utils/generateOrderId";
-import { Product } from "@/modals/Product";
 
 export const submitJourney = async () => {
     try {
@@ -34,6 +33,12 @@ export const submitJourney = async () => {
                 type: "danger"
             };
         }
+
+        if (!authenticatedUser?.allow_rob_order) return {
+            message: `Can not place your order at this time, Please contact customer care.`,
+            status: 404,
+            type: "danger"
+        };
 
         if (authenticatedUser?.balance < 0) return {
             message: `Insufficient balance to place this order!`,
@@ -76,16 +81,25 @@ export const submitJourney = async () => {
 
         let isPendingProductObject = pendingProduct[0];
 
-        const newObj = {
-            ...isPendingProductObject,
-            status: "completed"
+        if (pendingProduct?.length !== 0 && isPendingProductObject && Object.keys(isPendingProductObject).length > 1) {
+            const newObj = {
+                ...isPendingProductObject,
+                status: "completed"
+            }
+
+            const updateArray = [...withoutPendingList, newObj]
+
+            await JourneyHistory.findByIdAndUpdate(authenticatedUser?.journeyHistory, {
+                JourneyHistory: updateArray
+            });
+        } else {
+
+            return {
+                message: "ERROR!",
+                status: 404,
+                type: "danger",
+            };
         }
-
-        const updateArray = [...withoutPendingList, newObj]
-
-        await JourneyHistory.findByIdAndUpdate(authenticatedUser?.journeyHistory, {
-            JourneyHistory: updateArray
-        });
 
         const commission = await Commission.findOne({ membership_name: authenticatedUser?.membership_level });
         const commissionRate = commission?.commission_rate;
@@ -93,7 +107,7 @@ export const submitJourney = async () => {
         const refundAmount = isPendingProductObject?.productPrice;
         const calculateCommission = commissionRate * isPendingProductObject?.productPrice;
         const calculatedRefundAmount = authenticatedUser?.balance + refundAmount;
-        const calculateStage = authenticatedUser?.today_order + 1
+        const calculateStage = authenticatedUser?.today_order + 1;
 
         const calculateFinalBalance = calculatedRefundAmount + calculateCommission;
         // const calculateFinalCommission = authenticatedUser?.today_commission + calculateCommission;
@@ -112,29 +126,35 @@ export const submitJourney = async () => {
             const currentJourneyProduct = isPendingProductObject;
             const isNext = journeyStageArray[0] - currentJourneyProduct.stage;
 
-            // -------------
             if (isNext !== 1) {
                 calBalance = authenticatedUser?.balance + authenticatedUser?.froze_amount + authenticatedUser?.ticket_commission;
                 calFrozeAmount = 0;
                 ticketCommission = 0;
                 isNextJourney = false;
+
+                const balanceAfterOp = authenticatedUser?.balance + authenticatedUser?.froze_amount;
+                await AccountChange.create({
+                    username: authenticatedUser?.username,
+                    phone_number: authenticatedUser?.phone_number,
+                    amount: authenticatedUser?.froze_amount,
+                    after_operation: balanceAfterOp,
+                    account_type: "orderCommission"
+                });
+
+                await AccountChange.create({
+                    username: authenticatedUser?.username,
+                    phone_number: authenticatedUser?.phone_number,
+                    amount: authenticatedUser?.ticket_commission,
+                    after_operation: calBalance,
+                    account_type: "orderCommission"
+                });
+
             } else {
                 calBalance = authenticatedUser?.balance;
                 calFrozeAmount = authenticatedUser?.froze_amount;
                 ticketCommission = authenticatedUser?.ticket_commission
                 isNextJourney = true;
             }
-            // -------------
-
-
-            // if (journeyStageArray?.length === 0) {
-            //     calBalance = authenticatedUser?.balance + authenticatedUser?.froze_amount;
-            //     calFrozeAmount = 0;
-
-            // } else {
-            //     calBalance = authenticatedUser?.balance;
-            //     calFrozeAmount = authenticatedUser?.froze_amount;
-            // }
 
             await User.findByIdAndUpdate(authenticatedUser?._id, {
                 balance: calBalance,
@@ -143,12 +163,12 @@ export const submitJourney = async () => {
                 ticket_commission: ticketCommission,
             });
 
-            await AccountChange.create({
-                username: authenticatedUser?.username,
-                amount: calculateCommission,
-                after_operation: calculateFinalBalance,
-                account_type: "orderCommission"
-            });
+            // await AccountChange.create({
+            //     username: authenticatedUser?.username,
+            //     amount: calculateCommission,
+            //     after_operation: calculateFinalBalance,
+            //     account_type: "orderCommission"
+            // });
 
             // creating orider history::begin
             const order_id_val = await generateOrderId();
@@ -166,6 +186,7 @@ export const submitJourney = async () => {
 
             await AccountChange.create({
                 username: uplineUserAccount?.username,
+                phone_number: uplineUserAccount?.phone_number,
                 amount: uplineUserAccount?.balance,
                 after_operation: uplineUserAccount?.balance + uplineFinealCommission,
                 account_type: "upperUserCommission"
@@ -195,6 +216,7 @@ export const submitJourney = async () => {
 
             await AccountChange.create({
                 username: authenticatedUser?.username,
+                phone_number: authenticatedUser?.phone_number,
                 amount: calculateCommission,
                 after_operation: calculateFinalBalance,
                 account_type: "orderCommission"
@@ -216,6 +238,7 @@ export const submitJourney = async () => {
 
             await AccountChange.create({
                 username: uplineUserAccount?.username,
+                phone_number: uplineUserAccount?.phone_number,
                 amount: uplineUserAccount?.balance,
                 after_operation: uplineUserAccount?.balance + uplineFinealCommission,
                 account_type: "upperUserCommission"
@@ -238,14 +261,11 @@ export const submitJourney = async () => {
 
         }
 
-        const awaitTime = await Setting.findOne();
-
         return {
             message: "Successful",
             status: 201,
             type: "success",
-            isNextJourney,
-            waitingTime: awaitTime?.payment_waiting_time
+            isNextJourney
         };
     } catch (error) {
         console.log(error)
@@ -256,9 +276,6 @@ export const validateStartJourney = async () => {
     try {
         await connectToDB();
         const { user } = await auth();
-        // await Product.updateMany({},{
-        //     $set:{storeName:"TF"}
-        // })
 
         if (!user) {
             return {
@@ -277,6 +294,12 @@ export const validateStartJourney = async () => {
                 type: "danger"
             };
         }
+
+        if (!authenticatedUser?.allow_rob_order) return {
+            message: `Can not place your order at this time, Please contact customer care.`,
+            status: 404,
+            type: "danger"
+        };
 
         // check order grabing allowed
         const setting = await Setting.findOne();

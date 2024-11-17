@@ -95,7 +95,7 @@ const SignUp = ({setIsLogin}) => {
                             <input
                                 type="password"
                                 placeholder="Type Withdraw PIN"
-                                name="confirm_witdrawal_password"
+                                name="cwithdrawal_pin"
                                 required
                             />
                         </div>
@@ -117,7 +117,7 @@ const SignUp = ({setIsLogin}) => {
                             <input
                                 type="password"
                                 placeholder="Type Login Password"
-                                name="confirm_login_password"
+                                name="cpassword"
                                 required
                             />
                         </div>

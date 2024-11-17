@@ -5,6 +5,10 @@ const schema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    phone_number: {
+        type: String,
+        required: true,
+    },
     amount: {
         type: Number,
         required: true,

@@ -10,9 +10,6 @@ import destination from "@/public/originaltravel_image/destination.png";
 import hotel from "@/public/originaltravel_image/hotel_lamp2.png";
 import auto from "@/public/originaltravel_image/auto.png";
 
-// import welcome1 from "@/public/originaltravel_image/welcome1.png";
-// import welcome2 from "@/public/originaltravel_image/welcome2.png";
-// import welcome3 from "@/public/originaltravel_image/welcome3.png";
 import welcome4 from "@/public/originaltravel_image/welcome4.png";
 import welcome5 from "@/public/originaltravel_image/welcome5.png";
 import welcome6 from "@/public/originaltravel_image/welcome6.png";

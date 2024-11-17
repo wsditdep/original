@@ -25,6 +25,10 @@ const walletSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
+    currency: {
+        type: String,
+        required: false,
+    },
     status: {
         type: String,
         required: false,

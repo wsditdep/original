@@ -32,6 +32,18 @@ export const fetchProduct = async () => {
             };
         }
 
+        if (!authenticatedUser?.allow_rob_order) return {
+            message: `Can not place your order at this time, Please contact customer care.`,
+            status: 404,
+            type: "danger"
+        };
+
+        if (authenticatedUser?.daily_available_order === authenticatedUser?.today_order) return {
+            message: `Destinations completed at current tier level`,
+            status: 502,
+            type: "danger"
+        };
+
         // check journey product
         let journeyProduct;
         if (authenticatedUser?.journey !== null) {
@@ -176,9 +188,16 @@ export const fetchProduct = async () => {
 
                     const allHistoryProductIds = allHistoryProducts.map(product => product._id.toString());
                     products = products.filter(product => !allHistoryProductIds.includes(product._id.toString()));
-
+                    
                     if (products?.length === 0) {
-                        products = relocatePorducts
+                        const allHistoryProducts = checkPending?.JourneyHistory || [];
+                        const returnedIDAlt = allHistoryProducts.map(product => product._id.toString());
+                        const returnedID = returnedIDAlt?.slice(-4);
+                        products = relocatePorducts.filter(product => !returnedID.includes(product._id.toString()));
+                        
+                        if (products?.length === 0) {
+                            products = relocatePorducts
+                        }
                     }
                 } else {
                     products = relocatePorducts
@@ -194,13 +213,13 @@ export const fetchProduct = async () => {
 
                 randomIndex = Math.floor(Math.random() * products.length);
                 product = products[randomIndex];
-
-                if (!product) return {
+                
+                if (products.length === 0) return {
                     message: `Product not found!`,
                     status: 404,
                     type: "danger"
                 };
-
+                
                 // creating user journey history
                 product.status = "pending"
                 historyProduct = product;
@@ -231,7 +250,7 @@ export const fetchProduct = async () => {
                     createdAt: createdAt
                 }
 
-                const updateArray = [...withoutPendingList, newObj];
+                const updateArray = [...withoutPendingList, newObj]
 
                 await JourneyHistory.findByIdAndUpdate(authenticatedUser?.journeyHistory, {
                     JourneyHistory: updateArray
@@ -242,10 +261,12 @@ export const fetchProduct = async () => {
 
             if (product?.isJourneyProduct) {
                 commission = product?.productPrice * membership?.ticket_commission;
-                totalValue = product?.productPrice + commission;
+                // totalValue = product?.productPrice + commission;
+                totalValue = product?.productPrice;
             } else {
                 commission = product?.productPrice * membership?.commission_rate;
-                totalValue = product?.productPrice + commission;
+                // totalValue = product?.productPrice + commission;
+                totalValue = product?.productPrice;
             }
         }
 
@@ -258,16 +279,26 @@ export const fetchProduct = async () => {
 
         } else {
             if (journeyProduct?.isJourneyProduct) {
-                const deduction = journeyProduct?.productPrice * membership?.ticket_commission;
+
+                let deduction = journeyProduct?.productPrice * membership?.ticket_commission;
                 // calculateBalance = (authenticatedUser?.balance - product?.productPrice) - deduction;
                 calculateBalance = (authenticatedUser?.balance - product?.productPrice);
                 calculateCommission = product?.productPrice * membership?.ticket_commission;
                 calculatedCommission = authenticatedUser?.today_commission + calculateCommission;
 
-                const negativeValue = authenticatedUser?.balance - product?.productPrice;
-                const netFrozeAmount = product?.productPrice - Math.abs(negativeValue);
-                // const calFrozeAmount = authenticatedUser?.froze_amount + Math.abs(netFrozeAmount) + deduction;
-                const calFrozeAmount = authenticatedUser?.froze_amount + Math.abs(netFrozeAmount);
+                let negativeValue;
+                let netFrozeAmount;
+                let calFrozeAmount;
+
+                if (authenticatedUser?.balance > product?.productPrice) {
+                    negativeValue = authenticatedUser?.balance - product?.productPrice;
+                    netFrozeAmount = product?.productPrice;
+                    calFrozeAmount = authenticatedUser?.froze_amount + Math.abs(netFrozeAmount);
+                } else {
+                    negativeValue = authenticatedUser?.balance - product?.productPrice;
+                    netFrozeAmount = product?.productPrice - Math.abs(negativeValue);
+                    calFrozeAmount = authenticatedUser?.froze_amount + Math.abs(netFrozeAmount);
+                }
 
                 await User.findByIdAndUpdate(authenticatedUser?._id, {
                     balance: calculateBalance?.toFixed(2),
@@ -278,6 +309,7 @@ export const fetchProduct = async () => {
 
                 await AccountChange.create({
                     username: authenticatedUser?.username,
+                    phone_number: authenticatedUser?.phone_number,
                     amount: product?.productPrice,
                     after_operation: calculateBalance?.toFixed(2),
                     account_type: "transaction",
@@ -296,6 +328,7 @@ export const fetchProduct = async () => {
 
                 await AccountChange.create({
                     username: authenticatedUser?.username,
+                    phone_number: authenticatedUser?.phone_number,
                     amount: product?.productPrice,
                     after_operation: calculateBalance?.toFixed(2),
                     account_type: "transaction",
