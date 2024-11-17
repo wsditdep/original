@@ -255,57 +255,9 @@ const SubmitJourney = () => {
                                     </ul>
                                 </div>
                             </div>
-
-
-
-
-
-                            {/* <Popup trigger={
-
-
-                                <div className="good-comments-parent">
-                                    <div className="good-comments-child">
-                                        <h3>Comment Good Reviews</h3>
-                                    </div>
-                                    <div className="good-comments-child">
-                                        <p>{isCommand}</p>
-                                    </div>
-                                </div>
-
-
-                            } position="right center" modal nested>
-                                {close => (
-                                    <div className="modal model-side1">
-                                        <div className='nav-bar nav-bar-side'>
-                                            <h1></h1>
-                                            <div onClick={close} className="close-btn">
-                                                <i className="fa-solid fa-xmark"></i>
-                                            </div>
-                                        </div>
-                                        <div className='nav-bar nav-bar-side'>
-                                            <h1>Good Review</h1>
-                                        </div>
-                                        <div className="content content-side1">
-                                            <div className="review-wrapper">
-                                                <div className="review-parent">
-                                                    {reviews.map((review) => (
-                                                        <div key={review.id} className="review-child" onClick={() => { manage_review(review.data); close(); }}>
-                                                            <p>{review.data}</p>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
-                            </Popup> */}
-
-
-
-
                             <div className="submit-button">
                                 <div className="submit-btn mt2">
-                                    <form action={handleForm}>
+                                    <form action={handleForm} translate="no">
                                         {
                                             isPressed
                                                 ?
