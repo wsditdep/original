@@ -13,6 +13,7 @@ export default function Dogglewindow({ memberShipLevel }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isUpSideDouwnIcon, setIsUpSideDouwnIcon,] = useState(false)
     const membership = memberShipLevel.membership_name;
+    
 
     function toggle() {
         setIsOpen((isOpen) => !isOpen);

@@ -147,7 +147,13 @@ const LinkWallet = ({ user }) => {
                             <div className="wallet-section-child">
                                 <div className="wallet-sub-child">
                                     <div className="app-form-group">
-                                        <Submit />
+                                    {
+                                    user?.network_type === null
+                                        ?
+                                        <Submit user={user} />
+                                        :
+                                        <></>
+                                }
                                     </div>
                                 </div>
                             </div>
