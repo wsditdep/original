@@ -111,7 +111,7 @@ const Withdrawal = ({ user, withdrawalInfo }) => {
                                 </div>
                                 <div className='wallet-info-child'>
                                     <h1>Withdrawal Method</h1>
-                                    <h2>Transfer to Bank</h2>
+                                    <h2>Transfer to Crypto Wallet</h2>
                                     <h2>{user?.wallet_name}</h2>
                                     <h2>{user?.wallet_address}</h2>
                                     <h2>{user?.network_type}</h2> 
@@ -160,9 +160,9 @@ const Withdrawal = ({ user, withdrawalInfo }) => {
                                 </div>
                             </form>
                             <div className="welcome-footer-container">
-                                <div className="welcome-footer">
+                                {/* <div className="welcome-footer">
                                     <p>Copyright © 2024 Original Travel . All Rights Reserved.</p>
-                                    {/* <div className="help-center-icon">
+                                    <div className="help-center-icon">
                                         <Image
                                             src={icon6}
                                             alt="icon"
@@ -170,8 +170,8 @@ const Withdrawal = ({ user, withdrawalInfo }) => {
                                             width={100}
                                             unoptimized
                                         />
-                                    </div> */}
-                                </div>
+                                    </div>
+                                </div> */}
                             </div>
                         </>
                 }

@@ -35,17 +35,17 @@ const navbar = async () => {
                         </div>
                         <div className="dashboard-navigation-childs">
                             <div className="notifi-icon">
-                                <Image
+                                {/* <Image
                                     src={notifiicon}
                                     height={100}
                                     width={100}
                                     alt="logo"
                                     unoptimized
-                                />
+                                /> */}
                             </div>
-                            <div className="notifi-count">
+                            {/* <div className="notifi-count">
                                 <p>0</p>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

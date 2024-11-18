@@ -4,7 +4,7 @@ import { fetchAuthenticatedUser } from '@/app/actions/user/data';
 import ValidateJourney from '@/components/journey/ValidateJourney';
 import { auth } from '@/app/auth';
 import SecurityCheck from '@/components/checkSecurityCode/CheckSecurityCode';
-import Navbar from "@/components/navBar/Navbar"
+import Navbar from "@/components/navBar/Navbar";
 import userlevel from "@/public/journey-page/user-level.png"
 import icon6 from "@/public/home-page/icon6.png";
 import welcome1 from "@/public/home-page/welcome1.png";
@@ -224,9 +224,9 @@ const page = async () => {
 
                 <div className='journey-next-main-child'>
                   <div className="welcome-footer-container">
-                    <div className="welcome-footer">
+                    {/* <div className="welcome-footer">
                       <p>Copyright © 2024 Original Travel . All Rights Reserved.</p>
-                      {/* <div className="help-center-icon">
+                      <div className="help-center-icon">
                         <Image
                           src={icon6}
                           alt="icon"
@@ -234,8 +234,8 @@ const page = async () => {
                           width={100}
                           unoptimized
                         />
-                      </div> */}
-                    </div>
+                      </div>
+                    </div> */}
                   </div>
                 </div>
 

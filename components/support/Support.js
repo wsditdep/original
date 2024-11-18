@@ -51,9 +51,9 @@ const Support = ({ setting }) => {
                                     </Link>
                                 </div>
                                 <div className="support-footer-container">
-                            <div className="support-footer">
+                            {/* <div className="support-footer">
                                 <p>Copyright © 2024 Original Travel . All Rights Reserved</p>
-                            </div>
+                            </div> */}
                         </div>
                             </div>
                       

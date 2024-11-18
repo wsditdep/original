@@ -29,6 +29,7 @@ import icon11 from "@/public/sidebar/icon11.png";
 import icon12 from "@/public/sidebar/icon12.png";
 import icon13 from "@/public/sidebar/icon13.png";
 import icon14 from "@/public/sidebar/icon14.png";
+import notifiicon from "@/public/sidebar/notifiicon.png";
 import Popup from 'reactjs-popup';
 import Tc from '../content/Tc';
 import Agent from '../content/Agent';
@@ -531,6 +532,22 @@ const Sidebar = ({ session, content }) => {
                                         height={100}
                                     />
                                     <p>Wallet Info</p>
+                                </div>
+                                <div className="side-bar-list">
+                                    <i className="fa fa-angle-right"></i>
+                                </div>
+                            </li>
+                        </Link>
+                        <Link href="/dashboard/membership">
+                            <li>
+                                <div className="side-bar-list">
+                                    <Image
+                                        src={notifiicon}
+                                        alt="icon"
+                                        width={100}
+                                        height={100}
+                                    />
+                                    <p>Notification</p>
                                 </div>
                                 <div className="side-bar-list">
                                     <i className="fa fa-angle-right"></i>

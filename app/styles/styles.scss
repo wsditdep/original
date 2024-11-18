@@ -365,9 +365,9 @@
 
 .global-primary-btn {
     background: $primaryColor;
-    padding: 1.3rem 2rem;
+    padding: 1.3rem 10rem;
     margin-top: 2rem;
-    // width: 50%;
+    // width: 100%;
 
 }
 
@@ -625,7 +625,7 @@
                         justify-content: space-between;
                         align-items: center;
                         background: white;
-                        padding: 0.7rem 2rem;
+                        padding: 0.7rem 1rem;
                         border-radius: 1rem;
 
                         .journey-level-tap-child {
@@ -641,13 +641,17 @@
                             }
 
                             .level-text {
-                                padding: 0rem 1rem;
+                                padding: 0.5rem 0rem;
 
-                                h3 {}
+                                h3 {
+                                    font-size: 1.2rem;
+                                }
                             }
 
                             .level {
-                                h2 {}
+                                h2 {
+                                    font-size: 1.2rem;
+                                }
                             }
                         }
                     }
@@ -664,33 +668,32 @@
 
                             .order {
                                 p {
-                                    font-size: 1.3rem;
-                                    font-weight: bold;
+                                    font-size: 1.35rem;
+                                    font-weight: 700;
                                     color: #77777c;
                                     padding-bottom: 1rem;
                                 }
 
                                 h1 {
                                     font-weight: 900;
-                                    font-size: 2rem;
+                                    font-size: 1.9rem;
                                 }
                             }
 
                             .balances {
                                 display: flex;
-                                padding-bottom: 1.5rem;
+                                align-items: baseline;
+                                margin-bottom: 1.5rem;
 
                                 p {
-                                    font-size: 1.2rem;
+                                    font-size: 1.15rem;
                                     color: #77777c;
                                     font-weight: 400;
-                                  
                                 }
 
                                 h1 {
                                     font-weight: 850;
-                                    margin-left: 1.5rem;
-                                    
+                                    margin-left: 1.35rem;
                                 }
                             }
                         }
@@ -3100,10 +3103,11 @@
     left: -100%;
     background: white;
     height: 100%;
-    width: 85%;
+    width: 70%;
     z-index: 20;
     overflow-y: scroll;
     transition: left 0.3s ease-in-out;
+    position: fixed;
 
     &::-webkit-scrollbar {
         width: 3px;
@@ -4641,6 +4645,19 @@
 
 
 
+.membership-section{
+    .membership-wrapper{
+        .membership-img{
+            img{
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
+
+
+
 
 
 
@@ -4696,6 +4713,10 @@
     }
     .side-bar-top-wrapper .side-bar-prof-parent .side-bar-prof-child .prof-sub-child .balance h1{
         font-size: 1.4rem;
+    }
+    .side-navbar-wrapper {
+        position: fixed;
+
     }
 }
 

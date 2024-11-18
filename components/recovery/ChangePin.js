@@ -145,10 +145,10 @@ const ChangePin = () => {
                         </div>
                     </div>
                 </section>
-                <div className="pwd-footer-container">
+                {/* <div className="pwd-footer-container">
                     <div className="pwd-footer">
                         <p>Copyright © 2024 Original Travel . All Rights Reserved</p>
-                        {/* <div className="help-center-icon">
+                        <div className="help-center-icon">
                             <Link href="/dashboard/support">
                                 <Image
                                     src={icon6}
@@ -158,9 +158,9 @@ const ChangePin = () => {
                                     unoptimized
                                 />
                             </Link>
-                        </div> */}
+                        </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </>
     )

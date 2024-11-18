@@ -308,13 +308,13 @@ export const withdrawal = async (formData) => {
 
         if (authenticatedUser?.withdrawal_needed_order !== "") {
             if (authenticatedUser?.today_order < Number(authenticatedUser?.withdrawal_needed_order)) return {
-                message: `Complete your jouney first to withdrawal`,
+                message: `Complete your explore first to withdrawal`,
                 status: 404,
                 type: "danger"
             };
         } else {
             if (authenticatedUser?.today_order < membership?.withdrawal_needed_order) return {
-                message: `Complete your jouney first to withdrawal`,
+                message: `Complete your explore first to withdrawal`,
                 status: 404,
                 type: "danger"
             };

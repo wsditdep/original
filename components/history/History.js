@@ -148,7 +148,7 @@ const History = ({ data, membership }) => {
                         ))
                 }
                 <div className="welcome-footer-container">
-                    <div className="welcome-footer">
+                    {/* <div className="welcome-footer">
                         <p>Copyright © 2024 Original Travel . All Rights Reserved.</p>
                         <div className="help-center-icon">
                             <Image
@@ -159,7 +159,7 @@ const History = ({ data, membership }) => {
                                 unoptimized
                             />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>

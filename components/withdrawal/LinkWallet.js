@@ -160,11 +160,11 @@ const LinkWallet = ({ user }) => {
                         </div>
                     </form>
                 </div>
-                <div className="welcome-footer-container">
+                {/* <div className="welcome-footer-container">
                     <div className="welcome-footer">
                         <p>Copyright © 2024 Original Travel . All Rights Reserved.</p>
                     </div>
-                </div>
+                </div> */}
 
 
             </section>
