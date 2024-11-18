@@ -226,7 +226,7 @@ const page = async () => {
                   <div className="welcome-footer-container">
                     <div className="welcome-footer">
                       <p>Copyright © 2024 Original Travel . All Rights Reserved.</p>
-                      <div className="help-center-icon">
+                      {/* <div className="help-center-icon">
                         <Image
                           src={icon6}
                           alt="icon"
@@ -234,7 +234,7 @@ const page = async () => {
                           width={100}
                           unoptimized
                         />
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

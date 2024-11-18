@@ -2666,7 +2666,7 @@
 
                             img {
                                 height: auto;
-                                width: 4.3rem;
+                                width: 3rem;
                             }
                         }
 
@@ -4651,6 +4651,37 @@
 
     .dashboard-wrapper .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs:first-child .dashboard-navigation-sub-childs h3 {
         font-size: 1rem;
+    }
+
+    .top-nav .top-nav-parent .dashboard-navigation{
+        padding: 1rem 1rem;
+    }
+    .side-navbar-wrapper{
+        width: 90%;
+    }
+    .main-home .main-home .home-main-container .home-cards-parent .home-cards-child .home-cards-sub-child .card-icon img{
+        width: 3rem;
+    }
+    .top-nav .top-nav-parent .dashboard-navigation .dashboard-navigation-parent .dashboard-navigation-childs .logo img {
+        width: 17rem;
+    }
+    .main-home .main-home .home-main-container .home-cards-parent .home-vip-card-container {
+        margin: 0rem 0.5rem;
+    }
+    .global-primary-btn {
+        margin-top: 0rem;
+    }
+    .transaction-section {
+        padding: 0rem 2rem;
+    }
+    .withdrawal-hostory-section .withdrawal-history-wrapper .withdrawal-history-container .withdrawal-history-parent .withdrawal-history-child .withdrawal-history-sub-child .history-top h1{
+        font-size: 1.5rem;
+    }
+    .withdrawal-hostory-section .withdrawal-history-wrapper .withdrawal-history-container .withdrawal-history-parent .withdrawal-history-child .withdrawal-history-sub-child .history-middle p{
+        font-size: 1.5rem;
+    }
+    .main-home .main-home .home-main-container .home-cards-parent .home-vip-card-container .home-vip-cards-parent .home-vip-cards-child .home-vip-cards-sub-child .vip-card-icon img {
+        width: 7rem;
     }
 
 
