@@ -167,7 +167,7 @@ const Sidebar = ({ session, content }) => {
                                 <div className='user-level'>
 
                                     {
-                                        session?.membership_level === "Basic Tour"
+                                        session?.membership_level === "Starter Traveller"
                                             ?
                                             <Image
                                                 src={bronzelevel}
@@ -176,7 +176,7 @@ const Sidebar = ({ session, content }) => {
                                                 width={100}
                                                 unoptimized
                                             />
-                                            : session?.membership_level === "Silver Tour"
+                                            : session?.membership_level === "Regular Travelle"
                                                 ? <Image
                                                     src={silverlevel}
                                                     alt='icon'
@@ -184,7 +184,7 @@ const Sidebar = ({ session, content }) => {
                                                     width={100}
                                                     unoptimized
                                                 />
-                                                : session?.membership_level === "Gold Tour"
+                                                : session?.membership_level === "Expert Traveller"
                                                     ? <Image
                                                         src={goldlevel}
                                                         alt='icon'
@@ -192,7 +192,7 @@ const Sidebar = ({ session, content }) => {
                                                         width={100}
                                                         unoptimized
                                                     />
-                                                    : session?.membership_level === "Elite Tour"
+                                                    : session?.membership_level === "Elite Traveller"
                                                         ? <Image
                                                             src={elitelevel}
                                                             alt='icon'

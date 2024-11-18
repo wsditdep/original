@@ -80,7 +80,7 @@ export default function Dogglewindow({ memberShipLevel }) {
                                 </div>
                                 <div className="content-child">
                                     {
-                                        membership === "Basic Tour" ? <button>Current</button> : <></>
+                                        membership === "Starter Traveller" ? <button>Current</button> : <></>
                                     }
 
                                 </div>
@@ -113,7 +113,7 @@ export default function Dogglewindow({ memberShipLevel }) {
                                 </div>
                                 <div className="content-child">
                                     {
-                                        membership === "Silver Tour" ? <button>Current</button> : <></>
+                                        membership === "Regular Traveller" ? <button>Current</button> : <></>
                                     }
                                 </div>
                             </div>
@@ -145,7 +145,7 @@ export default function Dogglewindow({ memberShipLevel }) {
                                 </div>
                                 <div className="content-child">
                                     {
-                                        membership === "Gold Tour" ? <button>Current</button> : <></>
+                                        membership === "Expert Traveller" ? <button>Current</button> : <></>
                                     }
                                 </div>
                             </div>
@@ -177,7 +177,7 @@ export default function Dogglewindow({ memberShipLevel }) {
                                 </div>
                                 <div className="content-child">
                                     {
-                                        membership === "Elite Tour" ? <button>Current</button> : <></>
+                                        membership === "Elite Traveller" ? <button>Current</button> : <></>
                                     }
                                 </div>
                             </div>
