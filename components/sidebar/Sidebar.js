@@ -236,13 +236,13 @@ const Sidebar = ({ session, content }) => {
                             <div className='prof-sub-child'>
                                 <div className='balance'>
                                     <h1>$ {(session?.balance !== undefined ? session.balance.toFixed(2) : "0.00")}</h1>
-                                    <p>Account Balance</p>
+                                    <h1>Account Balance</h1>
                                 </div>
                             </div>
                             <div className='prof-sub-child'>
                                 <div className='balance'>
                                     <h1>$ {(session?.balance !== undefined ? session.today_commission.toFixed(2) : "0.00")}</h1>
-                                    <p>Profit</p>
+                                    <h1>Profit</h1>
                                 </div>
                             </div>
                         </div>

@@ -3001,6 +3001,7 @@
                     }
 
                     .logo {
+                        margin-top: 0.5rem;
                         img {
                             height: auto;
                             width: 18rem;
@@ -3302,28 +3303,32 @@
     .side-bar-prof-parent {
         background: $primaryColor;
         padding: 0.5rem 0rem;
+        // display: flex;
 
         .side-bar-prof-child {
             display: flex;
+            
             justify-content: space-around;
             align-items: center;
 
             .prof-sub-child {
+                
+                &:first-child{
+                    border-right: 2px solid rgba(255, 255, 255, 0.466);
+                }
+                flex: 1;
                 .balance {
+                    padding: 0.5rem 2rem;
                     color: white;
 
                     h1 {
                         text-align: center;
-                        font-size: 1.7rem;
+                        font-size: 1.5rem;
                         font-weight: 600;
-                        padding: 0.25rem 0rem;
+                        // padding: 0.25rem 0rem;
                     }
 
-                    p {
-                        text-align: center;
-                        font-size: 1.4rem;
-                        padding: 0.25rem 0rem;
-                    }
+                 
                 }
             }
         }
@@ -4688,6 +4693,9 @@
     }
     .main-home .main-home .home-main-container .home-cards-parent .home-vip-card-container .down-content-container .down-content-parent .down-content-child .content-parent .content-child .content-sub-child img{
         padding: 0px;
+    }
+    .side-bar-top-wrapper .side-bar-prof-parent .side-bar-prof-child .prof-sub-child .balance h1{
+        font-size: 1.4rem;
     }
 }
 
