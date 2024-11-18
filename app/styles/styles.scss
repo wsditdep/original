@@ -3130,7 +3130,7 @@
 
     .side-bar-profile-parent {
         padding: 2.5rem 2rem;
-        padding-bottom: 2rem;
+        padding-bottom: 1rem;
 
         .side-bar-profile-child {
             display: flex;
@@ -3152,9 +3152,10 @@
                         align-items: center;
 
                         img {
-                            height: auto;
-                            width: 10rem;
+                            height: 12rem;
+                            width: 12rem;
                             border-radius: 50%;
+                            object-fit: cover;
                         }
                     }
 
@@ -3263,7 +3264,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 2.5rem 0rem;
+            padding: 2rem 0rem;
 
             .ref-sub-child {
                 .ref-title {
@@ -3300,7 +3301,7 @@
 
     .side-bar-prof-parent {
         background: $primaryColor;
-        padding: 1.5rem 0rem;
+        padding: 0.5rem 0rem;
 
         .side-bar-prof-child {
             display: flex;
@@ -3313,6 +3314,7 @@
 
                     h1 {
                         text-align: center;
+                        font-size: 1.7rem;
                         font-weight: 600;
                         padding: 0.25rem 0rem;
                     }
@@ -3333,7 +3335,7 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding: 3.5rem 0rem;
+            padding: 2.5rem 0rem;
             margin: 0rem 2rem;
 
             .list-card-parent {
@@ -3349,7 +3351,7 @@
 
                         img {
                             height: auto;
-                            width: 3.8rem;
+                            width: 3rem;
                         }
                     }
 
@@ -3371,122 +3373,6 @@
 
 
 }
-
-
-
-// .nav-profile-outer-wrapper {
-//     background: linear-gradient($primaryColor, #115e6b8f);
-//     padding: 1rem 0 4rem 0;
-
-//     .sidebar-progress-bar {
-//         padding: 0rem 3rem;
-
-//         .sidebar-progress-bar-parent {
-//             display: flex;
-//             align-items: center;
-
-//             .sidebar-progress-bar-childs {
-//                 width: 100%;
-
-//                 &:last-child {
-//                     width: auto;
-//                     margin-left: 1rem;
-
-//                     p {
-//                         font-size: 1rem;
-//                         font-weight: 600;
-//                         color: white;
-//                     }
-//                 }
-
-//                 .progressbar-track {
-//                     height: 0.6rem;
-//                     background: rgb(156, 156, 156);
-//                     border-radius: 1rem;
-//                     position: relative;
-
-//                     .progressbar-thumb {
-//                         height: 100%;
-//                         width: 60%;
-//                         background: white;
-//                         border-radius: 1rem;
-//                         position: absolute;
-//                         top: 0;
-//                         left: 0;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-
-//     .navbar-profile-wrapper {
-//         display: flex;
-//         align-items: center;
-//         border: 1px solid rgb(236, 236, 236);
-//         padding: 1rem;
-//         border-radius: 2rem;
-//         box-shadow: 0 0.4rem 0.4rem 0rem rgba(0, 0, 0, 0.121);
-//         margin: 2rem;
-//         background: white;
-
-//         .navbar-childs {
-//             flex: 1;
-
-//             h3 {
-//                 font-size: 1.4rem;
-//                 color: black;
-//             }
-
-//             p {
-//                 font-size: 1rem;
-//                 color: black;
-//                 margin: 0.8rem 0rem 0.2rem 0;
-//             }
-
-//             h4 {
-//                 font-size: 1.6rem;
-//                 color: black;
-//             }
-
-//             img {
-//                 height: 12rem !important;
-//                 width: 12rem !important;
-//                 border-radius: 50%;
-//             }
-//         }
-//     }
-
-//     .sidebar-account-info-wrapper {
-//         margin-top: 2rem;
-
-//         .sidebar-account-info-parent {
-//             display: flex;
-//             justify-content: center;
-//             align-items: center;
-
-//             .sidebar-account-info-childs {
-//                 padding: 0rem 3rem;
-//                 text-align: center;
-
-//                 &:first-child {
-//                     margin-right: 0.5rem;
-//                     border-right: 2px solid white;
-//                 }
-
-//                 p {
-//                     font-size: 1.2rem;
-//                     color: white;
-//                 }
-
-//                 h3 {
-//                     margin-top: 0.5rem;
-//                     font-size: 1.5rem;
-//                     color: white;
-//                 }
-//             }
-//         }
-//     }
-// }
 
 
 
@@ -3967,7 +3853,7 @@
 
                 img {
                     height: auto;
-                    width: 3.8rem !important;
+                    width: 3rem !important;
                 }
 
                 p {
