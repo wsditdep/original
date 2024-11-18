@@ -118,7 +118,7 @@ const History = ({ data, membership }) => {
                                                     <p>$ {data?.productPrice?.toFixed(2)}</p>
                                                 </div>
                                                 <div className="amount">
-                                                    <p>Comm</p>
+                                                    <p>Profit</p>
                                                     {
                                                         data?.isJourneyProduct
                                                             ?

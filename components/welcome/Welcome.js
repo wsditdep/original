@@ -57,7 +57,7 @@ const Welcome = () => {
                                     <h3>TAILOR-MADE HOLIDAY</h3>
                                     <p>Our Unique Take on Travel</p>
                                     <div className="welcome-overlay-btn">
-                                        <Popup trigger={<button>Get on the road</button>} position="right center" modal nested>
+                                        <Popup trigger={<button>Login now</button>} position="right center" modal nested>
                                             {close => (
                                                 <div className="modal">
                                                     <div className="nav-bar">

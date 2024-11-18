@@ -48,12 +48,12 @@ const Recharge = ({ user }) => {
                         </div>
                     </div>
                     <div className="transaction-current-balance">
-                        <p>Current Balance</p>
+                        <p>Account Balance</p>
                         <h3>$ {user?.balance?.toFixed(2)}</h3>
                     </div>
                 </div>
                 <div className="withdrawal-input">
-                    <label>Enter Amount to deposit</label>
+                    <label>Enter Amount to recharge</label>
                     <input
                         type="number"
                         placeholder="Enter the deposit amount"

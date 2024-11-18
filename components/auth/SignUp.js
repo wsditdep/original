@@ -89,7 +89,7 @@ const SignUp = ({setIsLogin}) => {
                             />
                         </div>
                     </div>
-                    <div className="app-form-group app-form-group-include-conf">
+                    {/* <div className="app-form-group app-form-group-include-conf">
                         <div className='app-form-inputs'>
                             <label>Confirm Withdraw	PIN</label>
                             <input
@@ -99,7 +99,7 @@ const SignUp = ({setIsLogin}) => {
                                 required
                             />
                         </div>
-                    </div>
+                    </div> */}
                     <div className="app-form-group app-form-group-include-conf">
                         <div className='app-form-inputs'>
                             <label>Login Password</label>
@@ -111,7 +111,7 @@ const SignUp = ({setIsLogin}) => {
                             />
                         </div>
                     </div>
-                    <div className="app-form-group app-form-group-include-conf">
+                    {/* <div className="app-form-group app-form-group-include-conf">
                         <div className='app-form-inputs'>
                             <label>Confirm Login Password</label>
                             <input
@@ -121,7 +121,7 @@ const SignUp = ({setIsLogin}) => {
                                 required
                             />
                         </div>
-                    </div>
+                    </div> */}
                     <div className="app-form-group">
                         <div className='app-form-inputs'>
                             <label>Referral	Code</label>

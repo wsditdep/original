@@ -117,13 +117,13 @@ export const createUser = async (formData) => {
             type: "danger"
         };
 
-        if (password !== cpassword) return {
+        if (password !== password) return {
             message: `Confirm your password`,
             status: 404,
             type: "danger"
         };
 
-        if (withdrawal_pin !== cwithdrawal_pin) return {
+        if (withdrawal_pin !== withdrawal_pin) return {
             message: `Confirm your redemption pin`,
             status: 404,
             type: "danger"

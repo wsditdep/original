@@ -365,10 +365,14 @@
 
 .global-primary-btn {
     background: $primaryColor;
-    padding: 1.3rem 10rem;
+    padding: 1.3rem 0rem;
     margin-top: 2rem;
     // width: 100%;
 
+}
+.global-primary-btn-validate{
+    background: $primaryColor;
+    padding: 1.3rem 10rem;
 }
 
 
@@ -2480,7 +2484,20 @@
 }
 
 .content-section {
-    padding: 2rem 3rem;
+    padding: 2rem 2rem;
+    align-items: center;
+    // text-align: center;
+    h2{
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+    span{
+        font-size: 1.1rem;
+        text-align: center;
+        align-items: center;
+    }
 }
 
 .recharge-history-wrapper {
@@ -3398,9 +3415,9 @@
                 justify-content: center;
 
                 img {
-                    width: 60%;
+                    width: 70%;
                     height: auto;
-                    padding: 2rem;
+                    padding: 3rem;
                 }
             }
 
@@ -4380,7 +4397,7 @@
     }
 
     .content-side {
-        padding: 0rem;
+        padding: 0rem 0rem 0rem 0rem;
         width: 100%;
     }
     
@@ -4396,11 +4413,11 @@
 
     .content-side {
         height: 69vh;
-        width: 40vh;
+        width: 45vh;
         overflow-y: scroll;
 
         &::-webkit-scrollbar {
-            width: 5px;
+            width: 0px;
         }
 
         &::-webkit-scrollbar-track {
@@ -4691,7 +4708,7 @@
         margin: 0rem 0.5rem;
     }
     .global-primary-btn {
-        margin-top: 0rem;
+        margin-top: 2rem;
     }
     .transaction-section {
         padding: 0rem 2rem;
@@ -4717,6 +4734,9 @@
     .side-navbar-wrapper {
         position: fixed;
 
+    }
+    .auth-section-parent .auth-section .auth-wrapper{
+        padding: 0rem 2rem;
     }
 }
 

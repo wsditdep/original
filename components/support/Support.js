@@ -44,7 +44,7 @@ const Support = ({ setting }) => {
                                     <h1>Contact Us via Telegram</h1>
                                     <p>Operation Hours: 10:00AM - 10:00PM</p>
                                     <p>(Mon - Sun)</p>
-                                    <Link href="/">
+                                    <Link href="">
                                     <div className='support-button'>
                                         <button>Redirect to Telegram</button>
                                     </div>

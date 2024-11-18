@@ -15,7 +15,7 @@ function Submit() {
 
     return (
         <>
-            <button type="submit" className={pending ? "btn global-primary-btn managedDisabled" : "btn global-primary-btn"}> {
+            <button type="submit" className={pending ? "btn global-primary-btn-validate managedDisabled" : "btn global-primary-btn-validate"}> {
                 pending ?
                     <> Please wait... <i className="fa fa-spinner loading_animation"></i></>
                     :

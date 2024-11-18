@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 
 
-const About = ({ data }) => {
+const Agent = ({ data }) => {
     const [info, setInfo] = useState({});
 
     useEffect(() => {
@@ -19,4 +19,4 @@ const About = ({ data }) => {
     )
 }
 
-export default About
+export default Agent

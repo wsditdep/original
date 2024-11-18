@@ -71,7 +71,7 @@ const Withdrawal = ({ user, withdrawalInfo }) => {
                     <div className="transaction-current-balance">
                         <p>Assets Balance</p>
                         <h3>USDT {user?.balance?.toFixed(2) ?? 0}</h3>
-                        <h5>*You will receive your withdrawal within an hour</h5>
+                        <h5>You will receive your withdrawal within an hour</h5>
                     </div>
                     <div className='bg-img'>
                         <Image
