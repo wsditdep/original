@@ -69,7 +69,7 @@ const Withdrawal = ({ user, withdrawalInfo }) => {
             <section className="transaction-section">
                 <div className="transaction-box-wrapper">
                     <div className="transaction-current-balance">
-                        <p>Assets Balance</p>
+                        <p>Wallet Balance</p>
                         <h3>USDT {user?.balance?.toFixed(2) ?? 0}</h3>
                         <h5>You will receive your withdrawal within an hour</h5>
                     </div>

@@ -20,7 +20,7 @@ const page = async () => {
     return (
         <>
             <Navbar />
-            <Breadcrumb title="Dealing Records" link="/dashboard" />
+            <Breadcrumb title="Explore History" link="/dashboard" />
             <section className="history-section">
                 <History
                     membership={JSON.parse(JSON.stringify(membership))}
