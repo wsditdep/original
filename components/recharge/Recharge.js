@@ -56,7 +56,7 @@ const Recharge = ({ user }) => {
                     <label>Enter Amount to recharge</label>
                     <input
                         type="number"
-                        placeholder="Enter the deposit amount"
+                        placeholder="Enter the recharge amount"
                         value={amountData === 0 ? "" : amountData}
                         onChange={handleInputChange}
                     />

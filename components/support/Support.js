@@ -7,7 +7,12 @@ import logo from "@/public/originaltravel_image/OriginalTravel-Logo-03.png";
 import Link from 'next/link';
 
 
-const Support = ({ setting }) => {
+
+
+
+const Support = ({ support }) => {
+
+
     return (
         <>
            
@@ -44,7 +49,7 @@ const Support = ({ setting }) => {
                                     <h1>Contact Us via Telegram</h1>
                                     <p>Operation Hours: 10:00AM - 10:00PM</p>
                                     <p>(Mon - Sun)</p>
-                                    <Link href="">
+                                    <Link target="_blank" href={support?.link ?? ""}>
                                     <div className='support-button'>
                                         <button>Redirect to Telegram</button>
                                     </div>
